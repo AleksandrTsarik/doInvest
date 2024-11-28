@@ -80,7 +80,6 @@ export default {
 
 <style lang="scss">
 .filter {
-
   &__title {
     max-width: 40%;
     @media(max-width: 1400px) {

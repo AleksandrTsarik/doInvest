@@ -116,7 +116,7 @@ export default {
     }
   }
   .swiper-button-next {
-    right: 0;
+      right: 0;
     &::after {
       transform: translate(-50%, -50%) rotate(180deg);
     }
