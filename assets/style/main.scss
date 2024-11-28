@@ -77,7 +77,7 @@ body {
   height: 40px;
   span {
     display: block;
-    background-color: #FED700;
+    background-color: rgb(var(--primary));
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -94,7 +94,7 @@ body {
   }
 }
 .white-block {
-  background-color: #fff;
+  background-color: var(--light);
   padding: 80px;
   border-radius: 15px;
 }
@@ -115,7 +115,7 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #FED700;
+  background-color: rgb(var(--primary));
   cursor: pointer;
   transition: 0.3s;
   @media(max-width: 575px) {
@@ -123,12 +123,15 @@ body {
     height: 55px;
   }
   &:hover {
-    background-color: lighten(#FED700, 10%)
+    @media(min-width: 1023px) {
+      background-color: rgb(var(--primary));
+      filter: brightness(80%);
+    }
   }
   &:after {
     content: ''; 
     border: 10px solid transparent;
-    border-left: 14px solid #3F3F3F;
+    border-left: 14px solid var(--light);
     display: inline-block;
     position: absolute;
     top: 50%;
