@@ -5,8 +5,7 @@ import {resolve} from "path";
 export default defineNuxtConfig({
     devtools: {enabled: false},
     css: [
-        '@/assets/style/main.scss',
-       
+        '~/assets/style/main.scss',
     ],
     resolve: {
         alias: {

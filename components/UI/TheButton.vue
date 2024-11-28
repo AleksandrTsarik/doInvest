@@ -28,6 +28,7 @@ export default {
 }
 </script>
 
+
 <style lang="scss">
   .btn {
     font-size: 16px;
@@ -39,7 +40,6 @@ export default {
     transition: 0.3s;
     display: flex;
     align-items: center;
-    
     &:active {background-color: tomato}
     &.btn-dark {
       background-color: rgb(var(--primary));
@@ -61,6 +61,4 @@ export default {
       }
     }
   }
-
-
 </style>

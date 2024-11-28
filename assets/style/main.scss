@@ -10,7 +10,7 @@ body {
   margin: 0;
   min-width: 300px;
   font-size: 16px;
-  color: #3F3F3F;
+  color: var(--text);
   background-color: var(--bg);
   font-family: 'Montserrat', Arial, sans-serif;
   transition: 1s;
