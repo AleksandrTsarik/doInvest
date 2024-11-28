@@ -3,20 +3,6 @@
 @use '_variables';
 
 
-$text: #1E2B3E;
-$border: #BDCCE2;
-$border2: #D7E2F2;
-$primary: #00b066;
-$primaryDark: #007d48;
-$secondary: #92A3BC;
-$body: #F3F8FF;
-$bglight: #fff;
-$bgdark: #1E2B3E;
-$header: #2D4159;
-$default: #384B61;
-$bglight: #E3EBF9;
-$radius8: 8px;
-
 body {
   display: flex;
   flex-direction: column;
@@ -25,7 +11,7 @@ body {
   min-width: 300px;
   font-size: 16px;
   color: #3F3F3F;
-  background-color: #F7F7F8;
+  background-color: var(--bg);
   font-family: 'Montserrat', Arial, sans-serif;
   transition: 1s;
   // & .modal {
