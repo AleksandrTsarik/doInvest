@@ -64,9 +64,9 @@ body {
   &:hover {
     @media(min-width: 1023px) {
       background: #fff;
-      border-color: #FED700;
+      border-color: rgba(var(--primary));
+      background: rgba(var(--primary),  0.2);
     }
-
   }
 }
 
