@@ -1,4 +1,4 @@
-<template>
+git branch -M main<template>
   <tbody>
     <tr v-for="(row, i) in rows" :key="i">
       <td><span><img :src="row.ico" alt=""></span>{{ row.name }}</td>

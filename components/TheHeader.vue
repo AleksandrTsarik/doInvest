@@ -107,7 +107,9 @@ export default {
 </script>
 
 <style lang="scss">
+
 .header {
+  //background-color: $primary;
   .link-border {
     @media (max-width: 767px) {
       width: 30px;

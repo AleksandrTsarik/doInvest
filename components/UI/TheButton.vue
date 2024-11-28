@@ -30,6 +30,8 @@ export default {
 </script>
 
 <style lang="scss">
+// @use "_variables" as *;
+// @use "sass:color";
   .btn {
     font-size: 16px;
     font-weight: 400;
@@ -47,6 +49,7 @@ export default {
       &:hover {
         @media(min-width: 1023px) {
           background-color: darken(#FED700, 2%);
+          // background-color: color.adjust($red,#FED700 -10%);
         }
       }
     }
