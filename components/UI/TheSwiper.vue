@@ -73,7 +73,7 @@ export default {
     display: block;
     width: 50px;
     height: 50px;
-    background-color: #FED700;
+    background-color: rgb(var(--primary));
     border-radius: 5px;
     text-align: center;
     line-height: 50px;
@@ -85,10 +85,12 @@ export default {
       bottom: 0;
     }
     &:hover {
-      background-color: lighten(#FED700, 10%);
+      @media(min-width: 1023px) {
+        background: rgba(var(--primary),  0.5);
+      }
     }
     &:active {
-      background-color: #000;
+      background: rgba(var(--primary),  0.9);
     }
     &::after {
       content: '';
