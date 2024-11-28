@@ -46,11 +46,13 @@ const activeTab = ref(props.tabs[0].value)
       &:hover {
         @media(min-width: 1023px) {
           background: rgba(var(--primary),  0.2);
+          border: solid 1px rgb(var(--primary));
         }
       }
       &.active {
         background-color: rgb(var(--primary));
-        border: solid 1px var(--border);
+        border: solid 1px rgb(var(--primary));
+        color: var(--light)
       }
     }
   }
