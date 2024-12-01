@@ -46,7 +46,7 @@ export default {
     height: 20px;
     flex: 0 0 20px;
     margin-right: 10px;
-    border: solid 1px #C9C9C9;
+    border: solid 1px var(--border);
     border-radius: 50%;
     transition: 0.3s;
     position: relative;
@@ -55,7 +55,7 @@ export default {
       display: block;
       width: 12px;
       height: 12px;
-      background-color: #FED700;
+      background-color: rgb(var(--primary));
       position: absolute;
       top: 50%;
       left: 50%;
@@ -66,7 +66,7 @@ export default {
     }
   }
   &__input:checked + &__checked{
-    border-color: #000;
+    border-color: rgb(var(--dark));
     &::after {
       opacity: 1;
     }

@@ -5,7 +5,56 @@
         <div class="header__logo header__left">
           <TheNetwork :type="'logo'" />
         </div>
-        <div class="header__right">
+        <nav class="header-menu header__mid">
+          <ul class="header-menu__list">
+            <li v-for="(item, i) in menu" :key="i">
+              <NuxtLink :to="item.url">{{ item.name }}</NuxtLink>
+            </li>
+          </ul>
+        </nav>
+        <div class="header__right header-user__block">
+          <div class="header-user__row">
+            <TheSvg :type="'star'" />
+            <p>Новичок</p>
+            <span class="header-user__tooltip">?</span>
+          </div>
+          <div class="header-user__row">
+            <p>Баллы:</p>
+            <span class="header-user__count color-primary">4 567</span>
+          </div>
+          <div class="header-user__row">
+            <p>andrew...</p>
+            <div class="header-user__logo"></div>
+          </div>
+          <div class="header-user__row header-burger">
+            <button class="burger" @click="openMenu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <div :class="['header-drop-menu', { 'is-open': isActive }]">
+              <div class="header__menu-close" @click="openMenu"></div>
+              <TheNetwork :type="'logo'" class="header__menu-logo" @click="modalQuestion = true" />
+              <ul class="">
+                <!-- <li><NuxtLink to="/personal-account">Аналитика, личный кабинет</NuxtLink></li>
+                <li><NuxtLink to="/analytics-filter">Аналитика, фильтры</NuxtLink></li>
+                <li><NuxtLink to="/analytics-quotes">Аналитика, котировки</NuxtLink></li>
+                <li><NuxtLink to="/">Уроки</NuxtLink></li>
+                <li><NuxtLink to="/">Клуб инвесторов</NuxtLink></li>
+                <li>
+                  <NuxtLink to="/">Третий пункт <span></span> </NuxtLink>
+                </li> -->
+
+                <li v-for="(item, i) in dropMenu" :key="i">
+                  <NuxtLink v-if="item.url" :to="item.url">{{ item.name }}</NuxtLink>
+                  <p v-else>{{ item.name }}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="header__right">
           <div class="header__item header__item--mobile">
             <UITheButton
               :label="'Связаться'"
@@ -77,7 +126,7 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <the-modal-question v-if="modalQuestion" @close="closeModal" />
@@ -85,14 +134,76 @@
 </template>
 
 <script>
-import TheModalQuestion from "./modal/TheModalQuestion.vue";
-import TheNetwork from "./TheNetwork.vue";
+import TheModalQuestion from './modal/TheModalQuestion.vue';
+import TheNetwork from './TheNetwork.vue';
 export default {
   components: { TheNetwork, TheModalQuestion },
   data() {
     return {
       modalQuestion: false,
       isActive: false,
+      menu: [
+        {
+          name: 'Видеоуроки',
+          url: '#',
+        },
+        {
+          name: 'Азбука инвестора',
+          url: '#',
+        },
+        {
+          name: 'Клуб  инвесторов',
+          url: '#',
+        },
+        {
+          name: 'События',
+          url: '#',
+        },
+        {
+          name: 'Аналитика',
+          url: '#',
+        },
+        {
+          name: 'Еще...',
+          url: '#',
+        },
+      ],
+      dropMenu: [
+        {
+          name: 'Anrew23@gmail.com',
+          url: '#',
+        },
+        {
+          name: 'Новичок',
+          url: '#',
+          count: '4569 / 5000 баллов',
+        },
+        {
+          name: 'Мои уроки',
+          url: '#',
+        },
+        {
+          name: 'Мои главы азбуки',
+          url: '#',
+        },
+        {
+          name: 'Моё полезное',
+          url: '#',
+        },
+        {
+          name: 'Мои события',
+          url: '#',
+        },
+        {
+          name: 'Мои события',
+          url: '#',
+          tooltip: '',
+        },
+        {
+          name: 'Выход',
+          url: '#',
+        },
+      ],
     };
   },
   methods: {
@@ -107,18 +218,16 @@ export default {
 </script>
 
 <style lang="scss">
-
 .header {
-  //background-color: $primary;
-  .link-border {
-    @media (max-width: 767px) {
-      width: 30px;
-      height: 30px;
-      svg {
-        max-width: 55%;
-      }
-    }
-  }
+  // .link-border {
+  //   @media (max-width: 767px) {
+  //     width: 30px;
+  //     height: 30px;
+  //     svg {
+  //       max-width: 55%;
+  //     }
+  //   }
+  // }
   &__logo svg {
     @media (max-width: 767px) {
       max-width: 90%;
@@ -129,159 +238,147 @@ export default {
   }
   &__inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    grid-template-columns: 150px 1fr 1fr;
+    gap: 70px;
     justify-content: space-between;
-    padding: 30px 0;
-    @media (max-width: 767px) {
-      grid-template-columns: 100px 1fr;
-    }
-  }
-  // &__inner {
-  //   // display: flex;
-  //   // justify-content: space-between;
-  //   // padding: 30px 0;
-  //   display: grid;
-  //   grid-template-columns: 1fr 1.5fr;
-  //   justify-content: space-between;
-  //   padding: 30px 0;
-  // }
-  &__right {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    @media (max-width: 767px) {
-      width: 100%;
-      margin-left: 0;
-      // justify-content: space-evenly
-    }
-    // @media(max-width: 575px) {
-    //   justify-content: space-between;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr;
+    // gap: 10px;
+    // justify-content: space-between;
+    // padding: 30px 0;
+    // @media (max-width: 767px) {
+    //   grid-template-columns: 100px 1fr;
     // }
   }
-  &__item {
-    position: relative;
-    &--mobile {
-      @media (max-width: 767px) {
-        display: none;
-      }
-    }
-    &:nth-child(1) {
-      margin-right: 40px;
-      @media (max-width: 575px) {
-        margin-right: auto;
-      }
-    }
-    &:nth-child(2) {
-      @media (max-width: 767px) {
-        margin-left: auto;
-      }
-      a + a {
-        margin-left: 10px;
-      }
-      white-space: nowrap;
-    }
-    &:nth-child(3) {
-      margin-left: 80px;
-      display: flex;
-      align-items: center;
-      @media (max-width: 767px) {
-        margin-left: 10px;
-      }
-      // @media(max-width: 575px) {
-      //   margin-left: auto;
-      // }
-    }
-  }
-  &__user {
-    cursor: pointer;
-    @media (max-width: 767px) {
-      margin-right: 10px;
-      svg {
-        max-width: 30px;
-        flex: 0 0 30px;
-        width: 30px;
-      }
-    }
-  }
-  &__menu {
-    position: relative;
-    border-radius: 10px;
-    padding: 60px 50px;
-    box-shadow: 0 0 4px rgba(#333, 0.5);
-    width: 450px;
-    position: absolute;
-    right: 0;
-    top: 110%;
-    background-color: #f7f7f8;
-    z-index: 10;
-    display: none;
-    @media (max-width: 767px) {
-      padding: 50px 40px;
-      width: 320px;
-    }
-    &.is-open {
-      display: block;
-    }
-  }
-  &__menu-close {
-    display: block;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    cursor: pointer;
-    &::after,
-    &::before {
-      content: "";
-      display: block;
-      width: 100%;
-      height: 1px;
-      background-color: #3f3f3f;
-      position: absolute;
-      left: 0;
-      top: 8px;
-    }
-    &::after {
-      transform: rotate(45deg);
-    }
-    &::before {
-      transform: rotate(-45deg);
-    }
-  }
-  &__menu-logo {
-    margin-bottom: 40px;
-    svg {
-      max-width: 100px;
-    }
-  }
-  &__menu-list {
-    li {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-      a {
-        display: flex;
-        align-items: center;
-        color: #3f3f3f;
-        &:hover {
-          @media(min-width: 1023px) {
-            text-decoration: underline;
-          }
-        }
-      }
-    }
-    span {
-      display: block;
-      width: 12px;
-      height: 12px;
-      border-bottom: solid 1px;
-      border-right: solid 1px;
-      transform: rotate(45deg);
-      margin-bottom: 5px;
-      margin-left: 10px;
-    }
-  }
+  // &__right {
+  //   display: flex;
+  //   align-items: center;
+  //   margin-left: auto;
+  //   @media (max-width: 767px) {
+  //     width: 100%;
+  //     margin-left: 0;
+  //   }
+  // }
+  // &__item {
+  //   position: relative;
+  //   &--mobile {
+  //     @media (max-width: 767px) {
+  //       display: none;
+  //     }
+  //   }
+  //   &:nth-child(1) {
+  //     margin-right: 40px;
+  //     @media (max-width: 575px) {
+  //       margin-right: auto;
+  //     }
+  //   }
+  //   &:nth-child(2) {
+  //     @media (max-width: 767px) {
+  //       margin-left: auto;
+  //     }
+  //     a + a {
+  //       margin-left: 10px;
+  //     }
+  //     white-space: nowrap;
+  //   }
+  //   &:nth-child(3) {
+  //     margin-left: 80px;
+  //     display: flex;
+  //     align-items: center;
+  //     @media (max-width: 767px) {
+  //       margin-left: 10px;
+  //     }
+  //   }
+  // }
+  // &__user {
+  //   cursor: pointer;
+  //   @media (max-width: 767px) {
+  //     margin-right: 10px;
+  //     svg {
+  //       max-width: 30px;
+  //       flex: 0 0 30px;
+  //       width: 30px;
+  //     }
+  //   }
+  // }
+  // &__menu {
+  //   position: relative;
+  //   border-radius: 10px;
+  //   padding: 60px 50px;
+  //   box-shadow: 0 0 4px rgba(#333, 0.5);
+  //   width: 450px;
+  //   position: absolute;
+  //   right: 0;
+  //   top: 110%;
+  //   background-color: #f7f7f8;
+  //   z-index: 10;
+  //   display: none;
+  //   @media (max-width: 767px) {
+  //     padding: 50px 40px;
+  //     width: 320px;
+  //   }
+  //   &.is-open {
+  //     display: block;
+  //   }
+  // }
+  // &__menu-close {
+  //   display: block;
+  //   width: 20px;
+  //   height: 20px;
+  //   position: absolute;
+  //   top: 40px;
+  //   right: 40px;
+  //   cursor: pointer;
+  //   &::after,
+  //   &::before {
+  //     content: "";
+  //     display: block;
+  //     width: 100%;
+  //     height: 1px;
+  //     background-color: #3f3f3f;
+  //     position: absolute;
+  //     left: 0;
+  //     top: 8px;
+  //   }
+  //   &::after {
+  //     transform: rotate(45deg);
+  //   }
+  //   &::before {
+  //     transform: rotate(-45deg);
+  //   }
+  // }
+  // &__menu-logo {
+  //   margin-bottom: 40px;
+  //   svg {
+  //     max-width: 100px;
+  //   }
+  // }
+  // &__menu-list {
+  //   li {
+  //     display: flex;
+  //     align-items: center;
+  //     margin-bottom: 20px;
+  //     a {
+  //       display: flex;
+  //       align-items: center;
+  //       color: #3f3f3f;
+  //       &:hover {
+  //         @media(min-width: 1023px) {
+  //           text-decoration: underline;
+  //         }
+  //       }
+  //     }
+  //   }
+  //   span {
+  //     display: block;
+  //     width: 12px;
+  //     height: 12px;
+  //     border-bottom: solid 1px;
+  //     border-right: solid 1px;
+  //     transform: rotate(45deg);
+  //     margin-bottom: 5px;
+  //     margin-left: 10px;
+  //   }
+  // }
 }
 </style>

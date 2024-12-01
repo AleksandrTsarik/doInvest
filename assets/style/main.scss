@@ -155,6 +155,9 @@ body {
     font-size: 28px;
   }
 }
+.color-primary {
+  color:  rgba(var(--primary));
+}
 .modal {
 
   &__overlay {

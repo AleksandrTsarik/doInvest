@@ -43,8 +43,8 @@ export default {
   &__input {
     display: none;
     &:checked ~ .default-checkbox__container {
-      border-color: #FED700;
-      background-color: #FED700;
+      border-color: rgb(var(--primary));
+      background-color: rgb(var(--primary));
       &::before {
         opacity: 1;
       }
@@ -55,7 +55,7 @@ export default {
     display: inline-block;
     width: 15px;
     height: 15px;
-    border: 1px solid #C9C9C9;
+    border: 1px solid var(--border);
     flex: 0 0 15px;
     transition: background-color 0.3s;
     &:before {
@@ -66,8 +66,8 @@ export default {
       left: 50%;
       width: 4px;
       height: 7px;
-      border-right: solid 1px #2E2D2D;
-      border-bottom: solid 1px #2E2D2D;
+      border-right: solid 1px rgb(var(--light));
+      border-bottom: solid 1px rgb(var(--light));
       transform: translate(-50%, -50%) rotate(45deg); 
       opacity: 0;
     }
