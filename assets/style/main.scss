@@ -357,3 +357,121 @@ table {
   //   transform: translate(-50%, -50%) rotate(-90deg);
   // }
 }
+
+// EVENT ITEM
+.event-item {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+
+  &__photo {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 14px;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  &__info {
+    padding: 0 20px 33px;
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 135%;
+    color: #3F3F3F;
+    margin-bottom: 4px;
+    @media screen and (max-width: 767px) {
+      font-size: 18px;
+      margin-bottom: 2px;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    column-gap: 6px;  
+    margin-bottom: 12px;  
+  }
+
+  &__tags-item {
+    padding: 3px 9px;
+    background-color: rgb(var(--primary));
+    border-radius: 25px;
+    color: #fff;
+    font-size: 10px;
+    @media screen and (max-width: 767px) {
+      font-size: 9px;
+    }
+  }
+
+  &__descr {
+    max-width: 375px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 135%;
+    color: var(--text);
+    height: 43px;
+    overflow: hidden;
+    margin-bottom: 35px;
+    @media screen and (max-width: 767px) {
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__bottom-left {
+    display: flex;
+    align-items: center;
+    column-gap: 6px;
+  }
+
+  &__price {
+    font-size: 20px;
+    color: #3F3F3F;
+    line-height: 135%;
+
+    &--old {
+      text-decoration: line-through;
+    }
+
+    @media screen and (max-width: 767px) {
+      font-size: 18px;
+    }
+  }
+
+  &__link {
+    padding-right: 18px;
+    a {
+      color: rgb(var(--primary));
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      column-gap: 4px;
+      font-size: 16px;
+      font-weight: 500;
+      text-transform: uppercase;
+      border-bottom: solid 1px rgb(var(--primary));
+      &:hover {
+        border: 0;
+
+        svg {
+          margin-top: -1px;
+        }
+      }
+      
+    }
+  }
+}
+
+.header {
+  display: none !important;
+}

@@ -39,7 +39,7 @@ export default {
     border-radius: var(--radius);
     transition: 0.3s;
     display: flex;
-    align-items: center;
+    align-items: center;    
     &:active {background-color: tomato}
     &.btn-dark {
       background-color: rgb(var(--primary));
@@ -58,6 +58,27 @@ export default {
         @media(min-width: 1023px) {
           background: rgba(var(--primary),  0.2);
         }
+      }
+    }
+    &.btn-filter {
+      font-family: 'Montserrat', Arial, sans-serif;
+      border: solid 1px #C9C9C9;
+      border-radius: 25px;
+      padding: 13px 35px;
+      &:hover {
+        @media(min-width: 1023px) {
+          background: rgba(var(--primary),  0.2);
+        }
+      }
+      &.active {
+        background-color: rgb(var(--primary));
+        color: #fff;
+        border-color: rgb(var(--primary));
+        cursor: default;
+      } 
+      
+      @media(min-width: 1023px) {
+
       }
     }
   }

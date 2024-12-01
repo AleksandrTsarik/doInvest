@@ -1,0 +1,517 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("/assets/fonts/Montserrat/Montserrat-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/assets/fonts/Montserrat/Montserrat-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/assets/fonts/Montserrat/Montserrat-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/assets/fonts/Montserrat/Montserrat-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/assets/fonts/Montserrat/Montserrat-Thin.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("/assets/fonts/Montserrat/Montserrat-Light.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "LabGrotesque";
+  src: url("/assets/fonts/LabGrotesque/LabGrotesque-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "LabGrotesque";
+  src: url("/assets/fonts/LabGrotesque/LabGrotesque-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "LabGrotesque";
+  src: url("/assets/fonts/LabGrotesque/LabGrotesque-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "LabGrotesque";
+  src: url("/assets/fonts/LabGrotesque/LabGrotesque-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "LabGrotesque";
+  src: url("/assets/fonts/LabGrotesque/LabGrotesque-Thin.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "LabGrotesque";
+  src: url("/assets/fonts/LabGrotesque/LabGrotesque-Light.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+*, *:focus, *:after, *:before {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  outline: none;
+}
+
+ul, ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+article, aside, footer, header, nav, section, canvas {
+  display: block;
+}
+
+input {
+  outline: none;
+  border: none;
+  background: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+:root {
+  --text: #2B2B2B;
+  --primary: 60, 171, 54;
+  --red: 234, 50, 50;
+  --border: #B2B2B2;
+  --radius: 5px;
+  --raduisBig: 10px;
+  --dark: 0, 0, 0;
+  --light: 255, 255, 255;
+  --bg: #F7F7F8;
+  --bgDark: #EEEEEE;
+  --shadow: 0px 4px 8px rgba(0, 0, 0, 0.14);
+  --test:#3AAA35;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  min-width: 300px;
+  font-size: 16px;
+  color: var(--text);
+  background-color: var(--bg);
+  font-family: "Montserrat", Arial, sans-serif;
+  transition: 1s;
+}
+
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.page-wrap main {
+  flex-grow: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: 1650px;
+  padding: 0 25px;
+  margin: 0 auto;
+}
+
+.r-5 {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.link-border {
+  border: solid 1px #B2B2B2;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  transition: 0.3s;
+  position: relative;
+}
+.link-border svg {
+  position: absolute;
+  display: block;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.link-border:active {
+  background-color: tomato;
+}
+@media (min-width: 1023px) {
+  .link-border:hover {
+    background: #fff;
+    border-color: rgba(var(--primary));
+    background: rgba(var(--primary), 0.2);
+  }
+}
+
+.burger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 40px;
+}
+.burger span {
+  display: block;
+  background-color: rgb(var(--primary));
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.section-page {
+  margin-bottom: 170px;
+}
+@media (max-width: 1023px) {
+  .section-page {
+    margin-bottom: 100px;
+  }
+}
+@media (max-width: 767px) {
+  .section-page {
+    margin-bottom: 80px;
+  }
+}
+
+.white-block {
+  background-color: var(--light);
+  padding: 80px;
+  border-radius: 15px;
+}
+
+.iframe {
+  position: relative;
+}
+.iframe iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.video-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgb(var(--primary));
+  cursor: pointer;
+  transition: 0.3s;
+}
+@media (max-width: 575px) {
+  .video-icon {
+    width: 55px;
+    height: 55px;
+  }
+}
+@media (min-width: 1023px) {
+  .video-icon:hover {
+    background-color: rgb(var(--primary));
+    filter: brightness(80%);
+  }
+}
+.video-icon:after {
+  content: "";
+  border: 10px solid transparent;
+  border-left: 14px solid var(--light);
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 57%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  font-size: 44px;
+  line-height: 100%;
+  font-weight: 400;
+  font-family: "LabGrotesque";
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+@media (max-width: 1023px) {
+  .title {
+    margin-bottom: 25px;
+  }
+}
+@media (max-width: 767px) {
+  .title {
+    font-size: 28px;
+  }
+}
+
+.color-primary {
+  color: rgba(var(--primary));
+}
+
+.modal__overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 8888;
+}
+.modal__close {
+  display: block;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+}
+.modal__close:after, .modal__close:before {
+  content: "";
+  display: block;
+  width: 110%;
+  height: 1px;
+  background-color: #3F3F3F;
+  position: absolute;
+  left: 0;
+  top: 9px;
+}
+.modal__close::after {
+  transform: rotate(45deg);
+}
+.modal__close::before {
+  transform: rotate(-45deg);
+}
+.modal__wrap {
+  background-color: #F7F7F8;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 660px;
+  border-radius: 10px;
+  width: 100%;
+  z-index: 9999;
+}
+@media (max-width: 767px) {
+  .modal__wrap {
+    max-width: 360px;
+  }
+}
+
+.t-18 {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 135%;
+}
+@media (max-width: 767px) {
+  .t-18 {
+    font-size: 15px;
+  }
+}
+
+.t-20 {
+  font-size: 20px;
+  line-height: 110%;
+  font-weight: 400;
+}
+@media (max-width: 767px) {
+  .t-20 {
+    font-size: 18px;
+  }
+}
+
+.t-24 {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 110%;
+}
+@media (max-width: 767px) {
+  .t-24 {
+    font-size: 15px;
+  }
+}
+
+.t-32 {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 110%;
+}
+@media (max-width: 767px) {
+  .t-32 {
+    font-size: 22px;
+  }
+}
+
+.table {
+  width: 100%;
+  overflow: auto;
+  z-index: 1;
+}
+
+table {
+  position: relative;
+  min-width: 1200px;
+  width: 100%;
+  border-collapse: collapse;
+  width: 100%;
+}
+table thead {
+  border-bottom: solid 1px #3F3F3F;
+}
+table thead th {
+  padding: 10px 0;
+  text-align: left;
+}
+@media (max-width: 1200px) {
+  table thead th:first-child {
+    text-align: left;
+    position: sticky;
+    left: 0;
+    z-index: 0;
+    background-color: #F7F7F8;
+    box-shadow: 3px 0px 10px 0px rgb(208, 208, 208);
+    margin-right: 25px;
+    display: block;
+  }
+  table thead th:first-child:after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    background-color: #CBCBCB;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+table tbody tr {
+  border-bottom: solid 2px #CBCBCB;
+}
+table tbody tr td {
+  padding: 10px 0;
+}
+@media (max-width: 1200px) {
+  table tbody tr td:first-child {
+    position: sticky;
+    text-align: left;
+    left: 0;
+    z-index: 0;
+    background-color: #F7F7F8;
+    box-shadow: 3px 0px 10px 0px rgb(208, 208, 208);
+    margin-right: 25px;
+    display: block;
+  }
+  table tbody tr td:first-child:after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    background-color: #CBCBCB;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.span-circle {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: solid 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+.span-circle::after, .span-circle:before {
+  content: "";
+  width: 60%;
+  height: 1px;
+  display: block;
+  background-color: #3F3F3F;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.span-circle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.event-item {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.event-item__photo {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.event-item__photo img {
+  max-width: 100%;
+}/*# sourceMappingURL=main.css.map */

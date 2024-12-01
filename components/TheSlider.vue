@@ -26,22 +26,22 @@
     </div>
     <div class="slider-block-body">
       <div v-if="windowWidth > 1023 && card.length < 5">
-    <div
-      
-      class="slider-desktop slider"
-    >
-      <div class="slider-desktop__item" v-for="(slide, i) in card"
-      :key="i">
-        <div class="slider-desktop__wrap slider__wrap">
-          <div class="slider-desktop__img slider__img">
-            <img :src="slide.img" alt="..." loading="lazy">
-            <span class="video-icon"></span>
+        <div
+          
+          class="slider-desktop slider"
+        >
+          <div class="slider-desktop__item" v-for="(slide, i) in card"
+          :key="i">
+            <div class="slider-desktop__wrap slider__wrap">
+              <div class="slider-desktop__img slider__img">
+                <img :src="slide.img" alt="..." loading="lazy">
+                <span class="video-icon"></span>
+              </div>
+              <div class="slider-desktop__text slider__description t-24">{{ slide.description }}</div>
+            </div>
           </div>
-          <div class="slider-desktop__text slider__description t-24">{{ slide.description }}</div>
+          
         </div>
-      </div>
-      
-    </div>
       </div>
       <div v-else>
         <u-i-the-swiper 
