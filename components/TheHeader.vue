@@ -170,7 +170,7 @@ export default {
   &__list {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 25px;
     li {
       white-space: nowrap;
       a {
@@ -206,11 +206,13 @@ export default {
 .header-user {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 30px;
   &__block {}
   &__row {
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 1;
   }
   &__logo {
     border-radius: 50%;
@@ -218,6 +220,24 @@ export default {
     width: 40px;
     flex: 0 0 40px;
     height: 40px;
+    margin-left: 15px;
+  }
+  &__tooltip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.7em;
+    width: 18px;
+    height: 18px;
+    border: solid 1px rgb(var(--primary));
+    color: rgb(var(--primary));
+    background-color: rgba(var(--primary), 0.1);
+    position: absolute;
+    top: -9px;
+    right: -18px;
+    z-index: 10;
+    cursor: pointer;
   }
 }
 .header-burger {
