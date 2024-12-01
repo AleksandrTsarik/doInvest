@@ -17,9 +17,9 @@
       v-for="(slide, i) in slider"
       :key="i"
     >
-      <div class="slider__wrap">
-        <div v-if="slide.head" class="slider__head">{{ slide.head }}</div>
-        <div v-if="slide.img" class="slider__img">
+        <div class="slider__wrap">
+              <div v-if="slide.head" class="slider__head">{{ slide.head }}</div>
+          <div v-if="slide.img" class="slider__img">
           <img :src="slide.img" alt="">
           <span class="video-icon"></span>
         </div>

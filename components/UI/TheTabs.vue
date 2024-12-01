@@ -20,11 +20,10 @@
 
 <script setup>
 import { ref } from 'vue'
-
-const props = defineProps({
-  tabs: {type: Array, default: [], require: true}
-})
-const activeTab = ref(props.tabs[0].value)
+  const props = defineProps({
+    tabs: {type: Array, default: [], require: true}
+  })
+  const activeTab = ref(props.tabs[0].value)
 </script>
 
 <style lang="scss">

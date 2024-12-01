@@ -33,9 +33,9 @@
   </div>
   <div v-else-if="type === 'tel'" class="block-input">
     <label>
-            <input
+      <input
         :value="modelValue"
-         type="tel"
+        type="tel"
         :placeholder="placeholder"
         @input="modelValue = $event.target.value"
       />
@@ -44,7 +44,7 @@
   </div>
   <div v-else-if="type === 'email'" class="block-input">
     <label>
-       <input
+      <input
         :value="modelValue"
         type="email"
         :placeholder="placeholder"

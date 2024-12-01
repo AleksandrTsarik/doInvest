@@ -53,7 +53,7 @@ export default {
       }
     }
     &.btn-light {
-      border-color: rgb(var(--primary));
+        border-color: rgb(var(--primary));
       &:hover {
         @media(min-width: 1023px) {
           background: rgba(var(--primary),  0.2);
