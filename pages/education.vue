@@ -1,21 +1,5 @@
 <template>
   <main>
-
-    <section class="section-page materials">
-      <div class="container">
-        <div class="section-page__title materials__title title">СОБЫТИЯ</div>
-        <div class="materials__subtitle t-24">
-          Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель, вставляемый в макет страницы).
-        </div>
-        <div class="materials__catalog">
-          <div class="materials__item">
-            
-          </div>
-        </div>
-      </div>
-    </section>
-
-
     <section class="section-page">
       <div class="container">
         <div class="section-page__title materials__title title">СОБЫТИЯ</div>
