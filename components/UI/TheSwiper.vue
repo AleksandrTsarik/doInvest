@@ -19,12 +19,16 @@
       v-for="(slide, i) in slider"
       :key="i"
     >
-      <div class="materials__item event-item">
+      <div class="event-item">
         <div class="event-item__photo">
           <a href="#"><img src="/public/image/event.jpg" alt=""></a>
         </div>
         <div class="event-item__info">
-          <div class="event-item__tags">
+          <div v-if="slide.date" class="event-item__date">
+            <div>{{ slide.date }}</div>
+            <div v-if="slide.place"><a :href="slide.placeUrl">{{ slide.place }}</a></div>
+          </div>
+          <div v-if="slide.tags" class="event-item__tags">
             <div v-for="(tag, i) in slide.tags" :key="i" class="event-item__tags-item">{{ tag }}</div>
           </div>
           <div class="event-item__name">
@@ -33,7 +37,7 @@
           <div class="event-item__descr">
             {{ slide.descr }}
           </div>
-          <div class="event-item__bottom">
+          <div class="event-item__bottom">            
             <div class="event-item__bottom-left">
               <div v-if="slide.oldPice" class="event-item__price event-item__price--old">{{ slide.oldPice }}</div>
               <div class="event-item__price"> {{ slide.price ? slide.price : 'БЕСПЛАТНО' }}</div>
@@ -214,7 +218,7 @@ export default {
       // font-weight: 400;
       // line-height: 135%;
     }
-  }
+  }  
 
   &--events {
     @media screen and (min-width: 1024px) {
@@ -247,6 +251,6 @@ export default {
         right: auto;
       }
     }
-  }
+  }  
 }
 </style>

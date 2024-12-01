@@ -1,5 +1,39 @@
 <template>
   <main>
+
+    <section class="section-page materials">
+      <div class="container">
+        <div class="section-page__title materials__title title">СОБЫТИЯ</div>
+        <div class="materials__subtitle t-24">
+          Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель, вставляемый в макет страницы).
+        </div>
+        <div class="materials__catalog">
+          <div class="materials__item">
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section-page">
+      <div class="container">
+        <div class="section-page__title materials__title title">СОБЫТИЯ</div>
+        <div class="materials__subtitle t-24">
+          Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель, вставляемый в макет страницы).
+        </div>
+        <u-i-the-swiper 
+          :slider="events"
+          :options="optionsSlider"
+          :typeSlider="'events'"
+          class="slider slider--margin"
+        ></u-i-the-swiper>
+        <div class="section-page__all-link">
+          <NuxtLink to="#">Открыть все события</NuxtLink>
+        </div>
+      </div>
+    </section>
+
     <section class="section-page materials">
       <div class="container">
         <div class="section-page__title materials__title title">Полезные материалы</div>
@@ -9,22 +43,25 @@
 
         <div class="materials__filters">
           <UITheButton 
-            @click = "filterEvents()"
+            @click = "filterMaterials()"
             :label="'Все'" 
             :class="['btn-filter', {'active' : !currentTag}]" />
           <UITheButton 
-            v-for="(tag, i) in tagsEvents" 
+            v-for="(tag, i) in tagsMaterials" 
             :key="i" 
-            @click="filterEvents(tag)"
+            @click="filterMaterials(tag)"
             :label="tag" 
             :class="['btn-filter', {'active' : currentTag === tag}]" />
         </div>
         <u-i-the-swiper 
-          :slider="currentEvents"
+          :slider="currentMaterials"
           :options="optionsSlider"
           :typeSlider="'events'"
           class="slider"
         ></u-i-the-swiper>
+        <div class="section-page__all-link">
+          <NuxtLink to="#">Открыть все материалы</NuxtLink>
+        </div>
       </div>
     </section>
   </main>
@@ -36,6 +73,72 @@ export default {
     return {      
       currentTag: '',
       events: [
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Семинар. Инвестиции в ...',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 0,
+          frame: '',
+          date: '28 августа 2023 18:00',
+          place: 'МТС Арена',
+          placeUrl: '#',
+        },
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Мастер-класс совместно с Тинькофф',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          date: '28 августа 2023 18:00',
+          place: 'МТС Арена',
+          placeUrl: '#',
+        },
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Встреча в Терра',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          date: '28 августа 2023 18:00',
+          place: 'МТС Арена',
+          placeUrl: '#',
+        },   
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Семинар. Инвестиции в ...',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 0,
+          frame: '',
+          date: '28 августа 2023 18:00',
+          place: 'МТС Арена',
+          placeUrl: '#',
+        },
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Мастер-класс совместно с Тинькофф',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          date: '28 августа 2023 18:00',
+          place: 'МТС Арена',
+          placeUrl: '#',
+        },
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Встреча в Терра',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          date: '28 августа 2023 18:00',
+          place: 'МТС Арена',
+          placeUrl: '#',
+        }
+      ],
+      materials: [
         {
           pic: '/public/image/event.jpg',
           name: 'Книга про инвестиции',
@@ -279,8 +382,8 @@ export default {
           tags: ['Книги']
         },
       ],
-      currentEvents: [],
-      tagsEvents: [],
+      currentMaterials: [],
+      tagsMaterials: [],
       optionsSlider: {
         loop: false,
         slidesPerGroup: 1,
@@ -307,28 +410,28 @@ export default {
   },
   methods: {
     getTags() {
-      this.events.map(item => {
+      this.materials.map(item => {
         item.tags.map(tag => {          
-          if(this.tagsEvents.indexOf(tag) === -1) {
-            this.tagsEvents.push(tag)
+          if(this.tagsMaterials.indexOf(tag) === -1) {
+            this.tagsMaterials.push(tag)
           }
         })
       })
     },
-    filterEvents(tag) {
+    filterMaterials(tag) {
       if(tag) {
         this.currentTag = tag
-        this.currentEvents = this.events.filter(event => event.tags.indexOf(tag) !== -1)
+        this.currentMaterials = this.materials.filter(item => item.tags.indexOf(tag) !== -1)
       } else {
         this.currentTag = ''
-        this.currentEvents = this.events
+        this.currentMaterials = this.materials
       }
             
     }
   },
   mounted() {
     this.getTags()
-    this.filterEvents()
+    this.filterMaterials()
   }
 
 }
@@ -370,4 +473,7 @@ export default {
     flex-wrap: wrap;    
   }  
 } 
+.slider--margin {
+  margin-top: 25px;
+}
 </style>

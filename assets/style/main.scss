@@ -2,7 +2,6 @@
 @use '_settings';
 @use '_variables';
 
-
 body {
   display: flex;
   flex-direction: column;
@@ -92,6 +91,29 @@ body {
   }
   @media(max-width: 767px) {
     margin-bottom: 80px;
+  }
+
+  &__all-link {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+
+    a {
+      padding: 16px 35px;
+      border: solid 1px rgb(var(--primary));
+      border-radius: 5px;
+      background-color: transparent;
+      font-size: 16px;
+      font-weight: 500;
+      color: #2B2B2B;
+      transition: .4s;
+
+      &:hover {
+        @media(min-width: 1023px) {
+          background: rgba(var(--primary),  0.2);
+        }
+      }
+    }
   }
 }
 
@@ -384,6 +406,9 @@ table {
     line-height: 135%;
     color: #3F3F3F;
     margin-bottom: 4px;
+    height: 27px;
+    white-space: nowrap;
+    overflow: hidden;
     @media screen and (max-width: 767px) {
       font-size: 18px;
       margin-bottom: 2px;
@@ -404,6 +429,24 @@ table {
     font-size: 10px;
     @media screen and (max-width: 767px) {
       font-size: 9px;
+    }
+  }
+
+  &__date {
+    color: rgb(var(--primary));
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    column-gap: 9px;
+
+    a {
+      color: rgb(var(--primary));
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 

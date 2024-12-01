@@ -76,10 +76,6 @@ export default {
         border-color: rgb(var(--primary));
         cursor: default;
       } 
-      
-      @media(min-width: 1023px) {
-
-      }
     }
   }
 </style>
