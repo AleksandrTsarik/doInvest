@@ -41,6 +41,7 @@ export default {
   }
   &:active {
     background-color: tomato;
+    color: var(--text);
   }
   &.btn-dark {
     background-color: rgb(var(--primary));

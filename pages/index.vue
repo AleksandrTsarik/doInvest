@@ -64,6 +64,11 @@
       </div>
     </section>
 
+    <section class="section-page">
+      <div class="container">
+        <TheIntro />
+      </div>
+    </section>
     <!-- <section class="section-page">
       <div class="container">
         <div class="analytics">
