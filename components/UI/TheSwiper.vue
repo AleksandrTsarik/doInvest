@@ -70,6 +70,37 @@
   </Swiper>
 
   <Swiper
+    v-if="typeSlider === 'feedback'"
+    class="slider-swiper slider-swiper--feedback"
+    :modules="modules"
+    :loop="options.loop"
+    :navigation="options.navigation"
+    :slidesPerView="options.slidesPerView"
+    :slidesPerGroup="options.slidesPerGroup"
+    :centeredSlides="options.centeredSlides"
+    :spaceBetween="options.spaceBetween"
+    :pagination="options.pagination"
+    :breakpoints="options.breakpoints"
+    :effect="options.effect"
+    :mousewheel="options.mousewheel"
+  >
+    <SwiperSlide v-for="(slide, i) in slider" :key="i">
+      <div class="feedback-slide">
+        <div class="feedback-slide__item">
+          <div class="feedback-slide__photo">
+            <img :src="slide.photo" :alt="slide.alt" loading="lazy" />
+            <div v-if="slide.video" class="relative">
+              <span class="video-icon video-icon--small"></span>
+            </div>
+          </div>
+          <div class="feedback-slide__name t-32">{{ slide.name }}</div>
+        </div>
+      </div>
+    </SwiperSlide>
+    <SwiperControls />
+  </Swiper>
+
+  <Swiper
     v-else
     class="slider-swiper"
     :modules="modules"
