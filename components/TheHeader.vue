@@ -159,22 +159,48 @@ export default {
 
 <style lang="scss">
 .header {
-  
-  &__logo svg {
-    @media (max-width: 767px) {
-      max-width: 90%;
+
+  &__logo {
+    a {
+      flex: 0 0 150px;
+      width: 150px;
+      @media (max-width: 575px) {
+        flex: 0 0 90px;
+        width: 90px;
+      }
     }
-    @media (max-width: 575px) {
-      max-width: 60%;
+    svg {
+      display: block;
+      width: 100%;
     }
+    // svg {
+    //   @media (max-width: 767px) {
+    //     max-width: 90%;
+    //   }
+    //   @media (max-width: 575px) {
+    //     max-width: 60%;
+    //   }
+    // }
   }
   &__inner {
     display: grid;
     grid-template-columns: 150px auto auto;
-    gap: 70px;
+    gap: 20px;
     justify-content: space-between;
     align-items: center;
     padding: 40px 0;
+    @media(max-width: 1400px) {
+      grid-template-columns: auto 1fr;
+    }
+
+  }
+  &__mid {
+    @media(max-width: 1400px) {
+      display: none;
+    }
+  }
+  &__right {
+    margin-left: auto;
   }
 }
 .header-menu {
@@ -218,12 +244,33 @@ export default {
   display: flex;
   align-items: center;
   gap: 30px;
+  @media(max-width: 768px) {
+    gap: 5px;
+  }
   &__block {}
   &__row {
     display: flex;
     align-items: center;
     position: relative;
     z-index: 1;
+    &:nth-child(1) {
+      @media(max-width: 768px) {
+        display: none;
+      }
+    }
+    &:nth-child(2) {
+      @media(max-width: 768px) {
+        display: none;
+      }
+    }
+    svg {
+      margin-right: 0.3em;
+    }
+  }
+  &__count {
+    white-space: nowrap;
+    margin-left: 0.3em;
+    font-weight: 700;
   }
   &__logo {
     border-radius: 50%;
