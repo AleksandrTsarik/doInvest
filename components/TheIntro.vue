@@ -35,7 +35,7 @@
         <div class="intro__more">
           <NuxtLink class="btn btn-light" to="#">Читать далее</NuxtLink>
           <div class="intro__play relative">
-            <span class="video-icon"></span>
+            <span class="video-icon video-icon--small"></span>
           </div>
         </div>
       </div>

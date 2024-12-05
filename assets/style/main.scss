@@ -37,6 +37,9 @@ body {
   max-width: 1650px;
   padding: 0 25px;
   margin: 0 auto;
+  @media (max-width: 1024px) {
+    padding: 0 15px;
+  }
 }
 
 .r-5 {
@@ -145,6 +148,10 @@ body {
   background-color: rgb(var(--primary));
   cursor: pointer;
   transition: 0.3s;
+  &--small {
+    width: 55px;
+    height: 55px;
+  }
   @media (max-width: 575px) {
     width: 55px;
     height: 55px;
@@ -162,7 +169,7 @@ body {
     display: inline-block;
     position: absolute;
     top: 50%;
-    left: 57%;
+    left: 60%;
     transform: translate(-50%, -50%);
   }
 }

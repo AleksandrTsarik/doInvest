@@ -71,7 +71,7 @@
 
   <Swiper
     v-else
-    class="slider-swiper"
+    :class="class"
     :modules="modules"
     :loop="options.loop"
     :navigation="options.navigation"
@@ -85,7 +85,37 @@
     :mousewheel="options.mousewheel"
   >
     <SwiperSlide v-for="(slide, i) in slider" :key="i">
-      <div class="slider__wrap">
+      <div v-if="typeSlider === 'feedback'" class="feedback-slide">
+        <div class="feedback-slide__item">
+          <div class="feedback-slide__photo">
+            <img :src="slide.photo" :alt="slide.alt" loading="lazy" />
+            <div v-if="slide.video" class="relative">
+              <span class="video-icon video-icon--small"></span>
+            </div>
+          </div>
+          <div class="feedback-slide__name t-32">{{ slide.name }}</div>
+        </div>
+      </div>
+
+      <div v-else-if="typeSlider === 'experts'" class="expert-slide">
+        <div class="expert-slide__photo">
+          <img :src="slide.photo" :alt="slide.alt" loading="lazy" />
+          <div v-if="slide.video" class="relative">
+            <span class="video-icon video-icon--small"></span>
+          </div>
+        </div>
+        <div class="expert-slide__info">
+          <div class="expert-slide__iinfo-item">
+            <div class="expert-slide__name t-24">{{ slide.name }}</div>
+            <div class="expert-slide__position">{{ slide.position }}</div>
+          </div>
+          <div class="expert-slide__info-item">
+            <UITheButton :label="'Задать вопрос'" class="btn-light" />
+          </div>
+        </div>
+      </div>
+
+      <div v-else class="slider__wrap">
         <div v-if="slide.head" class="slider__head">{{ slide.head }}</div>
         <div v-if="slide.img" class="slider__img">
           <img :src="slide.img" alt="" />
