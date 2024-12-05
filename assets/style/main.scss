@@ -45,7 +45,7 @@ body {
 }
 
 .link-border {
-  border: solid 1px #B2B2B2;
+  border: solid 1px #b2b2b2;
   border-radius: 5px;
   width: 50px;
   height: 50px;
@@ -62,10 +62,10 @@ body {
     background-color: tomato;
   }
   &:hover {
-    @media(min-width: 1023px) {
+    @media (min-width: 1023px) {
       background: #fff;
       border-color: rgba(var(--primary));
-      background: rgba(var(--primary),  0.2);
+      background: rgba(var(--primary), 0.2);
     }
   }
 }
@@ -86,10 +86,10 @@ body {
 
 .section-page {
   margin-bottom: 170px;
-  @media(max-width: 1023px) {
+  @media (max-width: 1023px) {
     margin-bottom: 100px;
   }
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     margin-bottom: 80px;
   }
 
@@ -105,12 +105,12 @@ body {
       background-color: transparent;
       font-size: 16px;
       font-weight: 500;
-      color: #2B2B2B;
-      transition: .4s;
+      color: #2b2b2b;
+      transition: 0.4s;
 
       &:hover {
-        @media(min-width: 1023px) {
-          background: rgba(var(--primary),  0.2);
+        @media (min-width: 1023px) {
+          background: rgba(var(--primary), 0.2);
         }
       }
     }
@@ -122,9 +122,9 @@ body {
   padding: 80px;
   border-radius: 15px;
 }
-.iframe  {
+.iframe {
   position: relative;
-  iframe {  
+  iframe {
     width: 100%;
     height: 100%;
     display: block;
@@ -142,20 +142,20 @@ body {
   background-color: rgb(var(--primary));
   cursor: pointer;
   transition: 0.3s;
-  @media(max-width: 575px) {
+  @media (max-width: 575px) {
     width: 55px;
     height: 55px;
   }
   &:hover {
-    @media(min-width: 1023px) {
+    @media (min-width: 1023px) {
       background-color: rgb(var(--primary));
       filter: brightness(80%);
     }
   }
   &:after {
-    content: ''; 
+    content: '';
     border: 10px solid transparent;
-    border-left: 14px solid var(--light);
+    border-left: 14px solid rgb(var(--light));
     display: inline-block;
     position: absolute;
     top: 50%;
@@ -170,18 +170,17 @@ body {
   font-family: 'LabGrotesque';
   margin-bottom: 50px;
   text-transform: uppercase;
-  @media(max-width: 1023px) {
+  @media (max-width: 1023px) {
     margin-bottom: 25px;
   }
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     font-size: 28px;
   }
 }
 .color-primary {
-  color:  rgba(var(--primary));
+  color: rgba(var(--primary));
 }
 .modal {
-
   &__overlay {
     background-color: rgba(#000, 0.5);
     position: fixed;
@@ -199,12 +198,13 @@ body {
     right: 15px;
     top: 15px;
     cursor: pointer;
-    &:after, &:before {
+    &:after,
+    &:before {
       content: '';
       display: block;
       width: 110%;
       height: 1px;
-      background-color: #3F3F3F;
+      background-color: #3f3f3f;
       position: absolute;
       left: 0;
       top: 9px;
@@ -217,7 +217,7 @@ body {
     }
   }
   &__wrap {
-    background-color: #F7F7F8;
+    background-color: #f7f7f8;
     position: fixed;
     left: 50%;
     top: 50%;
@@ -230,7 +230,7 @@ body {
     // transition: 1s;
     // opacity: 0;
     // transform: translate(-100%, -0%);
-    @media(max-width: 767px) {
+    @media (max-width: 767px) {
       max-width: 360px;
     }
   }
@@ -239,7 +239,7 @@ body {
   font-size: 18px;
   font-weight: 400;
   line-height: 135%;
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     font-size: 15px;
   }
 }
@@ -247,7 +247,7 @@ body {
   font-size: 20px;
   line-height: 110%;
   font-weight: 400;
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     font-size: 18px;
   }
 }
@@ -255,7 +255,7 @@ body {
   font-size: 24px;
   font-weight: 400;
   line-height: 110%;
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     font-size: 15px;
   }
 }
@@ -263,7 +263,7 @@ body {
   font-size: 32px;
   font-weight: 400;
   line-height: 110%;
-  @media(max-width: 767px) {
+  @media (max-width: 767px) {
     font-size: 22px;
   }
 }
@@ -279,17 +279,17 @@ table {
   border-collapse: collapse;
   width: 100%;
   thead {
-    border-bottom: solid 1px #3F3F3F;
+    border-bottom: solid 1px #3f3f3f;
     th {
       padding: 10px 0;
       text-align: left;
       &:first-child {
-        @media(max-width: 1200px) {
+        @media (max-width: 1200px) {
           text-align: left;
           position: sticky;
           left: 0;
           z-index: 0;
-          background-color: #F7F7F8;
+          background-color: #f7f7f8;
           box-shadow: 3px 0px 10px 0px rgb(208, 208, 208);
           margin-right: 25px;
           display: block;
@@ -298,14 +298,13 @@ table {
             display: block;
             width: 1px;
             height: 100%;
-            background-color: #CBCBCB;
+            background-color: #cbcbcb;
             position: absolute;
             top: 0;
             bottom: 0;
             right: 0;
           }
         }
-        
       }
     }
     // th td {
@@ -317,18 +316,17 @@ table {
   }
   tbody {
     tr {
-      border-bottom: solid 2px #CBCBCB;
-      
+      border-bottom: solid 2px #cbcbcb;
     }
     tr td {
       padding: 10px 0;
       &:first-child {
-        @media(max-width: 1200px) {
+        @media (max-width: 1200px) {
           position: sticky;
           text-align: left;
           left: 0;
           z-index: 0;
-          background-color: #F7F7F8;
+          background-color: #f7f7f8;
           box-shadow: 3px 0px 10px 0px rgb(208, 208, 208);
           margin-right: 25px;
           display: block;
@@ -337,14 +335,13 @@ table {
             display: block;
             width: 1px;
             height: 100%;
-            background-color: #CBCBCB;
+            background-color: #cbcbcb;
             position: absolute;
             top: 0;
             bottom: 0;
             right: 0;
           }
         }
-       
       }
     }
   }
@@ -361,12 +358,13 @@ table {
   align-items: center;
   justify-content: center;
   transition: 0.3s;
-  &::after, &:before {
+  &::after,
+  &:before {
     content: '';
     width: 60%;
     height: 1px;
     display: block;
-    background-color: #3F3F3F;
+    background-color: #3f3f3f;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -404,7 +402,7 @@ table {
     font-size: 20px;
     font-weight: 700;
     line-height: 135%;
-    color: #3F3F3F;
+    color: #3f3f3f;
     margin-bottom: 4px;
     height: 27px;
     white-space: nowrap;
@@ -417,8 +415,8 @@ table {
 
   &__tags {
     display: flex;
-    column-gap: 6px;  
-    margin-bottom: 12px;  
+    column-gap: 6px;
+    margin-bottom: 12px;
   }
 
   &__tags-item {
@@ -479,7 +477,7 @@ table {
 
   &__price {
     font-size: 20px;
-    color: #3F3F3F;
+    color: #3f3f3f;
     line-height: 135%;
 
     &--old {
@@ -510,11 +508,6 @@ table {
           margin-top: -1px;
         }
       }
-      
     }
   }
-}
-
-.header {
-  display: none !important;
 }

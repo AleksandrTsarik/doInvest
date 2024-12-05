@@ -1,6 +1,6 @@
 <template>
   <label class="default-checkbox">
-    <input v-model="isCheck" type="checkbox" class="default-checkbox__input">
+    <input v-model="isCheck" type="checkbox" class="default-checkbox__input" />
     <span class="default-checkbox__container"></span>
     <span v-if="!hiddenLabel" class="default-checkbox__text" v-html="label"></span>
   </label>
@@ -11,7 +11,7 @@ export default {
   props: {
     label: {
       type: String,
-      default: ''
+      default: '',
     },
     hiddenLabel: {
       type: Boolean,
@@ -25,14 +25,14 @@ export default {
   data() {
     return {
       isCheck: false,
-    }
+    };
   },
   watch: {
     isCheck(val) {
-      this.$emit('input', val)
-    }
-  }
-}
+      this.$emit('input', val);
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -68,7 +68,7 @@ export default {
       height: 7px;
       border-right: solid 1px rgb(var(--light));
       border-bottom: solid 1px rgb(var(--light));
-      transform: translate(-50%, -50%) rotate(45deg); 
+      transform: translate(-50%, -50%) rotate(45deg);
       opacity: 0;
     }
   }

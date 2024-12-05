@@ -41,7 +41,7 @@
       </div>
     </section>
 
-    <section class="section-page">
+    <!-- <section class="section-page">
       <div class="container">
         <div class="quota">
           <div class="quota__title title">Следите за котировками</div>
@@ -49,9 +49,9 @@
           <TheBlockCurrency />
         </div>
       </div>
-    </section>
+    </section> -->
 
-    <section class="section-page">
+    <!-- <section class="section-page">
       <div class="container">
         <div class="dividend">
           <div class="dividend__title title">Дивидендный календарь</div>
@@ -60,7 +60,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="section-page">
       <div class="container">
@@ -68,7 +68,7 @@
       </div>
     </section>
 
-    <section class="section-page">
+    <!-- <section class="section-page">
       <div class="container">
         <div class="analytics">
           <div class="analytics__left">
@@ -126,7 +126,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   </main>
 </template>
 

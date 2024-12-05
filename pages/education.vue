@@ -14,7 +14,7 @@
           class="slider slider--margin"
         ></u-i-the-swiper>
         <div class="section-page__all-link">
-          <NuxtLink to="#">Открыть все события</NuxtLink>
+          <NuxtLink class="btn" to="#">Открыть все события</NuxtLink>
         </div>
       </div>
     </section>
@@ -48,7 +48,7 @@
           class="slider"
         ></u-i-the-swiper>
         <div class="section-page__all-link">
-          <NuxtLink to="#">Открыть все материалы</NuxtLink>
+          <NuxtLink class="btn" to="#">Открыть все материалы</NuxtLink>
         </div>
       </div>
     </section>
