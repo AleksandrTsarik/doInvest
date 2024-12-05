@@ -4,25 +4,25 @@
       <div class="news__title t-32">{{ newsInfo.title }}</div>
       <div class="news__text t-18">{{ newsInfo.text }}</div>
     </div>
-      <div v-if="newsInfo.img" class="news__img">
-        <img :src="newsInfo.img" alt="...">
-      </div>
-      <div v-if="newsInfo.video" class="news__iframe iframe">
-        <iframe src="" frameborder="0"></iframe>
-        <span class="video-icon"></span>
-      </div>
+    <div v-if="newsInfo.img" class="news__img">
+      <img :src="newsInfo.img" alt="..." />
+    </div>
+    <div v-if="newsInfo.video" class="news__iframe iframe">
+      <iframe src="" frameborder="0"></iframe>
+      <span class="video-icon"></span>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-props: {
-  newsInfo: {
-    type: Object,
-    default: {}
-  }
-}
-}
+  props: {
+    newsInfo: {
+      type: Object,
+      default: {},
+    },
+  },
+};
 </script>
 
 <style lang="scss">

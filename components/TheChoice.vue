@@ -5,7 +5,7 @@
         <div class="filter-choice__name">Выбор акций</div>
         <div class="filter-choice__list">
           <div class="filter-choice__item" v-for="(item, i) in filterStock" :key="i">
-            <UITheCheckbox  :label="item.name" />
+            <UITheCheckbox :label="item.name" />
           </div>
         </div>
       </div>
@@ -13,15 +13,14 @@
         <div class="filter-choice__name">Выбор акций</div>
         <div class="filter-choice__list">
           <div class="filter-choice__item" v-for="(item, i) in filterTrade" :key="i">
-            <UITheCheckbox  :label="item.name" />
+            <UITheCheckbox :label="item.name" />
           </div>
         </div>
       </div>
       <div class="filter-choice__btn" v-if="$route.path !== '/personal-account'">
-        <UITheButton  :label="'Получать новости'"  class="btn-light" :svg="svgEmail" />
+        <UITheButton :label="'Получать новости'" class="btn-light" :svg="svgEmail" />
       </div>
     </div>
-    
   </form>
 </template>
 
@@ -31,52 +30,52 @@ export default {
     return {
       filterStock: [
         {
-          name: 'Акция'
+          name: 'Акция',
         },
         {
-          name: 'Акция'
+          name: 'Акция',
         },
         {
-          name: 'Акция'
+          name: 'Акция',
         },
         {
-          name: 'Акция'
+          name: 'Акция',
         },
         {
-          name: 'Акция'
+          name: 'Акция',
         },
         {
-          name: 'Акция'
-        }
+          name: 'Акция',
+        },
       ],
       filterTrade: [
         {
-          name: 'Отрасль'
+          name: 'Отрасль',
         },
         {
-          name: 'Отрасль'
+          name: 'Отрасль',
         },
         {
-          name: 'Отрасль'
+          name: 'Отрасль',
         },
         {
-          name: 'Отрасль'
+          name: 'Отрасль',
         },
         {
-          name: 'Отрасль'
+          name: 'Отрасль',
         },
         {
-          name: 'Отрасль'
+          name: 'Отрасль',
         },
       ],
-    }
+    };
   },
-}
+};
 </script>
 
 <style lang="scss">
-  .filter-choice {
-    &__wrap {
+.filter-choice {
+  &__wrap {
     background-color: #fff;
     border-radius: 10px;
     padding: 65px 50px;
@@ -106,5 +105,5 @@ export default {
       }
     }
   }
-  }
+}
 </style>

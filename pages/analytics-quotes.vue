@@ -7,7 +7,11 @@
       <div class="container">
         <div class="analytics-quotes__top">
           <div class="analytics-quotes__title title">Следите за котировками</div>
-          <div class="analytics-quotes__subtitle t-24">Как действующий участник рынка, развиваю сервисы по сбору аналитики. И если у вас есть задача получить ценную и сгруппированную информацию по рынку, то я и моя команда можем быть для вас полезными.</div>
+          <div class="analytics-quotes__subtitle t-24">
+            Как действующий участник рынка, развиваю сервисы по сбору аналитики. И если у вас есть
+            задача получить ценную и сгруппированную информацию по рынку, то я и моя команда можем
+            быть для вас полезными.
+          </div>
         </div>
       </div>
 
@@ -43,36 +47,35 @@
           <TheSlider />
         </div>
       </section>
-
     </div>
-   </main>
+  </main>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      modalVideo :false,
+      modalVideo: false,
       breadCrumbs: [
         {
           name: 'Сервисы',
           url: '#',
-          current: false
+          current: false,
         },
         {
           name: 'Аналитика',
           url: '#',
-          current: false
+          current: false,
         },
         {
           name: 'Личный кабинет',
           url: '#',
-          current: true
-        }
+          current: true,
+        },
       ],
-    }
-  }
-}
+    };
+  },
+};
 </script>
 
 <style lang="scss">
@@ -80,7 +83,7 @@ export default {
   &__subtitle {
     margin-bottom: 60px;
     max-width: 44%;
-    @media(max-width: 1023px) {
+    @media (max-width: 1023px) {
       max-width: 100%;
     }
   }

@@ -1,7 +1,7 @@
 <template>
   <div class="radio">
     <label class="radio__label">
-      <input type="radio" :name="name" class="radio__input">
+      <input type="radio" :name="name" class="radio__input" />
       <span class="radio__checked"></span>
       <span v-if="label" class="radio__name">{{ label }}</span>
     </label>
@@ -13,18 +13,17 @@ export default {
   props: {
     label: {
       type: String,
-      default: ''
+      default: '',
     },
     name: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   mounted() {
-    console.log(this.label, this.name)
-  }
-
-}
+    console.log(this.label, this.name);
+  },
+};
 </script>
 
 <style lang="scss">
@@ -40,7 +39,7 @@ export default {
     appearance: none;
     position: absolute;
   }
-  &__checked{
+  &__checked {
     display: block;
     width: 20px;
     height: 20px;
@@ -65,7 +64,7 @@ export default {
       opacity: 0;
     }
   }
-  &__input:checked + &__checked{
+  &__input:checked + &__checked {
     border-color: rgb(var(--dark));
     &::after {
       opacity: 1;

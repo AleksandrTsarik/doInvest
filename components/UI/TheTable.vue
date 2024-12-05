@@ -1,13 +1,15 @@
-git branch -M main<template>
+git branch -M main
+<template>
   <tbody>
     <tr v-for="(row, i) in rows" :key="i">
-      <td><span><img :src="row.ico" alt=""></span>{{ row.name }}</td>
+      <td>
+        <span><img :src="row.ico" alt="" /></span>{{ row.name }}
+      </td>
       <td>{{ row.action }}</td>
       <td>{{ row.ticker }}</td>
-      <td>{{ row.price }} ₽
-        <div v-if="row.color === 'green'"   :class="test(row.color)">
-          test
-        </div>
+      <td>
+        {{ row.price }} ₽
+        <div v-if="row.color === 'green'" :class="test(row.color)">test</div>
       </td>
       <td>{{ row.change }} %</td>
       <td>{{ row.market }} T</td>
@@ -22,11 +24,10 @@ export default {
     rows: {
       type: Object,
       default: [],
-      require: true
+      require: true,
     },
-
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss">

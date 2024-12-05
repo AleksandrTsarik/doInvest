@@ -2,7 +2,7 @@
   <div class="container">
     <TheBreadCrumbs :breadCrumbs="breadCrumbs" />
   </div>
-  
+
   <section class="section-page">
     <div class="container">
       <div class="filter-page-filter">
@@ -11,31 +11,36 @@
       </div>
     </div>
   </section>
-  
+
   <section class="section-page">
-      <div class="container">
-        <div class="filter-page-list">
-          <div class="filter-page-list__title title">Настройка списка наблюдений<TheSvg :type="'settings'" /></div>
+    <div class="container">
+      <div class="filter-page-list">
+        <div class="filter-page-list__title title">
+          Настройка списка наблюдений<TheSvg :type="'settings'" />
         </div>
-        <div class="filter-page-list__add t-24" :class="{'is-open' : isOpenStock}"  @click="openStock"><span class="span-circle"></span>Добавить акцию
-          <div class="filter-page-list__drop" :class="{'is-open' : isOpenStock}">
-            <UITheCheckbox 
-              v-for="(item, i) in filterCheckbox" 
-              :key="i" 
-              :label="item.name" 
-              @input="changeFilterItem()"  
-            />
-          </div>
-        </div>
-        <div class="filter-page-list__block" v-if="filterItem.length">
-          <div 
-            v-for="(item, i) in filterItem"
+      </div>
+      <div
+        class="filter-page-list__add t-24"
+        :class="{ 'is-open': isOpenStock }"
+        @click="openStock"
+      >
+        <span class="span-circle"></span>Добавить акцию
+        <div class="filter-page-list__drop" :class="{ 'is-open': isOpenStock }">
+          <UITheCheckbox
+            v-for="(item, i) in filterCheckbox"
             :key="i"
-            class="filter-page-list__item"
-          >
-            <button>{{ item.name }} <span @click="deleteFilterItem(index)" class="span-circle"></span> </button>
-          </div>
+            :label="item.name"
+            @input="changeFilterItem()"
+          />
         </div>
+      </div>
+      <div class="filter-page-list__block" v-if="filterItem.length">
+        <div v-for="(item, i) in filterItem" :key="i" class="filter-page-list__item">
+          <button>
+            {{ item.name }} <span @click="deleteFilterItem(index)" class="span-circle"></span>
+          </button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -44,116 +49,113 @@
       <TheSlider />
     </div>
   </section>
-
 </template>
 
 <script>
 export default {
   data() {
     return {
-      modalVideo :false,
+      modalVideo: false,
       isOpenStock: false,
       breadCrumbs: [
         {
           name: 'Сервисы',
           url: '#',
-          current: false
+          current: false,
         },
         {
           name: 'Аналитика',
           url: '#',
-          current: false
+          current: false,
         },
         {
           name: 'Личный кабинет',
           url: '#',
-          current: false
+          current: false,
         },
         {
           name: 'Фильтры',
           url: '#',
-          current: true
-        }
+          current: true,
+        },
       ],
       filterItem: [
         {
           id: 0,
-          name: 'Акция'
+          name: 'Акция',
         },
         {
           id: 1,
-          name: 'Акция'
+          name: 'Акция',
         },
         {
           id: 2,
-          name: 'Акция'
+          name: 'Акция',
         },
         {
           id: 3,
-          name: 'Акция'
+          name: 'Акция',
         },
         {
           id: 4,
-          name: 'Акция'
+          name: 'Акция',
         },
         {
           id: 5,
-          name: 'Акция'
+          name: 'Акция',
         },
         {
           id: 6,
-          name: 'Акция'
+          name: 'Акция',
         },
       ],
       filterCheckbox: [
         {
           id: 0,
-          name: 'Акция'
+          name: 'Акция',
         },
         {
           id: 1,
-          name: 'Акция'
+          name: 'Акция',
         },
         {
           id: 2,
-          name: 'Акция'
+          name: 'Акция',
         },
         {
           id: 3,
-          name: 'Акция'
+          name: 'Акция',
         },
         {
           id: 4,
-          name: 'Акция'
+          name: 'Акция',
         },
         {
           id: 5,
-          name: 'Акция'
+          name: 'Акция',
         },
         {
           id: 6,
-          name: 'Акция'
+          name: 'Акция',
         },
       ],
-    }
+    };
   },
   methods: {
     deleteFilterItem(item) {
       this.filterItem.splice(item, 1);
     },
     openStock() {
-      this.isOpenStock = !this.isOpenStock
+      this.isOpenStock = !this.isOpenStock;
     },
     changeFilterItem(val) {
-      console.log(val)
-    }
-  }
-}
+      console.log(val);
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-
-
 .filter-page-list {
   &__title {
     svg {
@@ -170,7 +172,7 @@ export default {
       margin-right: 10px;
       transition: 0.3s;
     }
-    &.is-open .span-circle{
+    &.is-open .span-circle {
       transform: rotate(45deg);
     }
   }
@@ -185,7 +187,7 @@ export default {
       font-size: 16px;
       display: flex;
       align-items: center;
-      border: solid 1px #C9C9C9;
+      border: solid 1px #c9c9c9;
       border-radius: 30px;
       padding: 13px 25px;
       white-space: nowrap;
@@ -198,11 +200,10 @@ export default {
       margin-left: 10px;
       transform: rotate(45deg);
       &:hover {
-        @media(min-width: 1023px) {
+        @media (min-width: 1023px) {
           transform: rotate(-45deg);
         }
       }
-      
     }
   }
   &__drop {
@@ -220,7 +221,7 @@ export default {
     top: 100%;
     left: 0;
     z-index: 5;
-  
+
     box-shadow: 0 0 5px rgba(#000, 0.2);
     .default-checkbox {
       display: flex;
