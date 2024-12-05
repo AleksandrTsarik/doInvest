@@ -52,17 +52,11 @@
       <the-modal-video v-if="modalVideo" @close="closeModal" />
     </section>
 
-    <section class="section-page">
+    <!-- <section class="section-page">
       <div class="container">
         <TheFilter />
       </div>
-    </section>
-
-    <section class="section-page">
-      <div class="container">
-        <the-slider-big />
-      </div>
-    </section>
+    </section> -->
 
     <section class="section-page">
       <div class="container">
@@ -76,6 +70,11 @@
       </div>
     </section>
 
+    <section class="section-page">
+      <div class="container">
+        <the-slider-big />
+      </div>
+    </section>
     <!-- <section class="section-page">
       <div class="container">
         <div class="analytics">
