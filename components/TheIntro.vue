@@ -1,6 +1,6 @@
 <template>
   <div class="intro">
-    <div class="intro__title title">Моя миссия</div>
+    <h2 class="intro__title title">Моя миссия</h2>
     <div class="intro__wrap">
       <div class="intro__img">
         <img src="/image/intro.jpg" alt="intro" loading="lazy" />

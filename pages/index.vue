@@ -69,6 +69,13 @@
         <TheIntro />
       </div>
     </section>
+
+    <section class="section-page">
+      <div class="container">
+        <TheMentor />
+      </div>
+    </section>
+
     <!-- <section class="section-page">
       <div class="container">
         <div class="analytics">
@@ -133,6 +140,7 @@
 
 <script>
 import TheModalVideo from '~/components/modal/TheModalVideo.vue';
+import TheMentor from '~/components/TheMentor.vue';
 import TheSliderBig from '~/components/TheSlider.vue';
 export default {
   components: { TheSliderBig, TheModalVideo },
