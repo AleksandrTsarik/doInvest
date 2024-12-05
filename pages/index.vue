@@ -7,7 +7,24 @@
     <section class="section-page">
       <div class="container">
         <div class="preview">
-          <div class="preview__wrapper">
+          <div class="preview__wrap">
+            <div class="preview__item">
+              <div class="preview__name">Инвестор Данил Олимов</div>
+              <h1 class="preview__title">Первые шаги в мир инвестиций</h1>
+              <div class="preview__text">
+                Я и моя команда запустили программу для начинающих инвесторов, которая даст
+                практический навык составления сбалансированного и эффективного портфеля ценных
+                бумаг.
+              </div>
+            </div>
+            <div class="preview__item">
+              <div class="preview__iframe iframe">
+                <iframe src="" frameborder="0"></iframe>
+                <span class="video-icon" @click="modalVideo = true"></span>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="preview__wrapper">
             <div class="preview__item">
               <h1 class="preview__title">Сервис аналитики Doinvest</h1>
               <div class="preview__text-block">
@@ -29,7 +46,7 @@
                 <span class="video-icon" @click="modalVideo = true"></span>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <the-modal-video v-if="modalVideo" @close="closeModal" />
@@ -47,7 +64,7 @@
       </div>
     </section>
 
-    <section class="section-page">
+    <!-- <section class="section-page">
       <div class="container">
         <div class="analytics">
           <div class="analytics__left">
@@ -105,7 +122,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   </main>
 </template>
 
@@ -148,53 +165,24 @@ export default {
   @media (max-width: 767px) {
     padding: 30px 15px;
   }
-  &__wrapper {
-    // display: flex;
-    // flex-wrap: wrap;
-    // align-items: center;
+  &__wrap {
     display: grid;
-    grid-template-columns: 1.1fr 1.5fr;
-    gap: 190px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
     @media (max-width: 1023px) {
       grid-template-columns: 1fr;
       gap: 40px;
     }
   }
-  &__item {
-    .btn {
-      @media (max-width: 575px) {
-        width: 100%;
-        text-align: center;
-        display: block;
-      }
-    }
-  }
-  // &__left {
-  //   flex: 0 0 50%;
-  //   max-width: 50%;
-  //   @media(max-width: 1023px) {
-  //     flex: 0 0 100%;
-  //     max-width: 100%;
-  //     margin-bottom: 40px;
-  //   }
-  // }
-  // &__right {
-  //   flex: 0 0 50%;
-  //   max-width: 50%;
-  //   @media(max-width: 1023px) {
-  //     flex: 0 0 100%;
-  //     max-width: 100%;
-  //   }
-  // }
   &__iframe {
-    background-image: url('@/assets/img/preview.jpeg');
+    background-image: url('/image/banner.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: block;
     width: 100%;
     height: 100%;
-    //height: 25vw;
     padding-bottom: 50%;
     border-radius: 10px;
     overflow: hidden;
@@ -202,67 +190,40 @@ export default {
       height: 50vw;
     }
   }
-  &__text-block {
-    @media (max-width: 1023px) {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-    }
-    @media (max-width: 767px) {
-      grid-template-columns: 1fr;
-    }
-  }
-  &__network {
-    margin-bottom: 50px;
-    a + a {
-      margin-left: 10px;
-    }
-    @media (max-width: 1023px) {
-      margin-bottom: 15px;
+  &__item {
+    &:first-child {
+      max-width: 70%;
+      @media (max-width: 1500px) {
+        max-width: 90%;
+      }
+      @media (max-width: 1023px) {
+        max-width: 100%;
+      }
     }
   }
   &__name {
     font-size: 24px;
-    font-weight: 500;
-    line-height: 110%;
-    color: #2b2b2b;
-    margin-bottom: 5px;
-    @media (max-width: 767px) {
+    color: var(--text);
+    margin-bottom: 10px;
+    @media (max-width: 768px) {
       font-size: 18px;
+    }
+  }
+  &__text {
+    font-size: 18px;
+    color: var(--text);
+    @media (max-width: 768px) {
+      font-size: 15px;
     }
   }
   &__title {
     font-size: 50px;
     font-weight: 400;
-    line-height: 105%;
-    margin-bottom: 10px;
-    margin-top: 40px;
-    // max-width: 90%;
-    font-family: 'LabGrotesque';
-    text-transform: uppercase;
-    @media (max-width: 1273px) {
-      max-width: 80%;
-    }
-    @media (max-width: 1023px) {
-      max-width: 100%;
-    }
-    @media (max-width: 767px) {
+    margin-bottom: 40px;
+    line-height: 100%;
+    @media (max-width: 768px) {
       font-size: 32px;
-    }
-  }
-  &__text {
-    max-width: 55%;
-    margin-bottom: 15px;
-    @media (max-width: 1023px) {
-      max-width: 100%;
-      margin-right: 10px;
-    }
-    @media (max-width: 767px) {
-      margin: 0 0 20px;
-    }
-  }
-  &__btn {
-    @media (max-width: 575px) {
-      width: 100%;
+      margin-bottom: 10px;
     }
   }
 }
@@ -282,7 +243,6 @@ export default {
     }
   }
   &__right {
-    // padding: 0 7.5px;
     img {
       border-radius: 10px;
       width: 100%;
@@ -291,7 +251,6 @@ export default {
     }
   }
   &__left {
-    // padding: 0 7.5px;
   }
   &__list {
     display: flex;
@@ -299,50 +258,8 @@ export default {
     flex-wrap: wrap;
   }
   &__name {
-    // font-size: 32px;
     font-weight: 500;
-    // line-height: 110%;
     margin: 40px 0 15px;
-  }
-}
-.analytics-item {
-  svg path {
-    transition: 0.3s;
-  }
-  flex: 0 0 25%;
-  max-width: 25%;
-  padding: 0 7.5px;
-  @media (max-width: 767px) {
-    flex: 0 0 50%;
-    max-width: 50%;
-    padding: 7.5px;
-  }
-  &__inner {
-    padding: 10px;
-    height: 100%;
-    background-color: #fff;
-    border-radius: 10px;
-    transition: 0.3s;
-  }
-  &:hover {
-    .analytics-item__inner {
-      background-color: #fed700;
-      svg path {
-        fill: #2b2b2b;
-      }
-    }
-  }
-  &__name {
-    // font-size: 24px;
-    font-weight: 400;
-    margin-bottom: 45px;
-    color: #2b2b2b;
-  }
-  &__ico {
-    text-align: right;
-    svg {
-      width: 33px;
-    }
   }
 }
 </style>

@@ -159,7 +159,6 @@ export default {
 
 <style lang="scss">
 .header {
-
   &__logo {
     a {
       flex: 0 0 150px;
@@ -173,14 +172,6 @@ export default {
       display: block;
       width: 100%;
     }
-    // svg {
-    //   @media (max-width: 767px) {
-    //     max-width: 90%;
-    //   }
-    //   @media (max-width: 575px) {
-    //     max-width: 60%;
-    //   }
-    // }
   }
   &__inner {
     display: grid;

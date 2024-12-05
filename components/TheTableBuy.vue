@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="table">
     <div class="table__head">
       <div class="table__result">Результаты (345)</div>
@@ -168,4 +168,4 @@ export default {
 //     }
 //   }
 // }
-</style>
+</style> -->
