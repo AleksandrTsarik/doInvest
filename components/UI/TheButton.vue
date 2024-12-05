@@ -34,13 +34,14 @@ export default {
   cursor: pointer;
   border-radius: var(--radius);
   transition: 0.3s;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   &:focus {
     box-shadow: 0 0 0 4px rgba(var(--primary), 0.5);
   }
   &:active {
     background-color: tomato;
+    color: var(--text);
   }
   &.btn-dark {
     background-color: rgb(var(--primary));
