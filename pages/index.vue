@@ -72,6 +72,12 @@
 
     <section class="section-page">
       <div class="container">
+        <TheSliderExperts />
+      </div>
+    </section>
+
+    <section class="section-page">
+      <div class="container">
         <TheSliderFeedback />
       </div>
     </section>

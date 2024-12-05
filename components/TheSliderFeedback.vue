@@ -10,7 +10,7 @@
     :slider="feedback"
     :options="optionsSlider"
     :typeSlider="'feedback'"
-    class="slider slider--margin"
+    :class="'slider-feedback slider-swiper'"
   />
 </template>
 <script>
