@@ -3,14 +3,14 @@
     <TheBreadCrumbs :breadCrumbs="breadCrumbs" />
   </div>
 
-  <section class="section-page">
+  <!-- <section class="section-page">
     <div class="container">
       <div class="filter-page-filter">
         <div class="filter-page-filter__title title">Настройка фильтров новостей</div>
         <TheFilterTable />
       </div>
     </div>
-  </section>
+  </section> -->
 
   <section class="section-page">
     <div class="container">

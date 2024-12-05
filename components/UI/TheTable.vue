@@ -1,4 +1,4 @@
-git branch -M main
+<!-- git branch -M main
 <template>
   <tbody>
     <tr v-for="(row, i) in rows" :key="i">
@@ -63,4 +63,11 @@ export default {
 //     }
 //   }
 // }
-</style>
+</style> -->
+<template lang="">
+  <div></div>
+</template>
+<script>
+export default {};
+</script>
+<style lang=""></style>

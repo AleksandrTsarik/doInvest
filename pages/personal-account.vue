@@ -42,9 +42,7 @@
                       </div>
                     </template>
                     <template v-if="active == 'Мои фильтры'">
-                      <div class="personal-account-tab__table">
-                        <TheFilterTable />
-                      </div>
+                      <div class="personal-account-tab__table">clear</div>
                     </template>
                   </template>
                 </UITheTabs>

@@ -1,8 +1,8 @@
 <template>
   <main>
-    <!-- <div class="container">
+    <div class="container">
       <TheBreadCrumbs :breadCrumbs="breadCrumbs" />
-    </div> -->
+    </div>
 
     <section class="section-page">
       <div class="container">
@@ -41,34 +41,13 @@
       </div>
     </section>
 
-    <!-- <section class="section-page">
-      <div class="container">
-        <div class="quota">
-          <div class="quota__title title">Следите за котировками</div>
-          <div class="quota__name t-32">Цены на акции</div>
-          <TheBlockCurrency />
-        </div>
-      </div>
-    </section> -->
-
-    <!-- <section class="section-page">
-      <div class="container">
-        <div class="dividend">
-          <div class="dividend__title title">Дивидендный календарь</div>
-          <div class="dividend-table">
-            <TheCalendarTable />
-          </div>
-        </div>
-      </div>
-    </section> -->
-
     <section class="section-page">
       <div class="container">
         <the-slider-big />
       </div>
     </section>
 
-    <!-- <section class="section-page">
+    <section class="section-page">
       <div class="container">
         <div class="analytics">
           <div class="analytics__left">
@@ -126,7 +105,7 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
   </main>
 </template>
 

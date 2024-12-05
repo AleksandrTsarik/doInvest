@@ -52,6 +52,17 @@
                   </NuxtLink>
                   <p v-else>{{ item.name }}</p>
                 </li>
+
+                <!-- Удалить -->
+                <hr />
+                <br />
+                <li><b>PAGES</b></li>
+                <hr />
+                <li><NuxtLink to="/education">education</NuxtLink></li>
+                <li><NuxtLink to="/personal-account">personal-account</NuxtLink></li>
+                <li><NuxtLink to="/analytics-filter">analytics-filter</NuxtLink></li>
+                
+                <br />
               </ul>
             </div>
           </div>
