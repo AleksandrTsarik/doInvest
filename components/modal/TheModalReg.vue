@@ -202,9 +202,12 @@ export default {};
     text-align: left;
   }
   &__checkbox {
-    font-size: 13px;
+    font-size: 12px;
+    text-align: left;
+    display: flex;
     a {
       text-decoration: underline;
+      display: inline;
     }
   }
 }
