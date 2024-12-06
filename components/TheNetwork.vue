@@ -174,7 +174,7 @@
     </svg>
   </NuxtLink>
 
-  <NuxtLink to="#" v-if="type === 'vk-id'" title="ВК ID">
+  <NuxtLink to="/" v-else-if="type === 'vk-id'" title="ВК ID">
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M4.48047 27.0592C4.48047 16.4152 4.48047 11.0933 7.78712 7.78663C11.0938 4.47998 16.4157 4.47998 27.0597 4.47998H28.9413C39.5852 4.47998 44.9071 4.47998 48.2139 7.78663C51.5205 11.0933 51.5205 16.4152 51.5205 27.0592V28.9408C51.5205 39.5848 51.5205 44.9066 48.2139 48.2134C44.9071 51.52 39.5852 51.52 28.9413 51.52H27.0597C16.4157 51.52 11.0938 51.52 7.78712 48.2134C4.48047 44.9066 4.48047 39.5848 4.48047 28.9408V27.0592Z"
@@ -187,12 +187,8 @@
     </svg>
     <span v-if="placeholder" v-html="placeholder"></span>
   </NuxtLink>
-  <NuxtLink
-    to="#"
-    v-if="type === 'ya-id'"
-    title="Яндекс ID
-"
-  >
+
+  <NuxtLink to="/" v-else-if="type === 'ya-id'">
     <svg width="57" height="56" viewBox="0 0 57 56" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M2.68066 28.0002C2.68066 13.773 14.2108 2.24023 28.4407 2.24023C42.6653 2.24023 54.2007 13.773 54.2007 28.0002C54.2007 42.2275 42.6653 53.7602 28.4407 53.7602C14.2108 53.7602 2.68066 42.2275 2.68066 28.0002Z"
@@ -205,7 +201,8 @@
     </svg>
     <span v-if="placeholder" v-html="placeholder"></span>
   </NuxtLink>
-  <NuxtLink to="#" v-if="type === 'sber-id'" title="Сбер ID">
+
+  <NuxtLink to="/" v-else-if="type === 'sber-id'" title="Сбер ID">
     <svg width="57" height="56" viewBox="0 0 57 56" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M49.0189 12.293C50.2358 13.8667 51.2528 15.5909 52.1133 17.4183L28.6665 34.7249L18.8184 28.5332V21.1247L28.6143 27.2648L49.0189 12.293Z"
