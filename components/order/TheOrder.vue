@@ -89,6 +89,10 @@ export default {
     position: absolute;
     right: 10px;
     bottom: 10px;
+
+    &:focus {
+      filter: drop-shadow(0 0 2px rgba(var(--primary), 0.8));
+    }
     svg {
       max-width: 80%;
     }
