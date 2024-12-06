@@ -61,6 +61,8 @@
                 <li><NuxtLink to="/education">education</NuxtLink></li>
                 <li><NuxtLink to="/personal-account">personal-account</NuxtLink></li>
                 <li><NuxtLink to="/analytics-filter">analytics-filter</NuxtLink></li>
+                <li><NuxtLink to="/registration">Reg</NuxtLink></li>
+                <li><NuxtLink to="/basket">Basket</NuxtLink></li>
                 
                 <br />
               </ul>
