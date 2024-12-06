@@ -7,7 +7,9 @@
           <div class="modal-q__inner">
             <div class="modal__close" @click="closeModal"></div>
             <div class="modal-q__title">Обсудить вопрос</div>
-            <div class="modal-q__subtitle">Оставьте заявку и мы свяжемся с вами в ближайшее время....</div>
+            <div class="modal-q__subtitle">
+              Оставьте заявку и мы свяжемся с вами в ближайшее время....
+            </div>
             <div class="modal-q-info">
               <div class="modal-q-info__left">
                 <div class="modal-q-info__phone">+7 495 ХХХ-ХХ-ХХ</div>
@@ -16,16 +18,12 @@
               <div class="modal-q-info__right">
                 <TheNetwork :type="'vk'" class="link-border" />
                 <TheNetwork :type="'telegram'" class="link-border" />
-                <TheNetwork :type="'youtube'" class="link-border"/>
+                <TheNetwork :type="'youtube'" class="link-border" />
               </div>
             </div>
             <div class="modal-q-input">
               <div class="modal-q-input__input">
-                <u-i-the-input
-                  :type="'text'"
-                  :placeholder="'Введите ваше имя'"
-                  :modelValue="''"
-                />
+                <u-i-the-input :type="'text'" :placeholder="'Введите ваше имя'" :modelValue="''" />
               </div>
               <div class="modal-q-input__input">
                 <u-i-the-input
@@ -35,26 +33,23 @@
                 />
               </div>
               <div class="modal-q-input__textarea">
-                <u-i-the-input
-                  :type="'textarea'"
-                  :placeholder="'Комментарий'"
-                  :modelValue="''"
-                />
+                <u-i-the-input :type="'textarea'" :placeholder="'Комментарий'" :modelValue="''" />
               </div>
-
             </div>
             <div class="modal-q-send">
               <div class="modal-q-send__btn">
-                <UITheButton :label="'Задать вопрос'" :type="'submit'" class="btn-dark"  />
+                <UITheButton :label="'Задать вопрос'" :type="'submit'" class="btn-dark" />
               </div>
               <div class="modal-q-send__checkbox">
-                <the-checkbox  :label="`Я соглашаюсь с <a href='/' >политикой обработки персональных данных</a>`" />
+                <the-checkbox
+                  :label="`Я соглашаюсь с <a href='/' >политикой обработки персональных данных</a>`"
+                />
               </div>
             </div>
             <div class="modal-q-choice">
               <div class="modal-q-choice__checkbox">
-                <the-checkbox  :label="'Пункт1'" />
-                <the-checkbox  :label="'Пункт2'" />
+                <the-checkbox :label="'Пункт1'" />
+                <the-checkbox :label="'Пункт2'" />
               </div>
               <div class="modal-q-choice__radio">
                 <UITheRadio :label="'Пункт1'" :name="'name1'" />
@@ -69,26 +64,26 @@
 </template>
 
 <script>
-import TheCheckbox from '../UI/TheCheckbox.vue'
+import TheCheckbox from '../UI/TheCheckbox.vue';
 export default {
   components: { TheCheckbox },
   props: {
     type: String,
-    default: ''
+    default: '',
   },
   methods: {
     closeModal() {
-      this.$emit('close', false)
-    }
+      this.$emit('close', false);
+    },
   },
-}
+};
 </script>
 
 <style lang="scss">
 .modal-q {
   &__inner {
     padding: 60px 70px;
-    @media(max-width: 767px) {
+    @media (max-width: 767px) {
       padding: 55px 20px;
     }
   }
@@ -97,7 +92,7 @@ export default {
     font-weight: 400;
     line-height: 100%;
     margin-bottom: 10px;
-    @media(max-width: 767px) {
+    @media (max-width: 767px) {
       font-size: 28px;
     }
   }
@@ -106,10 +101,10 @@ export default {
     font-weight: 400;
     line-height: 110%;
     margin-bottom: 30px;
-    @media(max-width: 767px) {
+    @media (max-width: 767px) {
       font-size: 18px;
     }
-  } 
+  }
 }
 .modal-q-info {
   display: flex;
@@ -118,7 +113,7 @@ export default {
   &__left {
     margin-right: 70px;
     font-size: 18px;
-    @media(max-width: 767px) {
+    @media (max-width: 767px) {
       font-size: 14px;
       margin-right: 0;
     }
@@ -137,7 +132,7 @@ export default {
     flex: 0 0 50%;
     max-width: 50%;
     padding: 0 5px;
-    @media(max-width: 767px) {
+    @media (max-width: 767px) {
       flex: 0 0 100%;
       max-width: 100%;
     }
@@ -154,7 +149,7 @@ export default {
       min-height: 100px;
       padding: 15px 25px;
       border-radius: 5px;
-      border: solid 1px #C9C9C9;
+      border: solid 1px #c9c9c9;
     }
   }
 }
@@ -165,7 +160,7 @@ export default {
   &__btn {
     flex: 0 0 40%;
     max-width: 40%;
-    @media(max-width: 767px) {
+    @media (max-width: 767px) {
       flex: 0 0 100%;
       max-width: 100%;
       margin-bottom: 10px;
@@ -178,22 +173,22 @@ export default {
     flex: 0 0 60%;
     max-width: 60%;
     font-size: 13px;
-      @media(max-width: 767px) {
-        .default-checkbox__container {
-          width: 10px;
-          height: 10px;
-          flex: 0 0 10px;
-          &:before {
-            width: 3px;
-            height: 5px;
-          }
-        }
-        .default-checkbox {
-          column-gap: 5px;
+    @media (max-width: 767px) {
+      .default-checkbox__container {
+        width: 10px;
+        height: 10px;
+        flex: 0 0 10px;
+        &:before {
+          width: 3px;
+          height: 5px;
         }
       }
-    
-    @media(max-width: 767px) {
+      .default-checkbox {
+        column-gap: 5px;
+      }
+    }
+
+    @media (max-width: 767px) {
       flex: 0 0 100%;
       max-width: 100%;
       font-size: 12px;
@@ -203,8 +198,8 @@ export default {
       text-decoration: underline;
       font-size: 13px;
       font-weight: 400;
-      color: #2B2B2B;
-      @media(max-width: 767px) {
+      color: #2b2b2b;
+      @media (max-width: 767px) {
         font-size: 12px;
       }
     }
