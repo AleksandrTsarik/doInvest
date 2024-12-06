@@ -77,7 +77,11 @@ export default {};
   position: relative;
   align-items: center;
   justify-content: center;
-  background-color: #fed700;
+  background-color: rgb(var(--primary));
   border-radius: 3px;
+
+  svg path {
+    fill: #fff;
+  }
 }
 </style>

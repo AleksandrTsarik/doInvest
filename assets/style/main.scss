@@ -23,6 +23,9 @@ body {
   //   }
   // }
 }
+button {
+  font-family: 'Montserrat', Arial, sans-serif;
+}
 .page-wrap {
   display: flex;
   flex-direction: column;
@@ -706,4 +709,134 @@ table {
       }
     }
   }  
+}
+
+// BIG LESSON ITEM
+.lesson-big-item {
+  position: relative;
+  padding: 40px 60px;
+  background-color: #fff;
+  border-radius: 10px;
+
+  @media screen and (max-width: 1279px) {
+    padding: 20px 30px;
+  }
+
+  @media screen and (max-width: 991px) {
+    padding: 50px 35px 135px 35px;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 27px 12px 160px 12px;
+  }
+
+  &__row {
+    display: flex;
+    @media screen and (max-width: 991px) {
+      flex-direction: column;
+      row-gap: 10px;
+    }
+  }
+
+  &__info {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    padding-bottom: 25px;
+    @media screen and (max-width: 1279px) {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    @media screen and (max-width: 991px) {
+      flex: 0 0 auto;
+      max-width: initial;
+    }
+  }
+
+  &__photo {
+    flex: 0 0 50%;
+    max-width: 50%;
+    @media screen and (max-width: 991px) {
+      flex: 0 0 auto;
+      max-width: initial;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__name {
+    font-weight: 500;
+    margin-bottom: 15px;
+    @media screen and (max-width: 767px) {
+      margin-bottom: 2px;
+    }
+  }
+
+  &__descr {
+    max-width: 670px;
+  }
+
+  &__info-bottom {
+    margin-top: auto;
+    display: flex;
+    align-items: flex-end;
+    column-gap: 15px;
+    @media screen and (max-width: 1279px) {
+      padding-top: 15px;
+    }
+    
+    @media screen and (max-width: 991px) {
+      position: absolute;
+      bottom: 50px;
+      left: 35px;
+    }
+
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+      align-items: initial;
+      row-gap: 15px;
+      left: 12px;
+      right: 12px;
+      bottom: 25px;      
+    }
+  }
+
+  &__info-bottom-right {
+    .btn {
+      @media screen and (max-width: 767px) {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+
+  &__price {
+    font-size: 24px;
+    font-weight: 600;
+
+    span {
+      font-weight: 400;
+    }
+
+    @media screen and (max-width: 1279px) {
+      font-size: 18px;
+    }
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    color: #3F3F3F;
+    font-size: 16px;
+    margin-bottom: 20px;
+    @media screen and (max-width: 991px) {
+      margin-bottom: 5px;
+    }
+  }
 }
