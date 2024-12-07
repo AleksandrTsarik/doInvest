@@ -102,6 +102,15 @@ button {
     margin-bottom: 80px;
   }
 
+  &__title {
+    margin-bottom: 30px;
+  }
+
+  &__subtitle {
+    max-width: 800px;
+    margin-bottom: 50px;
+  }
+
   &__all-link {
     margin-top: 30px;
     display: flex;
@@ -116,6 +125,12 @@ button {
       font-weight: 500;
       color: #2b2b2b;
       transition: 0.4s;
+
+      @media (max-width: 767px) {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
 
       &:hover {
         @media (min-width: 1023px) {

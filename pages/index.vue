@@ -58,6 +58,23 @@
 
   <section class="section-page">
     <div class="container">
+      <TheEvents :events="events" />
+    </div>
+  </section>  
+
+  <section class="section-page materials">
+    <div class="container">
+      <TheMaterials 
+        :materials="currentMaterials"  
+        :currentTag="currentTag"
+        :tagsMaterials="tagsMaterials"
+        @filter-materials="filterMaterials"
+      />
+    </div>
+  </section>  
+
+  <section class="section-page">
+    <div class="container">
       <TheIntro />
     </div>
   </section>
@@ -150,8 +167,9 @@
 import TheModalVideo from '~/components/modal/TheModalVideo.vue';
 import TheMentor from '~/components/TheMentor.vue';
 import TheSliderBig from '~/components/TheSlider.vue';
+import TheMaterials from '~/components/TheMaterials.vue';
 export default {
-  components: { TheSliderBig, TheModalVideo },
+  components: { TheSliderBig, TheModalVideo, TheMaterials },
   data() {
     return {
       modalVideo: false,
@@ -164,6 +182,323 @@ export default {
       ],
       svgEmail:
         '<svg width="16.000000" height="14.000000" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><clipPath id="clip1160_33"><rect ="solar:letter-linear" width="16.000000" height="13.090909" transform="translate(0.000000 -0.044922)" fill="white" fill-opacity="0"/></clipPath></defs><rect id="solar:letter-linear" width="16.000000" height="13.090909" transform="translate(0.000000 -0.044922)" fill="#FFFFFF" fill-opacity="0"/><g clip-path="url(#clip1160_33)"><path id="Vector" d="M1.57 1.53C2.43 0.68 3.8 0.68 6.54 0.68L9.45 0.68C12.19 0.68 13.56 0.68 14.41 1.53C15.27 2.38 15.27 3.75 15.27 6.5C15.27 9.24 15.27 10.61 14.41 11.46C13.56 12.31 12.19 12.31 9.45 12.31L6.54 12.31C3.8 12.31 2.43 12.31 1.57 11.46C0.72 10.61 0.72 9.24 0.72 6.5C0.72 3.75 0.72 2.38 1.57 1.53Z" stroke="#2B2B2B" stroke-opacity="1.000000" stroke-width="1.000000"/><path id="Vector" d="M3.63 3.58L5.2 4.89C6.54 6.01 7.2 6.56 8 6.56C8.78 6.56 9.45 6.01 10.79 4.89L12.36 " stroke="#2B2B2B" stroke-opacity="1.000000" stroke-width="1.000000" stroke-linecap="round"/></g></svg>',
+      // НАЧАЛО Данные блока полезных материалов
+      currentTag: '',
+      materials: [
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 0,
+          frame: '',
+          tags: ['Мои', 'Фильмы', 'Книги', 'Ссылки', 'Рекомендации'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Мои', 'Фильмы', 'Книги', 'Ссылки', 'Рекомендации'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Мои', 'Рекомендации'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Ссылки'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Рекомендации'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Мои', 'Фильмы', 'Книги', 'Ссылки', 'Рекомендации'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Мои', 'Фильмы', 'Рекомендации'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Книги', 'Ссылки', 'Рекомендации'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Книги', 'Ссылки'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Рекомендации'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Мои'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Фильмы'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Книги'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Книги'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Рекомендации'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Мои'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Мои', 'Фильмы', 'Книги', 'Ссылки', 'Рекомендации'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Ссылки'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Книги', 'Ссылки'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Фильмы', 'Книги', 'Ссылки', 'Рекомендации'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Книги', 'Ссылки', 'Рекомендации'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Ссылки'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Фильмы'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Фильмы'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Книги', 'Ссылки'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Мои', 'Фильмы', 'Книги'],
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Книга про инвестиции',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          tags: ['Книги'],
+        },
+      ],
+      currentMaterials: [],
+      tagsMaterials: [],
+      // КОНЕЦ Данные блока полезных материалов
+      // НАЧАЛО Данные блока событий
+      events: [
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Семинар. Инвестиции в ...',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 0,
+          frame: '',
+          date: '28 августа 2023 18:00',
+          place: 'МТС Арена',
+          placeUrl: '#',
+        },
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Мастер-класс совместно с Тинькофф',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          date: '28 августа 2023 18:00',
+          place: 'МТС Арена',
+          placeUrl: '#',
+        },
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Встреча в Терра',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          date: '28 августа 2023 18:00',
+          place: 'МТС Арена',
+          placeUrl: '#',
+        },
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Семинар. Инвестиции в ...',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 0,
+          frame: '',
+          date: '28 августа 2023 18:00',
+          place: 'МТС Арена',
+          placeUrl: '#',
+        },
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Мастер-класс совместно с Тинькофф',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          date: '28 августа 2023 18:00',
+          place: 'МТС Арена',
+          placeUrl: '#',
+        },
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Встреча в Терра',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+          date: '28 августа 2023 18:00',
+          place: 'МТС Арена',
+          placeUrl: '#',
+        },
+      ],
+      // КОНЕЦ Данные блока событий
     };
   },
 
@@ -171,7 +506,30 @@ export default {
     closeModal() {
       this.modalVideo = false;
     },
+    getTags() {
+      this.materials.map((item) => {
+        item.tags.map((tag) => {
+          if (this.tagsMaterials.indexOf(tag) === -1) {
+            this.tagsMaterials.push(tag);
+          }
+        });
+      });
+    },
+    filterMaterials(tag) {
+      console.log(tag)
+      if (tag) {
+        this.currentTag = tag;
+        this.currentMaterials = this.materials.filter((item) => item.tags.indexOf(tag) !== -1);
+      } else {
+        this.currentTag = '';
+        this.currentMaterials = this.materials;
+      }
+    },
   },
+  mounted() {
+    this.getTags()
+    this.filterMaterials()
+  }
 };
 </script>
 
