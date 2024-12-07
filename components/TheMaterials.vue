@@ -1,7 +1,7 @@
 <template>
 
-  <div class="materials__title section-page__title title">Полезные материалы</div>
-  <div class="materials__subtitle section-page__subtitle t-24">
+  <div class="section-page__title title">Полезные материалы</div>
+  <div class="section-page__subtitle t-24">
     Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный
     текст-заполнитель, вставляемый в макет страницы).
   </div>
@@ -97,16 +97,6 @@ export default {
 
 <style lang="scss">
 .materials {
-  &__title {
-    margin-bottom: 30px;
-  }
-
-  &__subtitle {
-    margin-bottom: 50px;
-    @media screen and (max-width: 767px) {
-      margin-bottom: 25px;
-    }
-  }
 
   &__filters {
     display: flex;

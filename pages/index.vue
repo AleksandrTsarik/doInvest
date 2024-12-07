@@ -56,6 +56,25 @@
       </div>
     </section> -->
 
+  <section class="section-page video-lessons">
+    <div class="container">
+      <TheVideo 
+        :videoLessons="currentVideoLessons.slice(0,3)"
+        :videoThemes="currentVideoThemes"
+        @search-video-theme="searchVideoTheme"
+        @filter-video-lessons="filterVideoLessons"
+      />
+    </div>
+  </section>  
+
+  <section class="section-page">
+    <div class="container">
+      <TheArticles 
+        :articles="articles"
+      />
+    </div>
+  </section>
+
   <section class="section-page">
     <div class="container">
       <TheEvents :events="events" />
@@ -499,12 +518,202 @@ export default {
         },
       ],
       // КОНЕЦ Данные блока событий
+      // НАЧАЛО Данные блока статей
+      articles: [
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Заголовок',
+          descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
+          price: 0,
+          frame: ''
+        },
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Заголовок',
+          descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+        },
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Заголовок',
+          descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
+          price: 0,
+          frame: ''
+        },
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Заголовок',
+          descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+        },
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Заголовок',
+          descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
+          price: 0,
+          frame: ''
+        },
+        {
+          pic: '/public/image/event.jpg',
+          name: 'Заголовок',
+          descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
+          price: 150,
+          oldPice: 200,
+          frame: '',
+        }        
+      ],
+      // КОНЕЦ Данные блока статей
+      // НАЧАЛО Данные блока видеоуроков
+      videoSearchDrop: false,
+      videoThemes: [
+        {
+          id: 1,
+          name: 'Что такое инвестиции?'
+        },
+        {
+          id: 2,
+          name: 'Как оценивать инвестиции?'
+        },
+        {
+          id: 3,
+          name: 'Как оценивать риски?'
+        },
+        {
+          id: 4,
+          name: 'Что такое инвестиции?'
+        },
+        {
+          id: 5,
+          name: 'Как оценивать инвестиции?'
+        },
+        {
+          id: 6,
+          name: 'Как оценивать риски?'
+        },
+        {
+          id: 7,
+          name: 'Что такое инвестиции?'
+        },
+        {
+          id: 8,
+          name: 'Как оценивать инвестиции?'
+        },
+        {
+          id: 9,
+          name: 'Как оценивать риски?'
+        },
+      ],
+      videoSearchField: '',
+      currentVideoThemes: [],
+      videoLessons: [
+        {
+          id: 1,
+          themeId: 1,
+          name: 'Что такое опцион и почему не нужно его покупать (themeId 1)',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 0,
+          frame: ''
+        },
+        {
+          id: 2,
+          themeId: 1,
+          name: 'Что такое опцион и почему не нужно его покупать (themeId 1)',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: ''
+        },
+        {
+          id: 3,
+          themeId: 1,
+          name: 'Что такое опцион и почему не нужно его покупать (themeId 1)',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: ''
+        },
+        {
+          id: 4,
+          themeId: 2,
+          name: 'Что такое опцион и почему не нужно его покупать (themeId 2)',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 0,
+          frame: ''
+        },
+        {
+          id: 5,
+          themeId: 2,
+          name: 'Что такое опцион и почему не нужно его покупать (themeId 2)',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: ''
+        },
+        {
+          id: 6,
+          themeId: 2,
+          name: 'Что такое опцион и почему не нужно его покупать (themeId 2)',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: ''
+        },
+        {
+          id: 7,
+          themeId: 3,
+          name: 'Что такое опцион и почему не нужно его покупать (themeId 3)',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 0,
+          frame: ''
+        },
+        {
+          id: 8,
+          themeId: 3,
+          name: 'Что такое опцион и почему не нужно его покупать (themeId 3)',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: ''
+        },
+        {
+          id: 9,
+          themeId: 3,
+          name: 'Что такое опцион и почему не нужно его покупать (themeId 3)',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: ''
+        }
+      ],
+      currentVideoLessons: [],
+      // КОНЕЦ Данные блока видеоуроков
     };
   },
 
   methods: {
     closeModal() {
       this.modalVideo = false;
+    },
+    searchVideoTheme(value) {
+      if(value) {
+        this.currentVideoThemes = this.videoThemes.filter(item => item.name.toLowerCase().includes(value.toLowerCase())) 
+      }else{
+        this.currentVideoThemes = this.videoThemes
+      }
+    },
+    getVideoThemes() {
+      this.currentVideoThemes = this.videoThemes
+    },
+    filterVideoLessons(value) {
+      let themeId = value 
+      this.currentVideoLessons = this.videoLessons.filter(item => item.themeId === themeId)
+    },
+    getVideoLessons() {
+      this.currentVideoLessons = this.videoLessons
     },
     getTags() {
       this.materials.map((item) => {
@@ -516,7 +725,6 @@ export default {
       });
     },
     filterMaterials(tag) {
-      console.log(tag)
       if (tag) {
         this.currentTag = tag;
         this.currentMaterials = this.materials.filter((item) => item.tags.indexOf(tag) !== -1);
@@ -527,6 +735,8 @@ export default {
     },
   },
   mounted() {
+    this.getVideoThemes()
+    this.getVideoLessons()
     this.getTags()
     this.filterMaterials()
   }

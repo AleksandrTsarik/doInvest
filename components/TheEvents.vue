@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="section-page__title materials__title title">СОБЫТИЯ</div>
-    <div class="materials__subtitle t-24">
+    <div class="section-page__title title">СОБЫТИЯ</div>
+    <div class="section-page__subtitle t-24">
       Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный
       текст-заполнитель, вставляемый в макет страницы).
     </div>
