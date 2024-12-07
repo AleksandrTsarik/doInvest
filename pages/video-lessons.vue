@@ -1,9 +1,9 @@
 <template>
   <main>
 
-    <section class="section-page video-lessons">
-      <TheBreadCrumbs :breadCrumbs="breadCrumbs" />
+    <section class="section-page video-lessons">      
       <div class="container">
+        <TheBreadCrumbs :breadCrumbs="breadCrumbs" />
         <TheVideo 
           :videoLessons="currentVideoLessons.slice(0,3)"
           :videoThemes="currentVideoThemes"
