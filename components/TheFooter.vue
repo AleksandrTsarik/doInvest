@@ -91,7 +91,7 @@ export default {
   mounted() {
     // document.body.addEventListener('scroll', this.handleScroll);
     window.addEventListener('scroll', function () {
-      this.handleScroll();
+      //this.handleScroll();
       console.log(this.scrollpx);
     });
   },

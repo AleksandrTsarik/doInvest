@@ -18,7 +18,12 @@
       class="materials__item">
       <div class="event-item">
         <div class="event-item__photo">
-          <a href="#"><img :src="item.pic" alt="" /></a>
+          <a href="#"><img :src="item.pic" alt="" /></a>       
+          <span 
+            v-if="item.frame"
+            class="video-icon" 
+            @click="modalVideoOpen(item.frame)">
+          </span>
         </div>
         <div class="event-item__info">
           <div v-if="item.date" class="event-item__date">
@@ -81,15 +86,13 @@ export default {
     currentTag: { type: String, default: '', require: true },
     tagsMaterials: { type: String, default: [], require: true },
   },
-  data() {
-    return {      
-      
-    }
-  },
   methods: {
     filterMaterials(tag) {
       console.log(tag)
       this.$emit('filter-materials', tag)
+    },
+    modalVideoOpen(frameSrc) {
+      this.$emit('modal-video-open', {src: frameSrc})
     }
   }
 }

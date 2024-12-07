@@ -3,6 +3,7 @@ import {resolve} from "path";
 
 
 export default defineNuxtConfig({
+    modules: ['vue3-perfect-scrollbar/nuxt'],
     devtools: {enabled: false},
     css: [
         '~/assets/style/main.scss',

@@ -21,15 +21,18 @@
             <!-- FIXME прикрутить иконку через компонент TheSvg  -->
             <span class="video-lessons-themes__search--ico"></span>
           </div>
-          <ul class="video-lessons-themes__list">
-            <li 
-              v-for="(theme, i) in videoThemes" 
-              :key="i"
-              class="video-lessons-themes__item"
-              @click="filterVideoLessons(theme.id)">
-              {{ theme.name }}
-              </li>
-          </ul>                
+          
+            <ul class="video-lessons-themes__list">
+              <perfect-scrollbar :options="{suppressScrollX: true, wheelSpeed: .15}" @ps-scroll-y.stop="scrollOffBody">
+              <li 
+                v-for="(theme, i) in videoThemes" 
+                :key="i"
+                class="video-lessons-themes__item"
+                @click="filterVideoLessons(theme.id)">
+                {{ theme.name }}
+                </li>
+                </perfect-scrollbar>
+            </ul> 
         </div>
 
       </div>
@@ -55,6 +58,16 @@
         <div class="event-item">
           <div class="event-item__photo">
             <a href="#"><img src="/public/image/event.jpg" alt="" /></a>
+            <span 
+              v-if="video.frame"
+              class="video-icon" 
+              @click="modalVideoOpen(video.frame)">
+            </span>
+            <span
+              v-if="video.access"
+              class="event-item__access-shield">
+              Доступ открыт
+            </span>
           </div>
           <div class="event-item__info">
             <div class="event-item__name event-item__name--full">
@@ -92,13 +105,12 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="section-page__all-link">
-      <NuxtLink class="btn" to="#">Показать другие уроки</NuxtLink>
-    </div>
+    </div>    
   </div>
 </template>
 <script>
+// import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
+
 export default {
   props: {
     videoLessons: { type: Array, default: [], require: true },
@@ -116,6 +128,12 @@ export default {
     },
     filterVideoLessons(themeId) {
       this.$emit('filter-video-lessons', themeId)
+    },
+    modalVideoOpen(frameSrc) {
+      this.$emit('modal-video-open', {src: frameSrc})
+    },
+    scrollOffBody() {
+      console.log('Тест')
     }
   }
 }
@@ -253,6 +271,25 @@ export default {
       padding-left: 15px;
       padding-right: 15px;
     }
+
+    .ps {
+      height: 360px;
+      width: 100%;
+      overflow-x: hidden;
+
+      &__rail-y {
+        background: transparent !important;
+        opacity: 1 !important;
+      }
+
+      &__thumb-y {
+        background-color: rgb(var(--primary)) !important;
+
+        &:hover {
+          background-color: rgb(var(--primary));
+        }
+      }
+    }
   }
 
   &__search {
@@ -280,17 +317,28 @@ export default {
   }
 
   &__list {
-    margin-top: 20px;
-    border-top: solid 1px #3F3F3F;
+    margin-right: -40px;
+    margin-top: 20px;   
+
+    @media screen and (max-width: 767px) {
+      margin-right: -15px;
+    }
+
   }
 
   &__item {
     padding: 16px 10px;
     font-size: 20px;
     color: var(--text);
-    border-bottom: solid 1px #3F3F3F;    
+    border-bottom: solid 1px #3F3F3F;   
+    margin-right: 40px; 
     @media screen and (max-width: 767px) {
       font-size: 15px;
+      margin-right: 15px;
+    }
+
+    &:first-child {
+      border-top: solid 1px #3F3F3F; 
     }
 
     &:hover {

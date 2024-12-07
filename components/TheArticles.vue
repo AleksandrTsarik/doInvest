@@ -6,27 +6,32 @@
     </div>
     <div class="articles__catalog">
       <div 
-        v-for="(artice, i) in articles"
+        v-for="(article, i) in articles"
         :key="i" 
         class="articles__item">
         <div class="article-item">
           <div class="article-item__photo">
             <a href="#"><img src="/public/image/material.png" alt="" /></a>
+            <span 
+              v-if="article.frame"
+              class="video-icon" 
+              @click="modalVideoOpen(article.frame)">
+            </span>
           </div>
           <div class="article-item__info">
             <div class="article-item__name">
-              {{ artice.name }}
+              {{ article.name }}
             </div>
             <div class="article-item__descr">
-              {{ artice.descr }}
+              {{ article.descr }}
             </div>
             <div class="article-item__bottom">
               <div class="article-item__bottom-left">
-                <div v-if="artice.oldPice" class="article-item__price article-item__price--old">
-                  {{ artice.oldPice }}
+                <div v-if="article.oldPice" class="article-item__price article-item__price--old">
+                  {{ article.oldPice }}
                 </div>
-                <div class="article-item__price">{{ artice.price ? artice.price : 'БЕСПЛАТНО' }}</div>
-                <div v-if="artice.price" class="article-item__price article-item__price--unit">₽</div>
+                <div class="article-item__price">{{ article.price ? article.price : 'БЕСПЛАТНО' }}</div>
+                <div v-if="article.price" class="article-item__price article-item__price--unit">₽</div>
               </div>
               <div class="article-item__link">
                 <a href="#">
@@ -60,6 +65,11 @@
 export default {
   props: {
     articles: { type: Array, default: [], require: true }
+  },
+  methods: {
+    modalVideoOpen(frameSrc) {
+      this.$emit('modal-video-open', {src: frameSrc})
+    }
   }
 }
 </script>

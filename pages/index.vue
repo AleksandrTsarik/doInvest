@@ -63,7 +63,11 @@
         :videoThemes="currentVideoThemes"
         @search-video-theme="searchVideoTheme"
         @filter-video-lessons="filterVideoLessons"
+        @modal-video-open="modalVideoOpen"
       />
+      <div class="section-page__all-link">
+        <NuxtLink class="btn" to="#">Показать другие уроки</NuxtLink>
+      </div>
     </div>
   </section>  
 
@@ -71,13 +75,17 @@
     <div class="container">
       <TheArticles 
         :articles="articles"
+        @modal-video-open="modalVideoOpen"
       />
     </div>
   </section>
 
   <section class="section-page">
     <div class="container">
-      <TheEvents :events="events" />
+      <TheEvents 
+        :events="events" 
+        @modal-video-open="modalVideoOpen"
+      />
     </div>
   </section>  
 
@@ -88,6 +96,7 @@
         :currentTag="currentTag"
         :tagsMaterials="tagsMaterials"
         @filter-materials="filterMaterials"
+        @modal-video-open="modalVideoOpen"
       />
     </div>
   </section>  
@@ -180,17 +189,26 @@
         </div>
       </div>
     </section> -->
+
+  <the-modal-video-item 
+    v-if="isModalVideoItem" 
+    @close="closeModalItem" 
+    :frameSrc="modalVideoItemSrcFrame"
+  />   
+
 </template>
 
 <script>
 import TheModalVideo from '~/components/modal/TheModalVideo.vue';
+import TheModalVideoItem from '~/components/modal/TheModalVideoItem.vue';
 import TheMentor from '~/components/TheMentor.vue';
 import TheSliderBig from '~/components/TheSlider.vue';
-import TheMaterials from '~/components/TheMaterials.vue';
 export default {
-  components: { TheSliderBig, TheModalVideo, TheMaterials },
+  components: { TheSliderBig, TheModalVideo, TheModalVideoItem },
   data() {
     return {
+      modalVideoItemSrcFrame: '',
+      isModalVideoItem: false,
       modalVideo: false,
       breadCrumbs: [
         {
@@ -209,7 +227,7 @@ export default {
           name: 'Книга про инвестиции',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 0,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           tags: ['Мои', 'Фильмы', 'Книги', 'Ссылки', 'Рекомендации'],
         },
         {
@@ -227,7 +245,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Мои', 'Рекомендации'],
         },
         {
@@ -236,7 +254,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Ссылки'],
         },
         {
@@ -245,7 +263,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Рекомендации'],
         },
         {
@@ -254,7 +272,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Мои', 'Фильмы', 'Книги', 'Ссылки', 'Рекомендации'],
         },
         {
@@ -263,7 +281,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Мои', 'Фильмы', 'Рекомендации'],
         },
         {
@@ -272,7 +290,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Книги', 'Ссылки', 'Рекомендации'],
         },
         {
@@ -281,7 +299,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Книги', 'Ссылки'],
         },
         {
@@ -290,7 +308,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Рекомендации'],
         },
         {
@@ -299,7 +317,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Мои'],
         },
         {
@@ -308,7 +326,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Фильмы'],
         },
         {
@@ -317,7 +335,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Книги'],
         },
         {
@@ -326,7 +344,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Книги'],
         },
         {
@@ -335,7 +353,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Рекомендации'],
         },
         {
@@ -344,7 +362,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Мои'],
         },
         {
@@ -353,7 +371,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Мои', 'Фильмы', 'Книги', 'Ссылки', 'Рекомендации'],
         },
         {
@@ -362,7 +380,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Ссылки'],
         },
         {
@@ -371,7 +389,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Книги', 'Ссылки'],
         },
         {
@@ -380,7 +398,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Фильмы', 'Книги', 'Ссылки', 'Рекомендации'],
         },
         {
@@ -389,7 +407,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Книги', 'Ссылки', 'Рекомендации'],
         },
         {
@@ -398,7 +416,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Ссылки'],
         },
         {
@@ -407,7 +425,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Фильмы'],
         },
         {
@@ -416,7 +434,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Фильмы'],
         },
         {
@@ -425,7 +443,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Книги', 'Ссылки'],
         },
         {
@@ -434,7 +452,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Мои', 'Фильмы', 'Книги'],
         },
         {
@@ -443,7 +461,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           tags: ['Книги'],
         },
       ],
@@ -457,7 +475,7 @@ export default {
           name: 'Семинар. Инвестиции в ...',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 0,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
@@ -479,7 +497,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
@@ -489,7 +507,7 @@ export default {
           name: 'Семинар. Инвестиции в ...',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 0,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
@@ -500,7 +518,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
@@ -511,7 +529,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
@@ -525,7 +543,7 @@ export default {
           name: 'Заголовок',
           descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
           price: 0,
-          frame: ''
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           pic: '/public/image/event.jpg',
@@ -540,7 +558,7 @@ export default {
           name: 'Заголовок',
           descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
           price: 0,
-          frame: ''
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
         },
         {
           pic: '/public/image/event.jpg',
@@ -548,14 +566,14 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
         },
         {
           pic: '/public/image/event.jpg',
           name: 'Заголовок',
           descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
           price: 0,
-          frame: ''
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
         },
         {
           pic: '/public/image/event.jpg',
@@ -563,7 +581,7 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
         }        
       ],
       // КОНЕЦ Данные блока статей
@@ -606,6 +624,42 @@ export default {
           id: 9,
           name: 'Как оценивать риски?'
         },
+        {
+          id: 10,
+          name: 'Что такое инвестиции?'
+        },
+        {
+          id: 11,
+          name: 'Как оценивать инвестиции?'
+        },
+        {
+          id: 12,
+          name: 'Как оценивать риски?'
+        },
+        {
+          id: 13,
+          name: 'Что такое инвестиции?'
+        },
+        {
+          id: 14,
+          name: 'Как оценивать инвестиции?'
+        },
+        {
+          id: 15,
+          name: 'Как оценивать риски?'
+        },
+        {
+          id: 16,
+          name: 'Что такое инвестиции?'
+        },
+        {
+          id: 17,
+          name: 'Как оценивать инвестиции?'
+        },
+        {
+          id: 18,
+          name: 'Как оценивать риски?'
+        },
       ],
       videoSearchField: '',
       currentVideoThemes: [],
@@ -616,7 +670,8 @@ export default {
           name: 'Что такое опцион и почему не нужно его покупать (themeId 1)',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 0,
-          frame: ''
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
+          access: true,
         },
         {
           id: 2,
@@ -625,7 +680,8 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: ''
+          frame: '',
+          access: false,
         },
         {
           id: 3,
@@ -634,7 +690,8 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: ''
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
+          access: true,
         },
         {
           id: 4,
@@ -642,7 +699,8 @@ export default {
           name: 'Что такое опцион и почему не нужно его покупать (themeId 2)',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 0,
-          frame: ''
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
+          access: true,
         },
         {
           id: 5,
@@ -651,7 +709,8 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: ''
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
+          access: true,
         },
         {
           id: 6,
@@ -660,7 +719,8 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: ''
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
+          access: true,
         },
         {
           id: 7,
@@ -668,7 +728,8 @@ export default {
           name: 'Что такое опцион и почему не нужно его покупать (themeId 3)',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 0,
-          frame: ''
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
+          access: true,
         },
         {
           id: 8,
@@ -677,7 +738,8 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: ''
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
+          access: true,
         },
         {
           id: 9,
@@ -686,7 +748,8 @@ export default {
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: ''
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
+          access: true,
         }
       ],
       currentVideoLessons: [],
@@ -695,9 +758,20 @@ export default {
   },
 
   methods: {
+    modalVideoOpen(value) {
+      if(value) {
+        this.isModalVideoItem = true;
+        this.modalVideoItemSrcFrame = value.src
+      }
+
+      console.log(value)
+    },
+    closeModalItem() {
+      this.isModalVideoItem = false;
+    }, 
     closeModal() {
       this.modalVideo = false;
-    },
+    },    
     searchVideoTheme(value) {
       if(value) {
         this.currentVideoThemes = this.videoThemes.filter(item => item.name.toLowerCase().includes(value.toLowerCase())) 

@@ -10,6 +10,7 @@
       :options="optionsSlider"
       :typeSlider="'events'"
       class="slider"
+      @modal-video-open="modalVideoOpen"
     ></u-i-the-swiper>
     <div class="section-page__all-link">
       <NuxtLink class="btn" to="#">Открыть все события</NuxtLink>
@@ -47,7 +48,13 @@ export default {
         },
       },
     }
+  },
+  methods: {
+    modalVideoOpen(value) {
+      this.$emit('modal-video-open', {src: value.src})
+    }
   }
+
 }
 </script>
 <style lang="scss" scoped>

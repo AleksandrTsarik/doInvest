@@ -18,6 +18,11 @@
       <div class="event-item">
         <div class="event-item__photo">
           <a href="#"><img src="/public/image/event.jpg" alt="" /></a>
+          <span 
+            v-if="slide.frame"
+            class="video-icon" 
+            @click="modalVideoOpen(slide.frame)">
+          </span>
         </div>
         <div class="event-item__info">
           <div v-if="slide.date" class="event-item__date">
@@ -156,6 +161,12 @@ export default {
       modules: [Pagination, Navigation, Mousewheel, EffectCoverflow, EffectFade],
     };
   },
+
+  methods: {
+    modalVideoOpen(frameSrc) {
+      this.$emit('modal-video-open', {src: frameSrc})
+    }
+  }
 };
 </script>
 

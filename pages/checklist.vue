@@ -2,89 +2,31 @@
   <main>
     <section class="section-page checklists">      
       <div class="container">
-        <TheBreadCrumbs :breadCrumbs="breadCrumbs" />
-        <div class="section-page__title checklists__title title">Чек-листы</div>
-        <div class="checklists__top">
-          <div class="section-page__subtitle checklists__subtitle subtitle t-24">
-            Онлайн-генератор случайного текста, правильный Lorem Ipsum на русском языке. Незаменимый помощник любого дизайнера, вебмастера и проектировщика. ... Текста-рыбы является извест
-          </div>
-          <div class="checklists__access">
-            <div class="checklists__access-title">
-              Безлимитный доступ к чек-листам
-            </div>
-            <div class="checklists__access-btn">
-              <UITheButton 
-                :class="['btn', 'btn-dark']" 
-                :label="'Получить доступ'">
-              </UITheButton>
-            </div>
-          </div>
-        </div>  
-        
-        <div class="checklists__filters">
-          <UITheButton
-            @click="filterLessons('')"
-            :label="'Все уроки'"
-            :class="['btn-filter', {active: !filterLessonsTag}]"
-          />
-          <UITheButton
-            @click="filterLessons('No')"
-            :label="'Не полученные'"
-            :class="['btn-filter', {active: filterLessonsTag === 'No'}]"
-          />
-          <UITheButton
-            @click="filterLessons('My')"
-            :label="'Мои'"
-            :class="['btn-filter', {active: filterLessonsTag === 'My'}]"
-          />
-        </div>
-
-        <div class="checklists__catalog">
-          <div 
-            v-for="(lesson, i) in currentLessons.slice(0,4)"
-            :key="i"
-            class="checklists__item">
-            <div class="lesson-big-item">
-              <div class="lesson-big-item__row">
-                <div class="lesson-big-item__info">
-                  <div class="lesson-big-item__name t-32">{{ lesson.name }}</div>
-                  <div class="lesson-big-item__descr t-18">{{ lesson.descr }}</div>
-
-                  <div class="lesson-big-item__info-bottom">
-                    <div class="lesson-big-item__info-bottom-left">
-                      <div class="lesson-big-item__rating">
-                        <TheRating :rate="lesson.rate"/>
-                        <span>{{ lesson.rate }}</span>
-                      </div>
-                      <div class="lesson-big-item__price">
-                        <span>Цена: </span>{{ lesson.price ? lesson.price + ' рублей' : 'бесплатно' }}
-                      </div>
-                    </div>
-                    <div class="lesson-big-item__info-bottom-right">
-                      <UITheButton 
-                        :class="['btn', 'btn-dark']" 
-                        :label="'Получить урок'">
-                      </UITheButton>
-                    </div>  
-                  </div>
-                </div>
-
-                <div class="lesson-big-item__photo"><img :src="lesson.pic" alt=""></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <TheBreadCrumbs :breadCrumbs="breadCrumbs" />   
+        <TheChecklists 
+          :lessons = "currentLessons.slice(0,4)"
+          :filterLessonsTag="filterLessonsTag"
+          @filter-lessons="filterLessons"
+          @modal-video-open="modalVideoOpen"
+        />    
         <ThePagination />
       </div>
     </section>
   </main>
+
+  <the-modal-video-item 
+    v-if="isModalVideoItem" 
+    @close="closeModalItem" 
+    :frameSrc="modalVideoItemSrcFrame"
+  />   
 </template>
 
 <script>
+import TheModalVideoItem from '~/components/modal/TheModalVideoItem.vue';
+
 export default {
   data() {
     return {
-      filterLessonsTag: '',
       breadCrumbs: [
         {
           name: 'Чек листы',
@@ -92,6 +34,9 @@ export default {
           current: true,
         }
       ],
+      filterLessonsTag: '',
+      modalVideoItemSrcFrame: '',
+      isModalVideoItem: false,
       lessons: [
         {
           id: 1,
@@ -100,7 +45,8 @@ export default {
           pic: '/image/lesson.png',
           price: 0,
           rate: 4.5,
-          access: true
+          access: true,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 2,
@@ -109,7 +55,8 @@ export default {
           pic: '/image/lesson.png',
           price: 1000,
           rate: 5,
-          access: false
+          access: false,
+          frame: '',
         },
         {
           id: 3,
@@ -118,7 +65,8 @@ export default {
           pic: '/image/lesson.png',
           price: 2000,
           rate: 3,
-          access: true
+          access: true,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 4,
@@ -127,7 +75,8 @@ export default {
           pic: '/image/lesson.png',
           price: 500,
           rate: 3.5,
-          access: true
+          access: true,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 5,
@@ -136,7 +85,8 @@ export default {
           pic: '/image/lesson.png',
           price: 3000,
           rate: 2.5,
-          access: false
+          access: false,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 6,
@@ -145,7 +95,8 @@ export default {
           pic: '/image/lesson.png',
           price: 600,
           rate: 5,
-          access: false
+          access: false,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 7,
@@ -154,7 +105,8 @@ export default {
           pic: '/image/lesson.png',
           price: 0,
           rate: 5,
-          access: true
+          access: true,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 8,
@@ -163,7 +115,8 @@ export default {
           pic: '/image/lesson.png',
           price: 1000,
           rate: 1.5,
-          access: false
+          access: false,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 9,
@@ -172,7 +125,8 @@ export default {
           pic: '/image/lesson.png',
           price: 2000,
           rate: 2.5,
-          access: true
+          access: true,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 10,
@@ -181,7 +135,8 @@ export default {
           pic: '/image/lesson.png',
           price: 500,
           rate: 4.5,
-          access: true
+          access: true,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 11,
@@ -190,7 +145,8 @@ export default {
           pic: '/image/lesson.png',
           price: 3000,
           rate: 5,
-          access: false
+          access: false,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 12,
@@ -199,7 +155,8 @@ export default {
           pic: '/image/lesson.png',
           price: 600,
           rate: 5,
-          access: false
+          access: false,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 13,
@@ -208,7 +165,8 @@ export default {
           pic: '/image/lesson.png',
           price: 0,
           rate: 5,
-          access: true
+          access: true,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 14,
@@ -217,7 +175,8 @@ export default {
           pic: '/image/lesson.png',
           price: 1000,
           rate: 5,
-          access: false
+          access: false,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 15,
@@ -226,7 +185,8 @@ export default {
           pic: '/image/lesson.png',
           price: 2000,
           rate: 5,
-          access: true
+          access: true,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 16,
@@ -244,7 +204,8 @@ export default {
           pic: '/image/lesson.png',
           price: 3000,
           rate: 5,
-          access: false
+          access: false,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 18,
@@ -253,7 +214,8 @@ export default {
           pic: '/image/lesson.png',
           price: 600,
           rate: 5,
-          access: false
+          access: false,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 19,
@@ -262,7 +224,8 @@ export default {
           pic: '/image/lesson.png',
           price: 3000,
           rate: 5,
-          access: false
+          access: false,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 20,
@@ -271,7 +234,8 @@ export default {
           pic: '/image/lesson.png',
           price: 600,
           rate: 5,
-          access: false
+          access: false,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           id: 21,
@@ -280,21 +244,33 @@ export default {
           pic: '/image/lesson.png',
           price: 500,
           rate: 5,
-          access: true
+          access: true,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
       ],
       currentLessons: [],
     }
   },
   methods: {
+    modalVideoOpen(value) {
+      if(value) {
+        this.isModalVideoItem = true;
+        this.modalVideoItemSrcFrame = value.src
+      }
+
+      console.log(value)
+    },
+    closeModalItem() {
+      this.isModalVideoItem = false;
+    }, 
     getLessons() {
       this.currentLessons = this.lessons
     },
-    filterLessons(tag) {
-      this.filterLessonsTag = tag
-      if(tag === 'My') {         
+    filterLessons(value) {
+      this.filterLessonsTag = value
+      if(value === 'My') {         
         this.currentLessons = this.lessons.filter(item => item.access === true)
-      }else if(tag === 'No') {
+      }else if(value === 'No') {
         this.currentLessons = this.lessons.filter(item => item.access === false)
       }else{
         this.currentLessons = this.lessons
@@ -307,81 +283,4 @@ export default {
 } 
 </script>
 
-<style lang="scss">
-.checklists {
-  &__top {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    column-gap: 15px;
-
-    @media screen and (max-width: 991px) {
-      flex-direction: column;
-      justify-content: initial;      
-      margin-bottom: 20px;
-    }
-  }
-  &__title {
-    margin-bottom: 30px;
-  }
-
-  &__subtitle {
-    flex: 0 0 calc(50% - 15px);
-    margin-bottom: 50px;
-    max-width: 650px;
-    @media screen and (max-width: 991px) {
-      margin-bottom: 20px;
-    }
-  }
-
-  &__access {
-    flex: 0 0 50%;
-    display: flex;
-    flex-direction: column;
-    row-gap: 9px;   
-
-    &-title {
-      font-size: 18px;
-
-      @media screen and (max-width: 767px) {
-        font-size: 15px;
-      }
-    }
-
-    .btn {
-      @media screen and (max-width: 767px) {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-  }
-
-  &__filters {
-    display: flex;
-    flex-wrap: wrap;
-    padding-right: 135px;
-    align-items: center;
-    column-gap: 15px;
-    row-gap: 15px;
-    margin-bottom: 24px;
-
-    @media screen and (max-width: 1023px) {
-      margin-bottom: 20px;
-    }
-
-    @media screen and (max-width: 767px) {
-      position: relative;
-      flex-wrap: nowrap;
-      overflow: auto;
-      white-space: nowrap;
-    }
-  }
-
-  &__catalog {
-    display: flex;
-    flex-direction: column;
-    row-gap: 35px;
-    margin-bottom: 30px;
-  }
-}
-</style>
+<style lang="scss"></style>

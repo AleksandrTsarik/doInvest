@@ -429,7 +429,19 @@ table {
   border-radius: 10px;
   overflow: hidden;
 
+  &__access-shield {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-size: 16px;
+    color: #F7F7F8;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background-color: rgb(var(--primary));
+  }
+
   &__photo {
+    position: relative;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 14px;
@@ -438,6 +450,15 @@ table {
     }
     img {
       width: 100%;
+    }
+
+    .video-icon {
+      top: auto;
+      left: auto;
+      bottom: 18px;
+      right: 18px;
+      transform: none;
+      margin: 0;
     }
   }
 
@@ -603,10 +624,10 @@ table {
 
   @media screen and (max-width: 767px) {
     flex-direction: column;
-  }
-  
+  }  
 
   &__photo {
+    position: relative;
     flex: 0 0 50%;
     border-radius: 10px;
     overflow: hidden;
@@ -618,6 +639,15 @@ table {
     }
     img {
       width: 100%;
+    }
+
+    .video-icon {
+      top: auto;
+      left: auto;
+      bottom: 18px;
+      right: 18px;
+      transform: none;
+      margin: 0;
     }
   }
 
@@ -757,7 +787,7 @@ table {
 
   @media screen and (max-width: 767px) {
     padding: 27px 12px 160px 12px;
-  }
+  }  
 
   &__row {
     display: flex;
@@ -786,6 +816,7 @@ table {
   }
 
   &__photo {
+    position: relative;
     flex: 0 0 50%;
     max-width: 50%;
     @media screen and (max-width: 991px) {
@@ -795,7 +826,18 @@ table {
 
     img {
       width: 100%;
-    }
+    }    
+  }
+
+  &__access-shield {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-size: 16px;
+    color: #F7F7F8;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background-color: rgb(var(--primary));
   }
 
   &__name {

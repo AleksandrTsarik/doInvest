@@ -869,182 +869,182 @@ export default {
   margin-top: 25px;
 }
 
-.video-lessons {
-  &__top {
-    display: flex;
-    column-gap: 20px;
-    margin-bottom: 40px;
-    @media screen and (max-width: 991px) {
-      flex-direction: column;
-      column-gap: 0;
-      row-gap: 30px;
-    }
-  }
+// .video-lessons {
+//   &__top {
+//     display: flex;
+//     column-gap: 20px;
+//     margin-bottom: 40px;
+//     @media screen and (max-width: 991px) {
+//       flex-direction: column;
+//       column-gap: 0;
+//       row-gap: 30px;
+//     }
+//   }
 
-  &__themes {
-    flex: 0 0 calc(50% - 15px);
-    max-width: calc(50% - 15px); 
+//   &__themes {
+//     flex: 0 0 calc(50% - 15px);
+//     max-width: calc(50% - 15px); 
 
-    @media screen and (max-width: 991px) {
-      flex: 0 0 100%;
-      max-width: initial;
-    }
-  }
+//     @media screen and (max-width: 991px) {
+//       flex: 0 0 100%;
+//       max-width: initial;
+//     }
+//   }
 
-  &__catalog {
-    display: flex;
-    column-gap: 15px;    
-    justify-content: space-between;
-    @media screen and (max-width: 991px) {
-      flex-wrap: wrap;
-      row-gap: 15px;
-    }
-  }
+//   &__catalog {
+//     display: flex;
+//     column-gap: 15px;    
+//     justify-content: space-between;
+//     @media screen and (max-width: 991px) {
+//       flex-wrap: wrap;
+//       row-gap: 15px;
+//     }
+//   }
 
-  &__item {
-    flex: 0 0 calc(100%/3 - 15px);
-    max-width: calc(100%/3 - 15px);
+//   &__item {
+//     flex: 0 0 calc(100%/3 - 15px);
+//     max-width: calc(100%/3 - 15px);
 
-    @media screen and (max-width: 991px) {
-      flex: 0 0 calc(100%/2 - 8px);
-      max-width: calc(100%/2 - 8px);
-    }
+//     @media screen and (max-width: 991px) {
+//       flex: 0 0 calc(100%/2 - 8px);
+//       max-width: calc(100%/2 - 8px);
+//     }
 
-    @media screen and (max-width: 767px) {
-      flex: 0 0 100%;
-      max-width: initial
-    }
-  }
+//     @media screen and (max-width: 767px) {
+//       flex: 0 0 100%;
+//       max-width: initial
+//     }
+//   }
 
-  &__access {
-    display: flex;
-    flex-direction: column;
-    row-gap: 9px;    
+//   &__access {
+//     display: flex;
+//     flex-direction: column;
+//     row-gap: 9px;    
 
-    @media screen and (max-width: 991px) {
-      flex-direction: row;
-      align-items: flex-end;
-      row-gap: 0;
-      column-gap: 15px;
-    }
+//     @media screen and (max-width: 991px) {
+//       flex-direction: row;
+//       align-items: flex-end;
+//       row-gap: 0;
+//       column-gap: 15px;
+//     }
 
-    @media screen and (max-width: 767px) {
-      display: none;
-    }
+//     @media screen and (max-width: 767px) {
+//       display: none;
+//     }
 
-    &-title {
-      font-size: 18px;
-    }
-  }
-}
+//     &-title {
+//       font-size: 18px;
+//     }
+//   }
+// }
 
-.video-lessons-themes {
-  background-color: #fff;
-  border-radius: 10px;
+// .video-lessons-themes {
+//   background-color: #fff;
+//   border-radius: 10px;
 
-  &__caption {
-    padding: 35px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    @media screen and (max-width: 767px) {
-      padding: 30px 15px;
-    }
-  }
+//   &__caption {
+//     padding: 35px 40px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     @media screen and (max-width: 767px) {
+//       padding: 30px 15px;
+//     }
+//   }
 
-  &__title {
-    font-size: 32px;
-    color: var(--text);
-    font-weight: 500;  
-    @media screen and (max-width: 767px) {
-      font-size: 24px;
-    }  
-  }
+//   &__title {
+//     font-size: 32px;
+//     color: var(--text);
+//     font-weight: 500;  
+//     @media screen and (max-width: 767px) {
+//       font-size: 24px;
+//     }  
+//   }
 
-  &__drop {
-    padding: 12px 0;
-    display: flex;
-    align-items: center;  
-    column-gap: 12px;
-    margin-right: 20px;
-    cursor: pointer;
+//   &__drop {
+//     padding: 12px 0;
+//     display: flex;
+//     align-items: center;  
+//     column-gap: 12px;
+//     margin-right: 20px;
+//     cursor: pointer;
 
-    // FIXME поправить семейство шрифотов по макету
-    &-info {
-      font-size: 16px;
-      font-weight: 500;
-      color: #49454F;
-      @media screen and (max-width: 767px) {
-        display: none;
-      }
-    }
+//     // FIXME поправить семейство шрифотов по макету
+//     &-info {
+//       font-size: 16px;
+//       font-weight: 500;
+//       color: #49454F;
+//       @media screen and (max-width: 767px) {
+//         display: none;
+//       }
+//     }
 
-    &-btn {
-      flex: 0 0 21px;
-      display: flex;
-      flex-direction: column;
-      row-gap: 3px;
+//     &-btn {
+//       flex: 0 0 21px;
+//       display: flex;
+//       flex-direction: column;
+//       row-gap: 3px;
 
-      div {
-        height: 2px;
-        background-color: #49454F;
-      }
-    }
-  }
+//       div {
+//         height: 2px;
+//         background-color: #49454F;
+//       }
+//     }
+//   }
 
-  &__body {
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 35px;
-    @media screen and (max-width: 767px) {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
-  }
+//   &__body {
+//     padding-left: 40px;
+//     padding-right: 40px;
+//     padding-bottom: 35px;
+//     @media screen and (max-width: 767px) {
+//       padding-left: 15px;
+//       padding-right: 15px;
+//     }
+//   }
 
-  &__search {
-    margin-top: -18px;
-    position: relative;
+//   &__search {
+//     margin-top: -18px;
+//     position: relative;
 
-    input {
-      width: 100%;
-      height: 56px;
-      background-color: #EEEEEE;
-      border-radius: 10px;
-      padding-left: 20px;
-      // FIXME поправить семейство шрифотов по макету
-      font-family: 'Montserrat', sans-serif;
-      font-size: 16px;
-      font-weight: 500;
-      color: #49454F;
+//     input {
+//       width: 100%;
+//       height: 56px;
+//       background-color: #EEEEEE;
+//       border-radius: 10px;
+//       padding-left: 20px;
+//       // FIXME поправить семейство шрифотов по макету
+//       font-family: 'Montserrat', sans-serif;
+//       font-size: 16px;
+//       font-weight: 500;
+//       color: #49454F;
 
-      &::placeholder {
-        font-style: 16px;
-        font-weight: 500;
-        color: #49454F;
-      }
-    }
-  }
+//       &::placeholder {
+//         font-style: 16px;
+//         font-weight: 500;
+//         color: #49454F;
+//       }
+//     }
+//   }
 
-  &__list {
-    margin-top: 20px;
-    border-top: solid 1px #3F3F3F;
-  }
+//   &__list {
+//     margin-top: 20px;
+//     border-top: solid 1px #3F3F3F;
+//   }
 
-  &__item {
-    padding: 16px 10px;
-    font-size: 20px;
-    color: var(--text);
-    border-bottom: solid 1px #3F3F3F;    
-    @media screen and (max-width: 767px) {
-      font-size: 15px;
-    }
+//   &__item {
+//     padding: 16px 10px;
+//     font-size: 20px;
+//     color: var(--text);
+//     border-bottom: solid 1px #3F3F3F;    
+//     @media screen and (max-width: 767px) {
+//       font-size: 15px;
+//     }
 
-    &:hover {
-      @media screen and (min-width: 1024px) {
-        text-decoration: underline;
-      }
-    }
-  } 
-}
+//     &:hover {
+//       @media screen and (min-width: 1024px) {
+//         text-decoration: underline;
+//       }
+//     }
+//   } 
+// }
 </style>
