@@ -1,25 +1,32 @@
 <template>
   <main>
-
     <section class="section-page video-lessons">      
       <div class="container">
         <TheBreadCrumbs :breadCrumbs="breadCrumbs" />
         <TheVideo 
-          :videoLessons="currentVideoLessons.slice(0,3)"
+          :videoLessons="currentVideoLessons.slice(0,6)"
           :videoThemes="currentVideoThemes"
           @search-video-theme="searchVideoTheme"
           @filter-video-lessons="filterVideoLessons"
           @modal-video-open="modalVideoOpen"
         />
-
         <ThePagination />
       </div>      
     </section> 
   </main>
+
+  <the-modal-video-item 
+    v-if="isModalVideoItem" 
+    @close="closeModalItem" 
+    :frameSrc="modalVideoItemSrcFrame"
+  /> 
 </template>
 
 <script>
+import TheModalVideoItem from '~/components/modal/TheModalVideoItem.vue';
+
 export default {
+  components: { TheModalVideoItem },
   data() {
     return {      
       breadCrumbs: [
@@ -29,6 +36,8 @@ export default {
           current: true,
         }
       ],
+      isModalVideoItem: false,
+      modalVideoItemSrcFrame: '',
       videoSearchDrop: false,
       videoThemes: [
         {
@@ -199,6 +208,15 @@ export default {
     }
   },
   methods: {
+    modalVideoOpen(value) {
+      if(value) {
+        this.isModalVideoItem = true;
+        this.modalVideoItemSrcFrame = value.src
+      }
+    },
+    closeModalItem() {
+      this.isModalVideoItem = false;
+    }, 
     searchVideoTheme(value) {
       if(value) {
         this.currentVideoThemes = this.videoThemes.filter(item => item.name.toLowerCase().includes(value.toLowerCase())) 

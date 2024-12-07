@@ -20,8 +20,8 @@
     
     <div class="checklists__filters">
       <TheFilterAccess 
-        @filter-lessons="filterLessons"
-        :filterLessonsTag="filterLessonsTag"
+        @filter-items-access="filterItemsAccess"
+        :filterAccessTag="filterAccessTag"
       />
     </div>
 
@@ -60,7 +60,7 @@
               <span 
                 v-if="lesson.frame"
                 class="video-icon" 
-                @click="modalVideoOpen(video.frame)">
+                @click="modalVideoOpen(lesson.frame)">
               </span>
               <span
                 v-if="lesson.access"
@@ -79,11 +79,14 @@
 export default {
   props: {
     lessons: {type: Array, default: [], required: true},
-    filterLessonsTag: {type: String, default: '', required: true}
+    filterAccessTag: {type: String, default: '', required: true}
   },  
   methods: {
-    filterLessons(value) {
-      this.$emit('filter-lessons', value)
+    filterItemsAccess(value) {
+      this.$emit('filter-items-access', value)
+    },
+    modalVideoOpen(frameSrc) {
+      this.$emit('modal-video-open', {src: frameSrc})
     }
   }
 }

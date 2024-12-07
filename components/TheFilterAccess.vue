@@ -1,29 +1,29 @@
 <template>
   <UITheButton
-    @click="filterLessons('')"
+    @click="filterItemsAccess('')"
     :label="'Все уроки'"
-    :class="['btn-filter', {active: !filterLessonsTag}]"
+    :class="['btn-filter', {active: !filterAccessTag}]"
   />
   <UITheButton
-    @click="filterLessons('No')"
+    @click="filterItemsAccess('No')"
     :label="'Не полученные'"
-    :class="['btn-filter', {active: filterLessonsTag === 'No'}]"
+    :class="['btn-filter', {active: filterAccessTag === 'No'}]"
   />
   <UITheButton
-    @click="filterLessons('My')"
+    @click="filterItemsAccess('My')"
     :label="'Мои'"
-    :class="['btn-filter', {active: filterLessonsTag === 'My'}]"
+    :class="['btn-filter', {active: filterAccessTag === 'My'}]"
   /> 
 </template>
 
 <script>
 export default {
   props: {
-    filterLessonsTag: {type: String, default: '', required: true}
+    filterAccessTag: {type: String, default: '', required: true}
   },
   methods: {
-    filterLessons(tag) {      
-      this.$emit('filter-lessons', tag)
+    filterItemsAccess(tag) {      
+      this.$emit('filter-items-access', tag)
     }
   }
 }

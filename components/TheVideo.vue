@@ -164,7 +164,9 @@ export default {
 
   &__catalog {
     display: flex;
-    column-gap: 15px;    
+    flex-wrap: wrap;
+    column-gap: 15px;  
+    row-gap: 15px;  
     justify-content: space-between;
     @media screen and (max-width: 991px) {
       flex-wrap: wrap;

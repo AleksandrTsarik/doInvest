@@ -2,88 +2,30 @@
   <main>
     <section class="section-page events">
       <div class="container">
-        <div class="section-page__title events__title title">РЕКОМЕНДОВАННЫЙ МАТЕРИАЛ</div>
-        <div class="events__subtitle t-24">
-          Русский аналог Lorem Ipsum. Прародителем текста-рыбы является . Сервисов по созданию случайного текста на 
-        </div>
-
-        <div class="checklists__filters">
-          <UITheButton
-            @click="filterEvents('')"
-            :label="'Все уроки'"
-            :class="['btn-filter', {active: !filterEventsTag}]"
-          />
-          <UITheButton
-            @click="filterEvents('No')"
-            :label="'Не полученные'"
-            :class="['btn-filter', {active: filterEventsTag === 'No'}]"
-          />
-          <UITheButton
-            @click="filterEvents('My')"
-            :label="'Мои'"
-            :class="['btn-filter', {active: filterEventsTag === 'My'}]"
-          />
-        </div>
-
-        <div class="events__catalog">
-          <div 
-            v-for="(event, i) in currentEvents.slice(0,6)"
-            class="events__item">
-            <div class="event-item">
-              <div class="event-item__photo">
-                <a href="#"><img src="/public/image/event.jpg" alt="" /></a>
-              </div>
-              <div class="event-item__info">
-                <div v-if="event.date" class="event-item__date">
-                  <div>{{ event.date }}</div>
-                  <div v-if="event.place">
-                    <a :href="event.placeUrl">{{ event.place }}</a>
-                  </div>
-                </div>
-                <div class="event-item__test-tag" style="font-weight: 600;font-size: 14px;margin-top: 9px;">{{  event.access ? 'Типо доступен' : 'Типо недоступен' }}</div>
-                <div class="event-item__name">
-                  {{ event.name }}
-                </div>
-                <div class="event-item__descr">
-                  {{ event.descr }}
-                </div>
-                <div class="event-item__bottom">
-                  <div class="event-item__bottom-left">
-                    <div v-if="event.oldPice" class="event-item__price event-item__price--old">
-                      {{ event.oldPice }}
-                    </div>
-                    <div class="event-item__price">{{ event.price ? event.price : 'БЕСПЛАТНО' }}</div>
-                    <div v-if="event.price" class="event-item__price event-item__price--unit">₽</div>
-                  </div>
-                  <div class="event-item__link">
-                    <a href="#">
-                      <span>Смотреть</span>
-                      <svg
-                        width="18"
-                        height="13"
-                        viewBox="0 0 18 13"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M17.7015 5.79768C17.8926 5.98078 18 6.22909 18 6.488C18 6.74691 17.8926 6.99522 17.7015 7.17833L11.9346 12.7019C11.8405 12.7952 11.728 12.8696 11.6037 12.9207C11.4793 12.9719 11.3455 12.9988 11.2101 13C11.0748 13.0011 10.9406 12.9764 10.8153 12.9273C10.69 12.8782 10.5762 12.8057 10.4804 12.714C10.3847 12.6223 10.309 12.5133 10.2578 12.3933C10.2065 12.2733 10.1807 12.1447 10.1819 12.0151C10.1831 11.8855 10.2112 11.7573 10.2646 11.6382C10.318 11.5191 10.3957 11.4113 10.4931 11.3213L14.5199 7.46442L1.01944 7.46442C0.749067 7.46442 0.489767 7.36155 0.298586 7.17843C0.107405 6.99532 0 6.74696 0 6.488C0 6.22904 0.107405 5.98069 0.298586 5.79757C0.489767 5.61446 0.749067 5.51159 1.01944 5.51159L14.5199 5.51159L10.4931 1.65474C10.3074 1.47059 10.2046 1.22395 10.2069 0.967933C10.2093 0.71192 10.3165 0.467022 10.5055 0.285987C10.6945 0.104951 10.9502 0.00226212 11.2175 3.71933e-05C11.4848 -0.00218773 11.7423 0.0962296 11.9346 0.274092L17.7015 5.79768Z"
-                          fill="#3AAA35"
-                        />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <TheBreadCrumbs :breadCrumbs="breadCrumbs" />   
+        <TheRecommendations 
+          :events="currentEvents.slice(0,6)"
+          :filterAccessTag="filterAccessTag"
+          @filter-items-access="filterEvents"
+          @modal-video-open="modalVideoOpen"
+        />
+        <ThePagination />
       </div>
     </section>    
   </main>
+
+  <the-modal-video-item 
+    v-if="isModalVideoItem" 
+    @close="closeModalItem" 
+    :frameSrc="modalVideoItemSrcFrame"
+  /> 
 </template>
 
 <script>
+import TheModalVideoItem from '~/components/modal/TheModalVideoItem.vue';
+
 export default {
+  components: { TheModalVideoItem },
   data() {
     return {      
       breadCrumbs: [
@@ -93,21 +35,23 @@ export default {
           current: true,
         }
       ],
-      filterEventsTag: '',      
+      isModalVideoItem: false,
+      modalVideoItemSrcFrame: '',
+      filterAccessTag: '',      
       events: [
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Семинар. Инвестиции в ...',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 0,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
           access: false
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Мастер-класс совместно с Тинькофф',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
@@ -119,7 +63,42 @@ export default {
           access: true
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
+          name: 'Встреча в Терра',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
+          date: '28 августа 2023 18:00',
+          place: 'МТС Арена',
+          placeUrl: '#',
+          access: false
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Семинар. Инвестиции в ...',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 0,
+          frame: '',
+          date: '28 августа 2023 18:00',
+          place: 'МТС Арена',
+          placeUrl: '#',
+          access: true
+        },
+        {
+          pic: '/image/event.jpg',
+          name: 'Мастер-класс совместно с Тинькофф',
+          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
+          price: 150,
+          oldPice: 200,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
+          date: '28 августа 2023 18:00',
+          place: 'МТС Арена',
+          placeUrl: '#',
+          access: true
+        },
+        {
+          pic: '/image/event.jpg',
           name: 'Встреча в Терра',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
@@ -131,18 +110,18 @@ export default {
           access: false
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Семинар. Инвестиции в ...',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 0,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
-          access: true
+          access: false
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Мастер-класс совместно с Тинькофф',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
@@ -154,222 +133,187 @@ export default {
           access: true
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Встреча в Терра',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
           access: false
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Семинар. Инвестиции в ...',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 0,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
-          access: false
+          access: true
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Мастер-класс совместно с Тинькофф',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
           access: true
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Встреча в Терра',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
           access: false
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Семинар. Инвестиции в ...',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 0,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
-          access: true
+          access: false
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Мастер-класс совместно с Тинькофф',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
           access: true
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Встреча в Терра',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
           access: false
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Семинар. Инвестиции в ...',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 0,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
-          access: false
+          access: true
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Мастер-класс совместно с Тинькофф',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
           access: true
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Встреча в Терра',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
           access: false
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Семинар. Инвестиции в ...',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 0,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
-          access: true
+          access: false
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Мастер-класс совместно с Тинькофф',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
           access: true
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Встреча в Терра',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
           access: false
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Семинар. Инвестиции в ...',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 0,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
-          access: false
+          access: true
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Мастер-класс совместно с Тинькофф',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
           access: true
         },
         {
-          pic: '/public/image/event.jpg',
+          pic: '/image/event.jpg',
           name: 'Встреча в Терра',
           descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
           price: 150,
           oldPice: 200,
-          frame: '',
-          date: '28 августа 2023 18:00',
-          place: 'МТС Арена',
-          placeUrl: '#',
-          access: false
-        },
-        {
-          pic: '/public/image/event.jpg',
-          name: 'Семинар. Инвестиции в ...',
-          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
-          price: 0,
-          frame: '',
-          date: '28 августа 2023 18:00',
-          place: 'МТС Арена',
-          placeUrl: '#',
-          access: true
-        },
-        {
-          pic: '/public/image/event.jpg',
-          name: 'Мастер-класс совместно с Тинькофф',
-          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
-          price: 150,
-          oldPice: 200,
-          frame: '',
-          date: '28 августа 2023 18:00',
-          place: 'МТС Арена',
-          placeUrl: '#',
-          access: true
-        },
-        {
-          pic: '/public/image/event.jpg',
-          name: 'Встреча в Терра',
-          descr: 'Lorem ipsum — классический текст-«рыба» Lorem ipsum — классический текст-«рыба»',
-          price: 150,
-          oldPice: 200,
-          frame: '',
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           date: '28 августа 2023 18:00',
           place: 'МТС Арена',
           placeUrl: '#',
@@ -380,14 +324,23 @@ export default {
     };
   },
   methods: {
+    modalVideoOpen(value) {
+      if(value) {
+        this.isModalVideoItem = true;
+        this.modalVideoItemSrcFrame = value.src
+      }
+    },
+    closeModalItem() {
+      this.isModalVideoItem = false;
+    }, 
     getEvents() {
       this.currentEvents = this.events
     },
-    filterEvents(tag) {
-      this.filterEventsTag = tag
-      if(tag === 'My') {         
+    filterEvents(value) {
+      this.filterAccessTag = value
+      if(value === 'My') {         
         this.currentEvents = this.events.filter(item => item.access === true)
-      }else if(tag === 'No') {
+      }else if(value === 'No') {
         this.currentEvents = this.events.filter(item => item.access === false)
       }else{
         this.currentEvents = this.events
@@ -401,60 +354,10 @@ export default {
 </script>
 
 <style lang="scss">
+
 .events {
-  &__title {
-    margin-bottom: 30px;
-  }
-  &__subtitle {
-    margin-bottom: 50px;
-    max-width: 800px
-  }
-  &__catalog {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 15px;
-    row-gap: 15px;
-    justify-content: space-between;  
-    
-    @media screen and (max-width: 767px) {
-      display: block;
-    }
-  }
-
-  &__item {
-    flex: 0 0 calc(100%/3 - 20px);
-    max-width: calc(100%/3 - 20px);
-
-    @media screen and (max-width: 991px) {
-      flex: 0 0 calc(100%/2 - 8px);
-      max-width: calc(100%/2 - 8px);
-    }
-
-    @media screen and (max-width: 767px) {
-      margin-bottom: 15px;
-      max-width: initial;
-    }
-  }
-
-  &__filters {
-    display: flex;
-    flex-wrap: wrap;
-    padding-right: 135px;
-    align-items: center;
-    column-gap: 15px;
-    row-gap: 15px;
-    margin-bottom: 24px;
-
-    @media screen and (max-width: 1023px) {
-      margin-bottom: 20px;
-    }
-
-    @media screen and (max-width: 767px) {
-      position: relative;
-      flex-wrap: nowrap;
-      overflow: auto;
-      white-space: nowrap;
-    }
+  .pagination {
+    margin-top: 30px;
   }
 }
 </style>

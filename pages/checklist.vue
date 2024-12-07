@@ -5,8 +5,8 @@
         <TheBreadCrumbs :breadCrumbs="breadCrumbs" />   
         <TheChecklists 
           :lessons = "currentLessons.slice(0,4)"
-          :filterLessonsTag="filterLessonsTag"
-          @filter-lessons="filterLessons"
+          :filterAccessTag="filterAccessTag"
+          @filter-items-access="filterLessons"
           @modal-video-open="modalVideoOpen"
         />    
         <ThePagination />
@@ -25,6 +25,7 @@
 import TheModalVideoItem from '~/components/modal/TheModalVideoItem.vue';
 
 export default {
+  components: { TheModalVideoItem },
   data() {
     return {
       breadCrumbs: [
@@ -34,7 +35,7 @@ export default {
           current: true,
         }
       ],
-      filterLessonsTag: '',
+      filterAccessTag: '',
       modalVideoItemSrcFrame: '',
       isModalVideoItem: false,
       lessons: [
@@ -257,8 +258,6 @@ export default {
         this.isModalVideoItem = true;
         this.modalVideoItemSrcFrame = value.src
       }
-
-      console.log(value)
     },
     closeModalItem() {
       this.isModalVideoItem = false;
@@ -267,7 +266,7 @@ export default {
       this.currentLessons = this.lessons
     },
     filterLessons(value) {
-      this.filterLessonsTag = value
+      this.filterAccessTag = value
       if(value === 'My') {         
         this.currentLessons = this.lessons.filter(item => item.access === true)
       }else if(value === 'No') {
@@ -282,5 +281,3 @@ export default {
   }
 } 
 </script>
-
-<style lang="scss"></style>
