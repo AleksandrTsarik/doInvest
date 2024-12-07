@@ -52,15 +52,16 @@
       </div>
     </div>
   </section>
-
   <section class="section-page">
     <div class="container order-placed-wrap">
-      <TheOfferItem :offers="offerList" offerTitle="ВИДЕОуроки" />
+      <TheOffers :offers="offerList" title="ВИДЕОуроки" />
       <ThePagination />
     </div>
   </section>
 </template>
 <script>
+import TheOffers from '~/components/TheOffers.vue';
+
 export default {
   data() {
     return {

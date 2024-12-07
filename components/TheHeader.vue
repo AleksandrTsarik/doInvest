@@ -83,6 +83,11 @@
                 <li><NuxtLink to="/registration">Reg</NuxtLink></li>
                 <li><NuxtLink to="/basket">Basket</NuxtLink></li>
                 <li><NuxtLink to="/order-placed">order-placed</NuxtLink></li>
+                <li>
+                  <NuxtLink to="/video-lessons-checlist-inner"
+                    >video-lessons-checlist-inner</NuxtLink
+                  >
+                </li>
               </ul>
             </div>
           </div>

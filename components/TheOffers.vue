@@ -1,6 +1,6 @@
 <template>
   <div class="offer">
-    <h2 class="offer__title title">{{ offerTitle }}</h2>
+    <h2 class="offer__title title" v-if="title">{{ title }}</h2>
     <div class="offer__list">
       <div class="offer__item" v-for="(offer, i) in offers" :key="i">
         <div class="offer__photo">
@@ -47,7 +47,7 @@ export default {
       type: Object,
       default: {},
     },
-    offerTitle: {
+    title: {
       type: String,
       default: '',
     },

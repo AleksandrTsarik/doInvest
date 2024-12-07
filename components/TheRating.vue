@@ -1,7 +1,7 @@
 <template>
-  <div class="rating-wrap">
-    <div class="rating-default"></div>
-    <div class="rating-active" :style="'width: '+(rate/5)*100+'%'"></div>
+  <div class="rating__wrap">
+    <div class="rating__default"></div>
+    <div class="rating__active" :style="'width: ' + (rate / 5) * 100 + '%'"></div>
   </div>
 </template>
 
@@ -19,12 +19,11 @@ export default {
 
 <style lang="scss">
 .rating {
-  &-wrap {
+  &__wrap {
     position: relative;
     width: 120px;
-  } 
-
-  &-default {    
+  }
+  &__default {
     width: 120px;
     height: 24px;
     background-image: url('@/assets/img/rating-default.svg');
@@ -32,8 +31,8 @@ export default {
     background-repeat: no-repeat;
     z-index: 1;
   }
-  &-active {  
-    position: absolute;  
+  &__active {
+    position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
@@ -43,6 +42,4 @@ export default {
     z-index: 2;
   }
 }
-
-
 </style>
