@@ -1,5 +1,6 @@
 <template>
   <div class="offer">
+    <h2 class="offer__title title">{{ offerTitle }}</h2>
     <div class="offer__list">
       <div class="offer__item" v-for="(offer, i) in offers" :key="i">
         <div class="offer__photo">
@@ -11,7 +12,7 @@
         </div>
         <div class="offer__info">
           <div v-if="offer.date" class="offer__date">{{ offer.date }}</div>
-          <div class="offer__title">{{ offer.title }}</div>
+          <div class="offer__theme">{{ offer.title }}</div>
           <div class="offer__text">{{ offer.text }}</div>
           <div class="offer__buy">
             <div v-if="offer.free" class="offer__free">Бесплатно</div>
@@ -46,6 +47,10 @@ export default {
       type: Object,
       default: {},
     },
+    offerTitle: {
+      type: String,
+      default: '',
+    },
   },
 };
 </script>
@@ -55,6 +60,12 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 15px;
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
   }
   &__item {
     border-radius: var(--raduisBig);
@@ -64,6 +75,11 @@ export default {
   }
   &__photo {
     position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
     .relative {
       position: absolute;
       right: 35px;
@@ -88,7 +104,7 @@ export default {
     background-color: rgb(var(--light));
     flex-grow: 1;
   }
-  &__title {
+  &__theme {
     font-size: 20px;
     font-weight: 700;
     line-height: 100%;
@@ -100,11 +116,14 @@ export default {
     flex-grow: 1;
     margin-bottom: 15px;
   }
-
+  &__free {
+    font-size: 20px;
+  }
   &__price {
     display: flex;
     align-items: center;
     gap: 5px;
+    font-size: 20px;
   }
   &__price-old {
     text-decoration: line-through;

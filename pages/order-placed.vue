@@ -1,14 +1,17 @@
 <template>
+  <div class="container">
+    <TheBreadCrumbs :breadCrumbs="breadCrumbs" />
+  </div>
   <section class="section-page">
     <div class="container">
       <div class="order-placed">
         <div class="order-placed__item">
           <h2 class="order-placed__title title">ЗАКАЗ №2122</h2>
-          <div class="order-placed__link-text">
+          <div class="order-placed__link-text t-24">
             <p>Ссылка на заказ:</p>
             <p>https://doinvest.ru/sdfsd3ff33</p>
           </div>
-          <div class="order-placed__link">
+          <div class="order-placed__link t-20">
             <p>
               Никому не отправляйте ссылку до входа или регистрации.
               <NuxtLink to="#">Почему?</NuxtLink>
@@ -57,7 +60,7 @@
 
   <section class="section-page">
     <div class="container">
-      <TheOfferItem :offers="offerList" />
+      <TheOfferItem :offers="offerList" offerTitle="ВИДЕОуроки" />
     </div>
   </section>
 </template>
@@ -125,8 +128,40 @@ export default {
           moreUrl: '#',
         },
       ],
+      breadCrumbs: [
+        {
+          name: 'Завершение заказа',
+          url: '#',
+          current: true,
+        },
+      ],
     };
   },
 };
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.order-placed {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+  &__title {
+    margin-bottom: 0.5em;
+  }
+  &__link-text {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5em;
+    a {
+      border-bottom: solid 1px;
+    }
+  }
+}
+</style>
