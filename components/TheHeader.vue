@@ -5,13 +5,21 @@
         <div class="header__logo header__left">
           <TheNetwork :type="'logo'" />
         </div>
-        <nav class="header-menu header__mid">
-          <ul class="header-menu__list">
-            <li v-for="(item, i) in menu" :key="i">
-              <NuxtLink :to="item.url">{{ item.name }}</NuxtLink>
-            </li>
-          </ul>
-        </nav>
+        <div class="header__mid">
+          <div @click="openBurger" :class="['burger-menu', { 'is-open': isOpenMenu }]">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <nav :class="['header-menu', { 'is-open': isOpenMenu }]">
+            <ul class="header-menu__list">
+              <li v-for="(item, i) in menu" :key="i">
+                <NuxtLink :to="item.url">{{ item.name }}</NuxtLink>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
         <div class="header__right header-user header-user__block">
           <div class="header-user__row">
             <TheSvg :type="'star'" />
@@ -23,9 +31,9 @@
             <span class="header-user__count color-primary">4 567</span>
           </div>
           <div class="header-user__row">
-            <p>andrew...</p>
+            <p class="header-user__row-name">andrew...</p>
             <div class="header-user__logo">
-              <img src="/public/image/user-ico.png" alt="user-ico">
+              <img src="/public/image/user-ico.png" alt="user-ico" />
             </div>
           </div>
           <div class="header-user__row header-burger">
@@ -41,30 +49,39 @@
                 class="header-drop-menu__logo"
                 @click="modalQuestion = true"
               /> -->
-              <ul class="header-drop-menu__list">
+              <ul class="header-drop-menu__list menu-drop-list">
                 <li v-for="(item, i) in dropMenu" :key="i">
                   <NuxtLink v-if="item.url" :to="item.url" class="header-drop-menu__item">
                     <p>
-                      {{ item.name }} 
-                      <p class="header-drop-menu__count" v-if="item.count">{{ item.count }}</p>
-                      <span v-if="item.tooltip" class="header-drop-menu__tooltip">{{ item.tooltip }}</span>
+                      {{ item.name }}
+                      <span class="header-drop-menu__count" v-if="item.count">{{
+                        item.count
+                      }}</span>
                     </p>
                   </NuxtLink>
                   <p v-else>{{ item.name }}</p>
                 </li>
-
+              </ul>
+              <ul class="header-drop-menu__list-second menu-drop-list">
+                <li>
+                  <NuxtLink to="#">
+                    Уведомления<span class="header-drop-menu__tooltip"></span>
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="#">Выход</NuxtLink>
+                </li>
+              </ul>
+              <ul class="menu-drop-list">
                 <!-- Удалить -->
-                <hr />
+
                 <br />
-                <li><b>PAGES</b></li>
-                <hr />
+                <li><b>PAGES Удалить</b></li>
                 <li><NuxtLink to="/education">education</NuxtLink></li>
                 <li><NuxtLink to="/personal-account">personal-account</NuxtLink></li>
                 <li><NuxtLink to="/analytics-filter">analytics-filter</NuxtLink></li>
                 <li><NuxtLink to="/registration">Reg</NuxtLink></li>
                 <li><NuxtLink to="/basket">Basket</NuxtLink></li>
-                
-                <br />
               </ul>
             </div>
           </div>
@@ -84,6 +101,7 @@ export default {
     return {
       modalQuestion: false,
       isActive: false,
+      isOpenMenu: false,
       menu: [
         {
           name: 'Видеоуроки',
@@ -105,10 +123,10 @@ export default {
           name: 'Аналитика',
           url: '#',
         },
-        {
-          name: 'Еще...',
-          url: '#',
-        },
+        // {
+        //   name: 'Еще...',
+        //   url: '#',
+        // },
       ],
       dropMenu: [
         {
@@ -136,15 +154,6 @@ export default {
           name: 'Мои события',
           url: '#',
         },
-        {
-          name: 'Мои события',
-          url: '#',
-          tooltip: ' ',
-        },
-        {
-          name: 'Выход',
-          url: '#',
-        },
       ],
     };
   },
@@ -152,14 +161,53 @@ export default {
     closeModal() {
       this.modalQuestion = false;
     },
-    openMenu: function () {
+    openMenu() {
       this.isActive = !this.isActive;
+    },
+    openBurger() {
+      this.isOpenMenu = !this.isOpenMenu;
     },
   },
 };
 </script>
 
 <style lang="scss">
+.burger-menu {
+  flex-direction: column;
+  justify-content: space-between;
+  width: 35px;
+  height: 20px;
+  cursor: pointer;
+  display: none;
+  @media (max-width: 1400px) {
+    display: flex;
+  }
+  span {
+    display: block;
+    background-color: rgb(var(--primary));
+    width: 100%;
+    height: 3px;
+    border-radius: 50px;
+  }
+}
+.menu-drop-list {
+  display: flex;
+  flex-direction: column;
+  li {
+    margin-bottom: 10px;
+    a {
+      font-size: 15px;
+      color: var(--text);
+      transition: 0.3s;
+      position: relative;
+      &:hover {
+        @media (min-width: 1023px) {
+          color: rgb(var(--primary));
+        }
+      }
+    }
+  }
+}
 .header {
   &__logo {
     a {
@@ -182,25 +230,63 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding: 40px 0;
-    @media(max-width: 1400px) {
-      grid-template-columns: auto 1fr;
+    @media (max-width: 1400px) {
+      grid-template-columns: 150px auto auto;
+      justify-content: normal;
     }
-
+    @media (max-width: 575px) {
+      grid-template-columns: 90px auto auto;
+    }
   }
   &__mid {
-    @media(max-width: 1400px) {
-      display: none;
-    }
+    display: flex;
+    align-items: center;
+    position: relative;
   }
   &__right {
     margin-left: auto;
   }
 }
 .header-menu {
+  @media (max-width: 1400px) {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    box-shadow: var(--shadow);
+    background-color: var(--bg);
+    z-index: 50;
+    border-radius: var(--raduisBig);
+    overflow: hidden;
+    visibility: hidden;
+    pointer-events: none;
+    height: 0;
+    padding: 0;
+    transform: translateY(-50px);
+    transition: 0.3s;
+    @media (max-width: 575px) {
+      left: 50%;
+      transform: translate(-50px, -50%);
+    }
+    &.is-open {
+      pointer-events: all;
+      height: auto;
+      visibility: visible;
+      transform: translateY(0);
+      padding: 35px 30px;
+      @media (max-width: 575px) {
+        transform: translate(-50%, 0);
+      }
+    }
+  }
   &__list {
     display: flex;
     align-items: center;
     gap: 25px;
+    @media (max-width: 1400px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
     li {
       white-space: nowrap;
       a {
@@ -209,7 +295,7 @@ export default {
         transition: 0.3s;
         position: relative;
         &::after {
-          content: "";
+          content: '';
           background-color: rgb(var(--primary));
           height: 1px;
           width: 0%;
@@ -221,12 +307,16 @@ export default {
           //left: 0%;
         }
         &:hover {
-          @media(min-width: 1023px) {
+          @media (min-width: 1400px) {
             color: rgb(var(--primary));
-            &::after, &::before {
+            &::after,
+            &::before {
               width: 100%;
               //left: 50%;
             }
+          }
+          @media (min-width: 1024px) {
+            color: rgb(var(--primary));
           }
         }
       }
@@ -237,27 +327,33 @@ export default {
   display: flex;
   align-items: center;
   gap: 30px;
-  @media(max-width: 768px) {
+  @media (max-width: 768px) {
     gap: 5px;
   }
-  &__block {}
+  &__block {
+  }
   &__row {
     display: flex;
     align-items: center;
     position: relative;
     z-index: 1;
     &:nth-child(1) {
-      @media(max-width: 768px) {
+      @media (max-width: 768px) {
         display: none;
       }
     }
     &:nth-child(2) {
-      @media(max-width: 768px) {
+      @media (max-width: 768px) {
         display: none;
       }
     }
     svg {
       margin-right: 0.3em;
+    }
+  }
+  &__row-name {
+    @media (max-width: 575px) {
+      display: none;
     }
   }
   &__count {
@@ -333,20 +429,24 @@ export default {
       }
     }
   }
+  &__list-second {
+    margin-top: 20px;
+  }
   &__item {
-    position: relative;
-    color: var(--text);
-    font-size: 18px;
-    transition: 0.3s;
-    &:hover {
-      @media(min-width: 1023px) {
-        color: rgb(var(--primary));
-      }
-    }
+    // position: relative;
+    // color: var(--text);
+    // font-size: 18px;
+    // transition: 0.3s;
+    // &:hover {
+    //   @media (min-width: 1023px) {
+    //     color: rgb(var(--primary));
+    //   }
+    // }
   }
   &__count {
     color: rgb(var(--primary));
     font-size: 10px;
+    display: block;
   }
   &__tooltip {
     display: block;
