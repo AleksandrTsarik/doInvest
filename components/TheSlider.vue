@@ -2,7 +2,7 @@
   <div class="slider-block">
     <div class="slider-block-top">
       <div class="slider-block-top__item">
-        <div class="slider-block__title title">Подпишитесь на полезный контент</div>
+        <h2 class="slider-block__title title">Подпишитесь на полезный контент</h2>
       </div>
       <div class="slider-block-top__item">
         <div class="slider-block-top__item-inner">

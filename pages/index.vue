@@ -1,30 +1,28 @@
 <template>
-  <main>
-    <div class="container">
-      <TheBreadCrumbs :breadCrumbs="breadCrumbs" />
-    </div>
+  <div class="container">
+    <TheBreadCrumbs :breadCrumbs="breadCrumbs" />
+  </div>
 
-    <section class="section-page">
-      <div class="container">
-        <div class="preview">
-          <div class="preview__wrap">
-            <div class="preview__item">
-              <div class="preview__name">Инвестор Данил Олимов</div>
-              <h1 class="preview__title">Первые шаги в мир инвестиций</h1>
-              <div class="preview__text">
-                Я и моя команда запустили программу для начинающих инвесторов, которая даст
-                практический навык составления сбалансированного и эффективного портфеля ценных
-                бумаг.
-              </div>
-            </div>
-            <div class="preview__item">
-              <div class="preview__iframe iframe">
-                <iframe src="" frameborder="0"></iframe>
-                <span class="video-icon" @click="modalVideo = true"></span>
-              </div>
+  <section class="section-page">
+    <div class="container">
+      <div class="preview">
+        <div class="preview__wrap">
+          <div class="preview__item">
+            <div class="preview__name">Инвестор Данил Олимов</div>
+            <h1 class="preview__title">Первые шаги в мир инвестиций</h1>
+            <div class="preview__text">
+              Я и моя команда запустили программу для начинающих инвесторов, которая даст
+              практический навык составления сбалансированного и эффективного портфеля ценных бумаг.
             </div>
           </div>
-          <!-- <div class="preview__wrapper">
+          <div class="preview__item">
+            <div class="preview__iframe iframe">
+              <iframe src="" frameborder="0"></iframe>
+              <span class="video-icon" @click="modalVideo = true"></span>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="preview__wrapper">
             <div class="preview__item">
               <h1 class="preview__title">Сервис аналитики Doinvest</h1>
               <div class="preview__text-block">
@@ -47,47 +45,47 @@
               </div>
             </div>
           </div> -->
-        </div>
       </div>
-      <the-modal-video v-if="modalVideo" @close="closeModal" />
-    </section>
+    </div>
+    <the-modal-video v-if="modalVideo" @close="closeModal" />
+  </section>
 
-    <!-- <section class="section-page">
+  <!-- <section class="section-page">
       <div class="container">
         <TheFilter />
       </div>
     </section> -->
 
-    <section class="section-page">
-      <div class="container">
-        <TheIntro />
-      </div>
-    </section>
+  <section class="section-page">
+    <div class="container">
+      <TheIntro />
+    </div>
+  </section>
 
-    <section class="section-page">
-      <div class="container">
-        <TheMentor />
-      </div>
-    </section>
+  <section class="section-page">
+    <div class="container">
+      <TheMentor />
+    </div>
+  </section>
 
-    <section class="section-page">
-      <div class="container">
-        <TheSliderExperts />
-      </div>
-    </section>
+  <section class="section-page">
+    <div class="container">
+      <TheSliderExperts />
+    </div>
+  </section>
 
-    <section class="section-page">
-      <div class="container">
-        <TheSliderFeedback />
-      </div>
-    </section>
+  <section class="section-page">
+    <div class="container">
+      <TheSliderFeedback />
+    </div>
+  </section>
 
-    <section class="section-page">
-      <div class="container">
-        <the-slider-big />
-      </div>
-    </section>
-    <!-- <section class="section-page">
+  <section class="section-page">
+    <div class="container">
+      <the-slider-big />
+    </div>
+  </section>
+  <!-- <section class="section-page">
       <div class="container">
         <div class="analytics">
           <div class="analytics__left">
@@ -146,7 +144,6 @@
         </div>
       </div>
     </section> -->
-  </main>
 </template>
 
 <script>

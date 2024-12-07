@@ -1,6 +1,6 @@
 <template>
   <div class="feedback">
-    <div class="feedback__title title">что думают о нас</div>
+    <h2 class="feedback__title title">что думают о нас</h2>
     <div class="feedback__subtitle t-24">
       Мы даем необходимые занния, подкрепляем их практическим опытом, чтобы люди совершали
       осознанные действия для сохранения и стабильного роста своего капитала.

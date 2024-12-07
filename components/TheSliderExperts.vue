@@ -1,6 +1,6 @@
 <template>
   <div class="experts">
-    <div class="experts__title title">Эксперты школы</div>
+    <h2 class="experts__title title">Эксперты школы</h2>
     <div class="experts__subtitle t-24">
       У вас появится возможность получить опыт от практикующих инвесторов и трейдеров в разных
       секторах рынка, которые составляют экспертный комитет школы и активно участвуют в
