@@ -18,6 +18,7 @@
 
 <script>
 export default {
+  emits: ['filter-items-access'],
   props: {
     filterAccessTag: {type: String, default: '', required: true}
   },

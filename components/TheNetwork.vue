@@ -328,6 +328,10 @@ export default {
       type: String,
       default: '',
     },
+    border: {
+      type: String,
+      default: '',
+    }
   },
 };
 </script>
