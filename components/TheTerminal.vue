@@ -59,7 +59,26 @@
           коммерческом или публичном проекте, ссылка на наш сервис обязательна.
         </div>
       </div>
-      <div class="terminal__bottom"></div>
+      <div class="terminal__bottom terminal-bottom">
+        <div class="terminal-bottom__video">
+          <div class="terminal-bottom__img">
+            <img src="/image/terminal.jpg" alt="..." />
+            <div class="relative">
+              <span
+                class="video-icon"
+                @click="
+                  modalVideoOpen('https://rutube.ru/play/embed/d6b377d1402953bd9831f5fb42fdd8ec/')
+                "
+              ></span>
+            </div>
+          </div>
+        </div>
+        <div class="terminal-bottom__links">
+          <NuxtLink to="#"><TheSvg :type="'arrow-left'" /> Вернуться ко всем урокам</NuxtLink>
+          <NuxtLink to="#">Остались вопросы?</NuxtLink>
+          <NuxtLink to="#">Следующий урок <TheSvg :type="'arrow-right'" /></NuxtLink>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -84,9 +103,66 @@ export default {
   }
 }
 .terminal-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  &__item {
+  }
+  &__video {
+  }
+  &__img {
+    position: relative;
+    overflow: hidden;
+    .relative {
+      position: absolute;
+      right: 70px;
+      bottom: 95px;
+    }
+    img {
+      border-radius: var(--raduisBig);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 }
 .terminal-mid {
+  margin: 120px 0 90px;
+  &__title {
+    text-align: center;
+    margin-bottom: 10px;
+  }
 }
 .terminal-bottom {
+  &__links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+    a {
+      color: rgb(var(--primary));
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+  &__img {
+    position: relative;
+    overflow: hidden;
+    .relative {
+      position: absolute;
+      right: 50%;
+      bottom: 50%;
+      transform: translate(-50%, -50%);
+    }
+    img {
+      border-radius: var(--raduisBig);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 }
 </style>

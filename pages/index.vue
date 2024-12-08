@@ -98,7 +98,7 @@
 
   <section class="section-page">
     <div class="container">
-      <TheIntro />
+      <TheIntro @modal-video-open="modalVideoOpen" />
     </div>
   </section>
 
