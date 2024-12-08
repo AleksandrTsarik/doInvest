@@ -35,7 +35,12 @@
         <div class="intro__more">
           <NuxtLink class="btn btn-light" to="#">Читать далее</NuxtLink>
           <div class="intro__play relative">
-            <span class="video-icon video-icon--small"></span>
+            <span
+              class="video-icon video-icon--small"
+              @click="
+                modalVideoOpen('https://rutube.ru/play/embed/d6b377d1402953bd9831f5fb42fdd8ec/')
+              "
+            ></span>
           </div>
         </div>
       </div>
@@ -43,7 +48,13 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  methods: {
+    modalVideoOpen(frameSrc) {
+      this.$emit('modal-video-open', { src: frameSrc });
+    },
+  },
+};
 </script>
 <style lang="scss">
 .intro {

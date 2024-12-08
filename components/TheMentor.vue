@@ -5,7 +5,12 @@
         <div class="mentor-head__row">
           <h2 class="mentor__title title">ЛИЧНОЕ НАСТАВНИЧЕСТВО</h2>
           <div class="relative">
-            <span class="video-icon video-icon--small"></span>
+            <span
+              class="video-icon video-icon--small"
+              @click="
+                modalVideoOpen('https://rutube.ru/play/embed/d6b377d1402953bd9831f5fb42fdd8ec/')
+              "
+            ></span>
           </div>
         </div>
         <div class="mentor-head__row">

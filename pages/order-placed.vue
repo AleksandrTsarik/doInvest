@@ -54,24 +54,33 @@
   </section>
   <section class="section-page">
     <div class="container order-placed-wrap">
-      <TheOffers :offers="offerList" title="ВИДЕОуроки" />
+      <TheOffers :offers="offerList" title="ВИДЕОуроки" @modal-video-open="modalVideoOpen" />
       <ThePagination />
     </div>
   </section>
+  <ModalTheModalVideoItem
+    v-if="isModalVideoItem"
+    @close="closeModalItem"
+    :frameSrc="modalVideoItemSrcFrame"
+  />
 </template>
+
 <script>
 import TheOffers from '~/components/TheOffers.vue';
 
 export default {
   data() {
     return {
+      modalVideoItemSrcFrame: '',
+      isModalVideoItem: false,
+      modalVideo: false,
       offerList: [
         {
           img: '/image/event.jpg',
           tooltip: 'Доступ открыт',
           title: 'Что такое опцион и почему не нужно его покупать',
           text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit',
-          video: true,
+          frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           free: true,
           moreUrl: '#',
         },
@@ -79,7 +88,7 @@ export default {
           img: '/image/event.jpg',
           title: 'Что такое опцион и почему не нужно его покупать',
           text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt sit officiis assumenda pariatur quod, velit illum?',
-          video: true,
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
 
           priceold: '200',
           pricenew: '150',
@@ -89,7 +98,7 @@ export default {
           img: '/image/event.jpg',
           title: 'Что такое опцион и почему не нужно его покупать',
           text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt sit officiis assumenda pariatur quod, velit illum?',
-          video: false,
+          frame: false,
           free: false,
           priceold: '200',
           pricenew: '150',
@@ -100,7 +109,7 @@ export default {
           tooltip: 'Доступ открыт',
           title: 'Что такое опцион и почему не нужно его покупать',
           text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit',
-          video: true,
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           free: true,
           moreUrl: '#',
         },
@@ -108,7 +117,7 @@ export default {
           img: '/image/event.jpg',
           title: 'Что такое опцион и почему не нужно его покупать',
           text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt sit officiis assumenda pariatur quod, velit illum?',
-          video: false,
+          frame: '',
 
           priceold: '200',
           pricenew: '150',
@@ -118,7 +127,7 @@ export default {
           img: '/image/event.jpg',
           title: 'Что такое опцион и почему не нужно его покупать',
           text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt sit officiis assumenda pariatur quod, velit illum?',
-          video: true,
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           free: false,
           priceold: '200',
           pricenew: '150',
@@ -133,6 +142,17 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    modalVideoOpen(value) {
+      if (value) {
+        this.isModalVideoItem = true;
+        this.modalVideoItemSrcFrame = value.src;
+      }
+    },
+    closeModalItem() {
+      this.isModalVideoItem = false;
+    },
   },
 };
 </script>

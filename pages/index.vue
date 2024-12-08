@@ -64,6 +64,7 @@
         @search-video-theme="searchVideoTheme"
         @filter-video-lessons="filterVideoLessons"
         @modal-video-open="modalVideoOpen"
+        title="начни смотреть видеоуроки по инвестициям"
       />
       <div class="section-page__all-link">
         <NuxtLink class="btn" to="#">Показать другие уроки</NuxtLink>
@@ -97,7 +98,7 @@
 
   <section class="section-page">
     <div class="container">
-      <TheIntro />
+      <TheIntro @modal-video-open="modalVideoOpen" />
     </div>
   </section>
 
@@ -402,6 +403,7 @@ export default {
       currentMaterials: [],
       tagsMaterials: [],
       // КОНЕЦ Данные блока полезных материалов
+
       // НАЧАЛО Данные блока событий
       events: [
         {
@@ -470,6 +472,7 @@ export default {
         },
       ],
       // КОНЕЦ Данные блока событий
+
       // НАЧАЛО Данные блока статей
       articles: [
         {
@@ -525,6 +528,7 @@ export default {
         },
       ],
       // КОНЕЦ Данные блока статей
+
       // НАЧАЛО Данные блока видеоуроков
       videoSearchDrop: false,
       videoThemes: [
