@@ -13,16 +13,13 @@
     :breakpoints="options.breakpoints"
     :effect="options.effect"
     :mousewheel="options.mousewheel"
+    :autoHeight="options.autoHeight"
   >
     <SwiperSlide v-for="(slide, i) in slider" :key="i">
       <div class="event-item">
         <div class="event-item__photo">
           <a href="#"><img src="/public/image/event.jpg" alt="" /></a>
-          <span 
-            v-if="slide.frame"
-            class="video-icon" 
-            @click="modalVideoOpen(slide.frame)">
-          </span>
+          <span v-if="slide.frame" class="video-icon" @click="modalVideoOpen(slide.frame)"> </span>
         </div>
         <div class="event-item__info">
           <div v-if="slide.date" class="event-item__date">
@@ -88,6 +85,7 @@
     :breakpoints="options.breakpoints"
     :effect="options.effect"
     :mousewheel="options.mousewheel"
+    :autoHeight="options.autoHeight"
   >
     <SwiperSlide v-for="(slide, i) in slider" :key="i">
       <div v-if="typeSlider === 'feedback'" class="feedback-slide">
@@ -100,6 +98,33 @@
           </div>
           <div class="feedback-slide__name t-32">{{ slide.name }}</div>
         </div>
+      </div>
+
+      <div v-if="typeSlider === 'feedback-item'" class="feedback-item-slide">
+        <div class="feedback-item-slide__wrap">
+          <div class="feedback-item-slide__head">
+            <div class="feedback-item-slide__photo">
+              <img :src="slide.photo" :alt="slide.alt" />
+            </div>
+            <div class="feedback-item-slide__name t-18">{{ slide.name }}</div>
+          </div>
+          <div class="feedback-item-slide__body">
+            <div class="feedback-item-slide__text t-18">{{ slide.text }}</div>
+          </div>
+          <div class="feedback-item-slide__footer">
+            <NuxtLink :to="slide.url">Читать полностью</NuxtLink>
+          </div>
+        </div>
+
+        <!-- <div class="feedback-slide__item">
+          <div class="feedback-slide__photo">
+            <img :src="slide.photo" :alt="slide.alt" loading="lazy" />
+            <div v-if="slide.video" class="relative">
+              <span class="video-icon video-icon--small"></span>
+            </div>
+          </div>
+          <div class="feedback-slide__name t-32">{{ slide.name }}</div>
+        </div> -->
       </div>
 
       <div v-else-if="typeSlider === 'experts'" class="expert-slide">
@@ -164,9 +189,9 @@ export default {
 
   methods: {
     modalVideoOpen(frameSrc) {
-      this.$emit('modal-video-open', {src: frameSrc})
-    }
-  }
+      this.$emit('modal-video-open', { src: frameSrc });
+    },
+  },
 };
 </script>
 

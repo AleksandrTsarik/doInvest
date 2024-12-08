@@ -6,8 +6,8 @@
         <div class="offer__photo">
           <img :src="offer.img" :alt="offer.item" />
           <span class="offer__tooltip" v-if="offer.tooltip">{{ offer.tooltip }}</span>
-          <div v-if="offer.video" class="relative">
-            <span class="video-icon video-icon--small"></span>
+          <div v-if="offer.iframe" class="relative">
+            <span class="video-icon video-icon--small" @click="modalVideoOpen(offer.frame)"></span>
           </div>
         </div>
         <div class="offer__info">
@@ -50,6 +50,11 @@ export default {
     title: {
       type: String,
       default: '',
+    },
+  },
+  methods: {
+    modalVideoOpen(frameSrc) {
+      this.$emit('modal-video-open', { src: frameSrc });
     },
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="section-page__title title">начни смотреть видеоуроки по инвестициям</div>
+    <div class="section-page__title title">{{ title }}</div>
     <div class="video-lessons__top">
       <div class="video-lessons__themes video-lessons-themes">
         <div class="video-lessons-themes__caption" @click="videoSearchDrop = !videoSearchDrop">
@@ -17,57 +17,49 @@
 
         <div v-if="videoSearchDrop" class="video-lessons-themes__body">
           <div class="video-lessons-themes__search">
-            <input v-model="videoSearchField" @input="searchVideoTheme" type="text" placeholder="Поиск по темам">
+            <input
+              v-model="videoSearchField"
+              @input="searchVideoTheme"
+              type="text"
+              placeholder="Поиск по темам"
+            />
             <!-- FIXME прикрутить иконку через компонент TheSvg  -->
             <span class="video-lessons-themes__search--ico"></span>
           </div>
-          
-            <ul class="video-lessons-themes__list">
-              <perfect-scrollbar :options="{suppressScrollX: true, wheelSpeed: .15}" @ps-scroll-y.stop="scrollOffBody">
-              <li 
-                v-for="(theme, i) in videoThemes" 
+
+          <ul class="video-lessons-themes__list">
+            <perfect-scrollbar
+              :options="{ suppressScrollX: true, wheelSpeed: 0.15 }"
+              @ps-scroll-y.stop="scrollOffBody"
+            >
+              <li
+                v-for="(theme, i) in videoThemes"
                 :key="i"
                 class="video-lessons-themes__item"
-                @click="filterVideoLessons(theme.id)">
+                @click="filterVideoLessons(theme.id)"
+              >
                 {{ theme.name }}
-                </li>
-                </perfect-scrollbar>
-            </ul> 
+              </li>
+            </perfect-scrollbar>
+          </ul>
         </div>
-
       </div>
       <div class="video-lessons__access">
-        <div class="video-lessons__access-title">
-          Безлимитный доступ к урокам
-        </div>
+        <div class="video-lessons__access-title">Безлимитный доступ к урокам</div>
         <div class="video-lessons__access-btn">
-          <UITheButton 
-            :class="['btn', 'btn-dark']" 
-            :label="'Получить доступ'">
-          </UITheButton>
+          <UITheButton :class="['btn', 'btn-dark']" :label="'Получить доступ'"> </UITheButton>
         </div>
       </div>
-      
     </div>
 
     <div class="video-lessons__catalog">
-      <div 
-        v-for="(video, i) in videoLessons"
-        :key="i"
-        class="video-lessons__item">
+      <div v-for="(video, i) in videoLessons" :key="i" class="video-lessons__item">
         <div class="event-item">
           <div class="event-item__photo">
             <a href="#"><img src="/public/image/event.jpg" alt="" /></a>
-            <span 
-              v-if="video.frame"
-              class="video-icon" 
-              @click="modalVideoOpen(video.frame)">
+            <span v-if="video.frame" class="video-icon" @click="modalVideoOpen(video.frame)">
             </span>
-            <span
-              v-if="video.access"
-              class="event-item__access-shield">
-              Доступ открыт
-            </span>
+            <span v-if="video.access" class="event-item__access-shield"> Доступ открыт </span>
           </div>
           <div class="event-item__info">
             <div class="event-item__name event-item__name--full">
@@ -105,7 +97,7 @@
           </div>
         </div>
       </div>
-    </div>    
+    </div>
   </div>
 </template>
 <script>
@@ -114,29 +106,30 @@
 export default {
   props: {
     videoLessons: { type: Array, default: [], require: true },
-    videoThemes: { type: Array, default: [], require: true }
+    videoThemes: { type: Array, default: [], require: true },
+    title: { type: String, default: '' },
   },
   data() {
     return {
       videoSearchField: '',
-      videoSearchDrop: false
-    }
+      videoSearchDrop: false,
+    };
   },
   methods: {
     searchVideoTheme() {
-      this.$emit('search-video-theme', this.videoSearchField)
+      this.$emit('search-video-theme', this.videoSearchField);
     },
     filterVideoLessons(themeId) {
-      this.$emit('filter-video-lessons', themeId)
+      this.$emit('filter-video-lessons', themeId);
     },
     modalVideoOpen(frameSrc) {
-      this.$emit('modal-video-open', {src: frameSrc})
+      this.$emit('modal-video-open', { src: frameSrc });
     },
     scrollOffBody() {
-      console.log('Тест')
-    }
-  }
-}
+      console.log('Тест');
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -154,7 +147,7 @@ export default {
 
   &__themes {
     flex: 0 0 calc(50% - 15px);
-    max-width: calc(50% - 15px); 
+    max-width: calc(50% - 15px);
 
     @media screen and (max-width: 991px) {
       flex: 0 0 100%;
@@ -165,8 +158,8 @@ export default {
   &__catalog {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 15px;  
-    row-gap: 15px;  
+    column-gap: 15px;
+    row-gap: 15px;
     justify-content: space-between;
     @media screen and (max-width: 991px) {
       flex-wrap: wrap;
@@ -175,24 +168,24 @@ export default {
   }
 
   &__item {
-    flex: 0 0 calc(100%/3 - 15px);
-    max-width: calc(100%/3 - 15px);
+    flex: 0 0 calc(100% / 3 - 15px);
+    max-width: calc(100% / 3 - 15px);
 
     @media screen and (max-width: 991px) {
-      flex: 0 0 calc(100%/2 - 8px);
-      max-width: calc(100%/2 - 8px);
+      flex: 0 0 calc(100% / 2 - 8px);
+      max-width: calc(100% / 2 - 8px);
     }
 
     @media screen and (max-width: 767px) {
       flex: 0 0 100%;
-      max-width: initial
+      max-width: initial;
     }
   }
 
   &__access {
     display: flex;
     flex-direction: column;
-    row-gap: 9px;    
+    row-gap: 9px;
 
     @media screen and (max-width: 991px) {
       flex-direction: row;
@@ -228,16 +221,16 @@ export default {
   &__title {
     font-size: 32px;
     color: var(--text);
-    font-weight: 500;  
+    font-weight: 500;
     @media screen and (max-width: 767px) {
       font-size: 24px;
-    }  
+    }
   }
 
   &__drop {
     padding: 12px 0;
     display: flex;
-    align-items: center;  
+    align-items: center;
     column-gap: 12px;
     margin-right: 20px;
     cursor: pointer;
@@ -246,7 +239,7 @@ export default {
     &-info {
       font-size: 16px;
       font-weight: 500;
-      color: #49454F;
+      color: #49454f;
       @media screen and (max-width: 767px) {
         display: none;
       }
@@ -260,7 +253,7 @@ export default {
 
       div {
         height: 2px;
-        background-color: #49454F;
+        background-color: #49454f;
       }
     }
   }
@@ -301,46 +294,45 @@ export default {
     input {
       width: 100%;
       height: 56px;
-      background-color: #EEEEEE;
+      background-color: #eeeeee;
       border-radius: 10px;
       padding-left: 20px;
       // FIXME поправить семейство шрифотов по макету
       font-family: 'Montserrat', sans-serif;
       font-size: 16px;
       font-weight: 500;
-      color: #49454F;
+      color: #49454f;
 
       &::placeholder {
         font-style: 16px;
         font-weight: 500;
-        color: #49454F;
+        color: #49454f;
       }
     }
   }
 
   &__list {
     margin-right: -40px;
-    margin-top: 20px;   
+    margin-top: 20px;
 
     @media screen and (max-width: 767px) {
       margin-right: -15px;
     }
-
   }
 
   &__item {
     padding: 16px 10px;
     font-size: 20px;
     color: var(--text);
-    border-bottom: solid 1px #3F3F3F;   
-    margin-right: 40px; 
+    border-bottom: solid 1px #3f3f3f;
+    margin-right: 40px;
     @media screen and (max-width: 767px) {
       font-size: 15px;
       margin-right: 15px;
     }
 
     &:first-child {
-      border-top: solid 1px #3F3F3F; 
+      border-top: solid 1px #3f3f3f;
     }
 
     &:hover {
@@ -348,6 +340,6 @@ export default {
         text-decoration: underline;
       }
     }
-  } 
+  }
 }
 </style>

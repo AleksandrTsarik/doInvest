@@ -58,7 +58,13 @@
       <ThePagination />
     </div>
   </section>
+  <ModalTheModalVideoItem
+    v-if="isModalVideoItem"
+    @close="closeModalItem"
+    :frameSrc="modalVideoItemSrcFrame"
+  />
 </template>
+
 <script>
 import TheOffers from '~/components/TheOffers.vue';
 
@@ -71,7 +77,7 @@ export default {
           tooltip: 'Доступ открыт',
           title: 'Что такое опцион и почему не нужно его покупать',
           text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit',
-          video: true,
+          iframe: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
           free: true,
           moreUrl: '#',
         },
@@ -89,7 +95,7 @@ export default {
           img: '/image/event.jpg',
           title: 'Что такое опцион и почему не нужно его покупать',
           text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt sit officiis assumenda pariatur quod, velit illum?',
-          video: false,
+          iframe: false,
           free: false,
           priceold: '200',
           pricenew: '150',
@@ -100,7 +106,7 @@ export default {
           tooltip: 'Доступ открыт',
           title: 'Что такое опцион и почему не нужно его покупать',
           text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit',
-          video: true,
+          iframe: true,
           free: true,
           moreUrl: '#',
         },
@@ -108,7 +114,7 @@ export default {
           img: '/image/event.jpg',
           title: 'Что такое опцион и почему не нужно его покупать',
           text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt sit officiis assumenda pariatur quod, velit illum?',
-          video: false,
+          iframe: false,
 
           priceold: '200',
           pricenew: '150',
@@ -118,7 +124,7 @@ export default {
           img: '/image/event.jpg',
           title: 'Что такое опцион и почему не нужно его покупать',
           text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt sit officiis assumenda pariatur quod, velit illum?',
-          video: true,
+          iframe: true,
           free: false,
           priceold: '200',
           pricenew: '150',
