@@ -6,7 +6,7 @@
         <div class="offer__photo">
           <img :src="offer.img" :alt="offer.item" />
           <span class="offer__tooltip" v-if="offer.tooltip">{{ offer.tooltip }}</span>
-          <div v-if="offer.iframe" class="relative">
+          <div v-if="offer.frame" class="relative">
             <span class="video-icon video-icon--small" @click="modalVideoOpen(offer.frame)"></span>
           </div>
         </div>
