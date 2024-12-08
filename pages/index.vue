@@ -58,8 +58,8 @@
 
   <section class="section-page video-lessons">
     <div class="container">
-      <TheVideo 
-        :videoLessons="currentVideoLessons.slice(0,3)"
+      <TheVideo
+        :videoLessons="currentVideoLessons.slice(0, 3)"
         :videoThemes="currentVideoThemes"
         @search-video-theme="searchVideoTheme"
         @filter-video-lessons="filterVideoLessons"
@@ -69,27 +69,21 @@
         <NuxtLink class="btn" to="#">Показать другие уроки</NuxtLink>
       </div>
     </div>
-  </section>  
+  </section>
 
   <section class="section-page">
     <div class="container">
-      <TheArticles 
-        :articles="articles"
-        @modal-video-open="modalVideoOpen"
-      />
+      <TheArticles :articles="articles" @modal-video-open="modalVideoOpen" />
     </div>
   </section>
 
   <section class="section-page">
     <div class="container">
-      <TheEvents 
-        :events="events" 
-        @modal-video-open="modalVideoOpen"
-      />
+      <TheEvents :events="events" @modal-video-open="modalVideoOpen" />
     </div>
-  </section>  
+  </section>
 
-  <section class="section-page materials">
+  <!-- <section class="section-page materials">
     <div class="container">
       <TheMaterials 
         :materials="currentMaterials"  
@@ -99,7 +93,7 @@
         @modal-video-open="modalVideoOpen"
       />
     </div>
-  </section>  
+  </section>   -->
 
   <section class="section-page">
     <div class="container">
@@ -109,7 +103,7 @@
 
   <section class="section-page">
     <div class="container">
-      <TheMentor />
+      <TheMentor @modal-video-open="modalVideoOpen" />
     </div>
   </section>
 
@@ -130,72 +124,12 @@
       <the-slider-big />
     </div>
   </section>
-  <!-- <section class="section-page">
-      <div class="container">
-        <div class="analytics">
-          <div class="analytics__left">
-            <div class="analytics__title title">Получайте аналитику удобным способом</div>
-            <div class="analytics__list">
-              <NuxtLink to="/" class="analytics-item">
-                <div class="analytics-item__inner">
-                  <div class="analytics-item__name t-24">E-mail</div>
-                  <div class="analytics-item__ico"><TheSvg :type="'email'" /></div>
-                </div>
-              </NuxtLink>
-              <NuxtLink to="/" class="analytics-item">
-                <div class="analytics-item__inner">
-                  <div class="analytics-item__name t-24">Телеграм</div>
-                  <div class="analytics-item__ico"><TheSvg :type="'telegram'" /></div>
-                </div>
-              </NuxtLink>
-              <NuxtLink to="/" class="analytics-item">
-                <div class="analytics-item__inner">
-                  <div class="analytics-item__name t-24">WhatsApp</div>
-                  <div class="analytics-item__ico"><TheSvg :type="'whatsapp'" /></div>
-                </div>
-              </NuxtLink>
-              <NuxtLink to="/" class="analytics-item">
-                <div class="analytics-item__inner">
-                  <div class="analytics-item__name t-24">Viber</div>
-                  <div class="analytics-item__ico"><TheSvg :type="'viber'" /></div>
-                </div>
-              </NuxtLink>
-            </div>
-            <div class="analytics__name t-32">Дополнительные форматы</div>
-            <div class="analytics__list">
-              <NuxtLink to="/" class="analytics-item">
-                <div class="analytics-item__inner">
-                  <div class="analytics-item__name t-24">RSS</div>
-                  <div class="analytics-item__ico"><TheSvg :type="'rss'" /></div>
-                </div>
-              </NuxtLink>
-              <NuxtLink to="/" class="analytics-item">
-                <div class="analytics-item__inner">
-                  <div class="analytics-item__name t-24">PDF</div>
-                  <div class="analytics-item__ico"><TheSvg :type="'pdf'" /></div>
-                </div>
-              </NuxtLink>
-              <NuxtLink to="/" class="analytics-item">
-                <div class="analytics-item__inner">
-                  <div class="analytics-item__name t-24">JSON</div>
-                  <div class="analytics-item__ico"><TheSvg :type="'json'" /></div>
-                </div>
-              </NuxtLink>
-            </div>
-          </div>
-          <div class="analytics__right">
-            <img src="@/assets/img/analytics.jpeg" alt="" />
-          </div>
-        </div>
-      </div>
-    </section> -->
 
-  <the-modal-video-item 
-    v-if="isModalVideoItem" 
-    @close="closeModalItem" 
+  <the-modal-video-item
+    v-if="isModalVideoItem"
+    @close="closeModalItem"
     :frameSrc="modalVideoItemSrcFrame"
-  />   
-
+  />
 </template>
 
 <script>
@@ -541,14 +475,16 @@ export default {
         {
           pic: '/public/image/event.jpg',
           name: 'Заголовок',
-          descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
+          descr:
+            'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
           price: 0,
           frame: 'https://www.youtube.com/embed/1u-jamdlQfY?si=pz1dlPCCUPrO2imX',
         },
         {
           pic: '/public/image/event.jpg',
           name: 'Заголовок',
-          descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
+          descr:
+            'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
           price: 150,
           oldPice: 200,
           frame: '',
@@ -556,14 +492,16 @@ export default {
         {
           pic: '/public/image/event.jpg',
           name: 'Заголовок',
-          descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
+          descr:
+            'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
           price: 0,
           frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
         },
         {
           pic: '/public/image/event.jpg',
           name: 'Заголовок',
-          descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
+          descr:
+            'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
           price: 150,
           oldPice: 200,
           frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
@@ -571,18 +509,20 @@ export default {
         {
           pic: '/public/image/event.jpg',
           name: 'Заголовок',
-          descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
+          descr:
+            'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
           price: 0,
           frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
         },
         {
           pic: '/public/image/event.jpg',
           name: 'Заголовок',
-          descr: 'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
+          descr:
+            'Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель)',
           price: 150,
           oldPice: 200,
           frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
-        }        
+        },
       ],
       // КОНЕЦ Данные блока статей
       // НАЧАЛО Данные блока видеоуроков
@@ -590,75 +530,75 @@ export default {
       videoThemes: [
         {
           id: 1,
-          name: 'Что такое инвестиции?'
+          name: 'Что такое инвестиции?',
         },
         {
           id: 2,
-          name: 'Как оценивать инвестиции?'
+          name: 'Как оценивать инвестиции?',
         },
         {
           id: 3,
-          name: 'Как оценивать риски?'
+          name: 'Как оценивать риски?',
         },
         {
           id: 4,
-          name: 'Что такое инвестиции?'
+          name: 'Что такое инвестиции?',
         },
         {
           id: 5,
-          name: 'Как оценивать инвестиции?'
+          name: 'Как оценивать инвестиции?',
         },
         {
           id: 6,
-          name: 'Как оценивать риски?'
+          name: 'Как оценивать риски?',
         },
         {
           id: 7,
-          name: 'Что такое инвестиции?'
+          name: 'Что такое инвестиции?',
         },
         {
           id: 8,
-          name: 'Как оценивать инвестиции?'
+          name: 'Как оценивать инвестиции?',
         },
         {
           id: 9,
-          name: 'Как оценивать риски?'
+          name: 'Как оценивать риски?',
         },
         {
           id: 10,
-          name: 'Что такое инвестиции?'
+          name: 'Что такое инвестиции?',
         },
         {
           id: 11,
-          name: 'Как оценивать инвестиции?'
+          name: 'Как оценивать инвестиции?',
         },
         {
           id: 12,
-          name: 'Как оценивать риски?'
+          name: 'Как оценивать риски?',
         },
         {
           id: 13,
-          name: 'Что такое инвестиции?'
+          name: 'Что такое инвестиции?',
         },
         {
           id: 14,
-          name: 'Как оценивать инвестиции?'
+          name: 'Как оценивать инвестиции?',
         },
         {
           id: 15,
-          name: 'Как оценивать риски?'
+          name: 'Как оценивать риски?',
         },
         {
           id: 16,
-          name: 'Что такое инвестиции?'
+          name: 'Что такое инвестиции?',
         },
         {
           id: 17,
-          name: 'Как оценивать инвестиции?'
+          name: 'Как оценивать инвестиции?',
         },
         {
           id: 18,
-          name: 'Как оценивать риски?'
+          name: 'Как оценивать риски?',
         },
       ],
       videoSearchField: '',
@@ -750,7 +690,7 @@ export default {
           oldPice: 200,
           frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
           access: true,
-        }
+        },
       ],
       currentVideoLessons: [],
       // КОНЕЦ Данные блока видеоуроков
@@ -759,35 +699,35 @@ export default {
 
   methods: {
     modalVideoOpen(value) {
-      if(value) {
+      if (value) {
         this.isModalVideoItem = true;
-        this.modalVideoItemSrcFrame = value.src
+        this.modalVideoItemSrcFrame = value.src;
       }
-
-      console.log(value)
     },
     closeModalItem() {
       this.isModalVideoItem = false;
-    }, 
+    },
     closeModal() {
       this.modalVideo = false;
-    },    
+    },
     searchVideoTheme(value) {
-      if(value) {
-        this.currentVideoThemes = this.videoThemes.filter(item => item.name.toLowerCase().includes(value.toLowerCase())) 
-      }else{
-        this.currentVideoThemes = this.videoThemes
+      if (value) {
+        this.currentVideoThemes = this.videoThemes.filter((item) =>
+          item.name.toLowerCase().includes(value.toLowerCase())
+        );
+      } else {
+        this.currentVideoThemes = this.videoThemes;
       }
     },
     getVideoThemes() {
-      this.currentVideoThemes = this.videoThemes
+      this.currentVideoThemes = this.videoThemes;
     },
     filterVideoLessons(value) {
-      let themeId = value 
-      this.currentVideoLessons = this.videoLessons.filter(item => item.themeId === themeId)
+      let themeId = value;
+      this.currentVideoLessons = this.videoLessons.filter((item) => item.themeId === themeId);
     },
     getVideoLessons() {
-      this.currentVideoLessons = this.videoLessons
+      this.currentVideoLessons = this.videoLessons;
     },
     getTags() {
       this.materials.map((item) => {
@@ -809,11 +749,11 @@ export default {
     },
   },
   mounted() {
-    this.getVideoThemes()
-    this.getVideoLessons()
-    this.getTags()
-    this.filterMaterials()
-  }
+    this.getVideoThemes();
+    this.getVideoLessons();
+    this.getTags();
+    this.filterMaterials();
+  },
 };
 </script>
 

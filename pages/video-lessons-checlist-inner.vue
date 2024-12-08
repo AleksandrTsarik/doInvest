@@ -4,20 +4,28 @@
   </div>
   <section class="section-page">
     <div class="container">
-      <TheTerminal />
+      <TheTerminal @modal-video-open="modalVideoOpen" />
     </div>
   </section>
 
   <section class="section-page">
     <div class="container">
-      <TheMentor title="" />
+      <TheMentor @modal-video-open="modalVideoOpen" />
     </div>
   </section>
+
+  <ModalTheModalVideoItem
+    v-if="isModalVideoItem"
+    @close="closeModalItem"
+    :frameSrc="modalVideoItemSrcFrame"
+  />
 </template>
 <script>
 export default {
   data() {
     return {
+      modalVideoItemSrcFrame: '',
+      isModalVideoItem: false,
       modalVideo: false,
       breadCrumbs: [
         {
@@ -32,6 +40,17 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    modalVideoOpen(value) {
+      if (value) {
+        this.isModalVideoItem = true;
+        this.modalVideoItemSrcFrame = value.src;
+      }
+    },
+    closeModalItem() {
+      this.isModalVideoItem = false;
+    },
   },
 };
 </script>

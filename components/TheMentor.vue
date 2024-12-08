@@ -39,8 +39,11 @@
                 <p>
                   {{ item.text }}
                 </p>
-                <div v-if="item.video" class="relative">
-                  <span class="video-icon video-icon--small"></span>
+                <div v-if="item.frame" class="relative">
+                  <span
+                    class="video-icon video-icon--small"
+                    @click="modalVideoOpen(item.frame)"
+                  ></span>
                 </div>
               </div>
             </div>
@@ -64,24 +67,29 @@ export default {
           text: 'Адаптация психики и проработка мышления инвестора',
           ico: 'item1.svg',
           alt: 'svg',
-          video: true,
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
         },
         {
           name: 'Теория',
           text: 'Изучение основ поиска, выбора и анализа инструментов',
           ico: 'item2.svg',
           alt: 'svg',
-          video: true,
+          frame: '',
         },
         {
           name: 'Практика',
           text: 'Мы вместе составим портфель из акций, облигаций и валюты',
           ico: 'item3.svg',
           alt: 'svg',
-          video: true,
+          frame: 'https://www.youtube.com/embed/l3OorRmFsto?si=Rp7OBg4n2oGxOEdf',
         },
       ],
     };
+  },
+  methods: {
+    modalVideoOpen(frameSrc) {
+      this.$emit('modal-video-open', { src: frameSrc });
+    },
   },
 };
 </script>

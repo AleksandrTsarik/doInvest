@@ -8,7 +8,12 @@
             <div class="terminal-top__img">
               <img src="/image/expert.jpg" alt="..." />
               <div class="relative">
-                <span class="video-icon"></span>
+                <span
+                  class="video-icon"
+                  @click="
+                    modalVideoOpen('https://rutube.ru/play/embed/d6b377d1402953bd9831f5fb42fdd8ec/')
+                  "
+                ></span>
               </div>
             </div>
           </div>
@@ -33,7 +38,14 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {},
+  methods: {
+    modalVideoOpen(frameSrc) {
+      this.$emit('modal-video-open', { src: frameSrc });
+    },
+  },
+};
 </script>
 <style lang="scss">
 .terminal {
