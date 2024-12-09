@@ -2,6 +2,7 @@
   <div class="pagination">
     <div class="pagination-arrow pagination-arrow__prev">
       <svg
+        class="not-svg"
         width="4.000000"
         height="7.000000"
         viewBox="0 0 4 7"
@@ -31,6 +32,7 @@
     </div>
     <div class="pagination-arrow pagination-arrow__next">
       <svg
+        class="not-svg"
         width="4.000000"
         height="7.000000"
         viewBox="0 0 4 7"

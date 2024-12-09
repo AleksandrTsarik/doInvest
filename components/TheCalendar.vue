@@ -302,6 +302,8 @@ export default {
     display: flex;
     align-items: center;
     column-gap: 8px;
+    overflow-y: hidden;
+    overflow-x: auto;
   }
 
   &__days-item {
