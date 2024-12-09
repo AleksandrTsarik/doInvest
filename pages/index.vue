@@ -50,12 +50,6 @@
     <the-modal-video v-if="modalVideo" @close="closeModal" />
   </section>
 
-  <!-- <section class="section-page">
-      <div class="container">
-        <TheFilter />
-      </div>
-    </section> -->
-
   <section class="section-page video-lessons">
     <div class="container">
       <TheVideo

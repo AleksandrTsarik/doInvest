@@ -2,8 +2,8 @@
   <div>
     <div class="section-page__title title">СОБЫТИЯ</div>
     <div class="section-page__subtitle t-24">
-      Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный
-      текст-заполнитель, вставляемый в макет страницы).
+      Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель,
+      вставляемый в макет страницы).
     </div>
     <u-i-the-swiper
       :slider="events"
@@ -21,7 +21,7 @@
 <script>
 export default {
   props: {
-    events: { type: Array, default: [], require: true }
+    events: { type: Array, default: [], require: true },
   },
   data() {
     return {
@@ -47,15 +47,14 @@ export default {
           },
         },
       },
-    }
+    };
   },
   methods: {
     modalVideoOpen(value) {
-      this.$emit('modal-video-open', {src: value.src})
-    }
-  }
-
-}
+      this.$emit('modal-video-open', { src: value.src });
+    },
+  },
+};
 </script>
 <style lang="scss" scoped>
 .slider {

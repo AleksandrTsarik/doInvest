@@ -156,30 +156,18 @@ export default {
   }
 
   &__catalog {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 15px;
-    row-gap: 15px;
-    justify-content: space-between;
-    @media screen and (max-width: 991px) {
-      flex-wrap: wrap;
-      row-gap: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
     }
   }
 
   &__item {
-    flex: 0 0 calc(100% / 3 - 15px);
-    max-width: calc(100% / 3 - 15px);
-
-    @media screen and (max-width: 991px) {
-      flex: 0 0 calc(100% / 2 - 8px);
-      max-width: calc(100% / 2 - 8px);
-    }
-
-    @media screen and (max-width: 767px) {
-      flex: 0 0 100%;
-      max-width: initial;
-    }
   }
 
   &__access {

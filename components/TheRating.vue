@@ -9,7 +9,7 @@
 export default {
   props: {
     rate: {
-      label: Number,
+      type: Number,
       default: 5,
       require: true,
     },

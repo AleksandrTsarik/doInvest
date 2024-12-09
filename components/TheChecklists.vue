@@ -3,33 +3,26 @@
     <div class="section-page__title checklists__title title">Чек-листы</div>
     <div class="checklists__top">
       <div class="section-page__subtitle checklists__subtitle subtitle t-24">
-        Онлайн-генератор случайного текста, правильный Lorem Ipsum на русском языке. Незаменимый помощник любого дизайнера, вебмастера и проектировщика. ... Текста-рыбы является извест
+        Онлайн-генератор случайного текста, правильный Lorem Ipsum на русском языке. Незаменимый
+        помощник любого дизайнера, вебмастера и проектировщика. ... Текста-рыбы является извест
       </div>
       <div class="checklists__access">
-        <div class="checklists__access-title">
-          Безлимитный доступ к чек-листам
-        </div>
+        <div class="checklists__access-title">Безлимитный доступ к чек-листам</div>
         <div class="checklists__access-btn">
-          <UITheButton 
-            :class="['btn', 'btn-dark']" 
-            :label="'Получить доступ'">
-          </UITheButton>
+          <UITheButton :class="['btn', 'btn-dark']" :label="'Получить доступ'"> </UITheButton>
         </div>
       </div>
-    </div>  
-    
+    </div>
+
     <div class="checklists__filters">
-      <TheFilterAccess 
+      <TheFilterAccess
         @filter-items-access="filterItemsAccess"
         :filterAccessTag="filterAccessTag"
       />
     </div>
 
     <div class="checklists__catalog">
-      <div 
-        v-for="(lesson, i) in lessons"
-        :key="i"
-        class="checklists__item">
+      <div v-for="(lesson, i) in lessons" :key="i" class="checklists__item">
         <div class="lesson-big-item">
           <div class="lesson-big-item__row">
             <div class="lesson-big-item__info">
@@ -39,7 +32,7 @@
               <div class="lesson-big-item__info-bottom">
                 <div class="lesson-big-item__info-bottom-left">
                   <div class="lesson-big-item__rating">
-                    <TheRating :rate="lesson.rate"/>
+                    <TheRating :rate="lesson.rate" />
                     <span>{{ lesson.rate }}</span>
                   </div>
                   <div class="lesson-big-item__price">
@@ -47,24 +40,16 @@
                   </div>
                 </div>
                 <div class="lesson-big-item__info-bottom-right">
-                  <UITheButton 
-                    :class="['btn', 'btn-dark']" 
-                    :label="'Получить урок'">
-                  </UITheButton>
-                </div>  
+                  <UITheButton :class="['btn', 'btn-dark']" :label="'Получить урок'"> </UITheButton>
+                </div>
               </div>
             </div>
 
             <div class="lesson-big-item__photo">
-              <img :src="lesson.pic" alt="">
-              <span 
-                v-if="lesson.frame"
-                class="video-icon" 
-                @click="modalVideoOpen(lesson.frame)">
+              <img :src="lesson.pic" alt="" />
+              <span v-if="lesson.frame" class="video-icon" @click="modalVideoOpen(lesson.frame)">
               </span>
-              <span
-                v-if="lesson.access"
-                class="lesson-big-item__access-shield">
+              <span v-if="lesson.access" class="lesson-big-item__access-shield">
                 Доступ открыт
               </span>
             </div>
@@ -78,19 +63,18 @@
 <script>
 export default {
   props: {
-    lessons: {type: Array, default: [], required: true},
-    filterAccessTag: {type: String, default: '', required: true}
-  },  
+    lessons: { type: Array, default: [], required: true },
+    filterAccessTag: { type: String, default: '', required: true },
+  },
   methods: {
     filterItemsAccess(value) {
-      this.$emit('filter-items-access', value)
+      this.$emit('filter-items-access', value);
     },
     modalVideoOpen(frameSrc) {
-      this.$emit('modal-video-open', {src: frameSrc})
-    }
-  }
-}
-
+      this.$emit('modal-video-open', { src: frameSrc });
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -103,7 +87,7 @@ export default {
 
     @media screen and (max-width: 991px) {
       flex-direction: column;
-      justify-content: initial;      
+      justify-content: initial;
       margin-bottom: 20px;
     }
   }
@@ -124,7 +108,7 @@ export default {
     flex: 0 0 50%;
     display: flex;
     flex-direction: column;
-    row-gap: 9px;   
+    gap: 10px;
 
     &-title {
       font-size: 18px;
@@ -144,23 +128,26 @@ export default {
 
   &__filters {
     display: flex;
-    flex-wrap: wrap;
-    padding-right: 135px;
     align-items: center;
-    column-gap: 15px;
-    row-gap: 15px;
-    margin-bottom: 24px;
+    gap: 15px;
+    margin-bottom: 50px;
+    // display: flex;
+    // flex-wrap: wrap;
+    // padding-right: 135px;
+    // align-items: center;
+    // gap: 15px;
+    // margin-bottom: 24px;
 
-    @media screen and (max-width: 1023px) {
-      margin-bottom: 20px;
-    }
+    // @media screen and (max-width: 1023px) {
+    //   margin-bottom: 20px;
+    // }
 
-    @media screen and (max-width: 767px) {
-      position: relative;
-      flex-wrap: nowrap;
-      overflow: auto;
-      white-space: nowrap;
-    }
+    // @media screen and (max-width: 767px) {
+    //   position: relative;
+    //   flex-wrap: nowrap;
+    //   overflow: auto;
+    //   white-space: nowrap;
+    // }
   }
 
   &__catalog {

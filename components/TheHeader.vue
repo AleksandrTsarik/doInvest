@@ -21,7 +21,7 @@
         </div>
 
         <div class="header__right header-user header-user__block">
-          <div class="header-user__row">
+          <div class="header-user__row svg-primary">
             <TheSvg :type="'star'" />
             <p>Новичок</p>
             <span class="header-user__tooltip">?</span>
@@ -77,17 +77,17 @@
 
                 <br />
                 <li><b>PAGES Удалить</b></li>
-                <!-- <li><NuxtLink to="/education">education</NuxtLink></li> -->
-                <!-- <li><NuxtLink to="/personal-account">personal-account</NuxtLink></li>
-                <li><NuxtLink to="/analytics-filter">analytics-filter</NuxtLink></li> -->
                 <li><NuxtLink to="/registration">Reg</NuxtLink></li>
                 <li><NuxtLink to="/basket">Basket</NuxtLink></li>
                 <li><NuxtLink to="/order-placed">order-placed</NuxtLink></li>
+                <li><NuxtLink to="/events">events</NuxtLink></li>
+                <li><NuxtLink to="/recommendations">recommendations</NuxtLink></li>
                 <li><NuxtLink to="/checklist">checklist</NuxtLink></li>
+                <li><NuxtLink to="/video-lessons">video-lessons</NuxtLink></li>
                 <li>
-                  <NuxtLink to="/video-lessons-checklist-inner"
-                    >video-lessons-checklist-inner</NuxtLink
-                  >
+                  <NuxtLink to="/video-lessons-checklist-inner">
+                    video-lessons-checklist-inner
+                  </NuxtLink>
                 </li>
               </ul>
             </div>

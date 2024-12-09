@@ -2,20 +2,15 @@
   <div>
     <div class="section-page__title title">ЧИТАЙ АЗБУКУ ИНВЕСТОРА</div>
     <div class="section-page__subtitle t-24">
-      Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель, вставляемый).
+      Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель,
+      вставляемый).
     </div>
     <div class="articles__catalog">
-      <div 
-        v-for="(article, i) in articles"
-        :key="i" 
-        class="articles__item">
+      <div v-for="(article, i) in articles" :key="i" class="articles__item">
         <div class="article-item">
           <div class="article-item__photo">
             <a href="#"><img src="/public/image/material.png" alt="" /></a>
-            <span 
-              v-if="article.frame"
-              class="video-icon" 
-              @click="modalVideoOpen(article.frame)">
+            <span v-if="article.frame" class="video-icon" @click="modalVideoOpen(article.frame)">
             </span>
           </div>
           <div class="article-item__info">
@@ -30,8 +25,12 @@
                 <div v-if="article.oldPice" class="article-item__price article-item__price--old">
                   {{ article.oldPice }}
                 </div>
-                <div class="article-item__price">{{ article.price ? article.price : 'БЕСПЛАТНО' }}</div>
-                <div v-if="article.price" class="article-item__price article-item__price--unit">₽</div>
+                <div class="article-item__price">
+                  {{ article.price ? article.price : 'БЕСПЛАТНО' }}
+                </div>
+                <div v-if="article.price" class="article-item__price article-item__price--unit">
+                  ₽
+                </div>
               </div>
               <div class="article-item__link">
                 <a href="#">
@@ -53,7 +52,7 @@
             </div>
           </div>
         </div>
-      </div>  
+      </div>
     </div>
     <div class="section-page__all-link">
       <NuxtLink class="btn" to="#">Открыть все</NuxtLink>
@@ -64,34 +63,46 @@
 <script>
 export default {
   props: {
-    articles: { type: Array, default: [], require: true }
+    articles: { type: Array, default: [], require: true },
   },
   methods: {
     modalVideoOpen(frameSrc) {
-      this.$emit('modal-video-open', {src: frameSrc})
-    }
-  }
-}
+      this.$emit('modal-video-open', { src: frameSrc });
+    },
+  },
+};
 </script>
 
 <style lang="scss">
 .articles {
   &__catalog {
-    display: flex;
-    column-gap: 15px;
-    row-gap: 15px;
-    flex-wrap: wrap;
-    justify-content: space-between
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__item {
-    flex: 0 0 calc(50% - 8px);
-    max-width: calc(50% - 8px);
-
-    @media screen and (max-width: 1299px) {
-      flex: 0 0 100%;
-      max-width: 700px;
+  }
+}
+.article-item {
+  height: 100%;
+  @media (max-width: 767px) {
+    height: auto;
+  }
+  &__photo {
+    img,
+    a {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
+  }
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
   }
 }
 </style>

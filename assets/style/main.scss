@@ -225,6 +225,12 @@ button {
 .color-primary {
   color: rgba(var(--primary));
 }
+.fill-primary {
+  fill: rgb(var(--primary));
+}
+.stroke-primary {
+  stroke: rgb(var(--primary));
+}
 .modal {
   &__overlay {
     background-color: rgba(#000, 0.5);
@@ -434,7 +440,7 @@ table {
     top: 18px;
     right: 18px;
     font-size: 16px;
-    color: #F7F7F8;
+    color: #f7f7f8;
     padding: 6px 10px;
     border-radius: 6px;
     background-color: rgb(var(--primary));
@@ -624,7 +630,7 @@ table {
 
   @media screen and (max-width: 767px) {
     flex-direction: column;
-  }  
+  }
 
   &__photo {
     position: relative;
@@ -656,7 +662,7 @@ table {
     padding: 12px 15px;
     display: flex;
     flex-direction: column;
-    @media screen and (max-width: 767px) { 
+    @media screen and (max-width: 767px) {
       padding-top: 0;
     }
   }
@@ -767,7 +773,7 @@ table {
         }
       }
     }
-  }  
+  }
 }
 
 // BIG LESSON ITEM
@@ -787,7 +793,7 @@ table {
 
   @media screen and (max-width: 767px) {
     padding: 27px 12px 160px 12px;
-  }  
+  }
 
   &__row {
     display: flex;
@@ -826,7 +832,7 @@ table {
 
     img {
       width: 100%;
-    }    
+    }
   }
 
   &__access-shield {
@@ -834,7 +840,7 @@ table {
     top: 18px;
     right: 18px;
     font-size: 16px;
-    color: #F7F7F8;
+    color: #f7f7f8;
     padding: 6px 10px;
     border-radius: 6px;
     background-color: rgb(var(--primary));
@@ -860,7 +866,7 @@ table {
     @media screen and (max-width: 1279px) {
       padding-top: 15px;
     }
-    
+
     @media screen and (max-width: 991px) {
       position: absolute;
       bottom: 50px;
@@ -873,7 +879,7 @@ table {
       row-gap: 15px;
       left: 12px;
       right: 12px;
-      bottom: 25px;      
+      bottom: 25px;
     }
   }
 
@@ -903,7 +909,7 @@ table {
     display: flex;
     align-items: center;
     column-gap: 12px;
-    color: #3F3F3F;
+    color: #3f3f3f;
     font-size: 16px;
     margin-bottom: 20px;
     @media screen and (max-width: 991px) {

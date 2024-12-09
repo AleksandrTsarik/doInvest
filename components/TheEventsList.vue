@@ -1,23 +1,18 @@
 <template>
   <div>
     <div class="checklists__filters">
-      <TheFilterAccess 
+      <TheFilterAccess
         @filter-items-access="filterItemsAccess"
         :filterAccessTag="filterAccessTag"
       />
     </div>
 
     <div class="events__catalog">
-      <div 
-        v-for="(event, i) in events"
-        class="events__item">
+      <div v-for="(event, i) in events" class="events__item">
         <div class="event-item">
           <div class="event-item__photo">
             <a href="#"><img :src="event.pic" alt="" /></a>
-            <span 
-              v-if="event.frame"
-              class="video-icon" 
-              @click="modalVideoOpen(event.frame)">
+            <span v-if="event.frame" class="video-icon" @click="modalVideoOpen(event.frame)">
             </span>
           </div>
           <div class="event-item__info">
@@ -28,7 +23,12 @@
                 <a :href="event.placeUrl">{{ event.place }}</a>
               </div>
             </div>
-            <div class="event-item__test-tag" style="font-weight: 600;font-size: 14px;margin-top: 9px;">{{  event.access ? 'Типо доступен' : 'Типо недоступен' }}</div>
+            <div
+              class="event-item__test-tag"
+              style="font-weight: 600; font-size: 14px; margin-top: 9px"
+            >
+              {{ event.access ? 'Типо доступен' : 'Типо недоступен' }}
+            </div>
             <div class="event-item__name">
               {{ event.name }}
             </div>
@@ -71,8 +71,8 @@
 <script>
 export default {
   props: {
-    events: {type: Array, default: [], required: true},
-    filterAccessTag: {type: String, default: '', required: true}
+    events: { type: Array, default: [], required: true },
+    filterAccessTag: { type: String, default: '', required: true },
   },
   data() {
     return {
@@ -90,77 +90,49 @@ export default {
         'Ноября',
         'Декабря',
       ],
-    }
-  }, 
+    };
+  },
   methods: {
     filterItemsAccess(value) {
-      this.$emit('filter-items-access', value)
+      this.$emit('filter-items-access', value);
     },
     modalVideoOpen(frameSrc) {
-      this.$emit('modal-video-open', {src: frameSrc})
+      this.$emit('modal-video-open', { src: frameSrc });
     },
     parsingDate(date) {
-      return `${date.split('.')[0]} ${this.monthLocal[date.split('.')[1]-1]} ${date.split('.')[2]}`
-    }
-  }
-}
+      return `${date.split('.')[0]} ${this.monthLocal[date.split('.')[1] - 1]} ${
+        date.split('.')[2]
+      }`;
+    },
+  },
+};
 </script>
 
 <style lang="scss">
 .events {
-  &__title {
-    margin-bottom: 30px;
-  }
   &__subtitle {
     margin-bottom: 50px;
-    max-width: 800px
+    max-width: 800px;
   }
   &__catalog {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 15px;
-    row-gap: 15px;
-    justify-content: space-between;  
-    
-    @media screen and (max-width: 767px) {
-      display: block;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-top: 50px;
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr 1fr;
     }
-  }
-
-  &__item {
-    flex: 0 0 calc(100%/3 - 20px);
-    max-width: calc(100%/3 - 20px);
-
-    @media screen and (max-width: 991px) {
-      flex: 0 0 calc(100%/2 - 8px);
-      max-width: calc(100%/2 - 8px);
-    }
-
-    @media screen and (max-width: 767px) {
-      margin-bottom: 15px;
-      max-width: initial;
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
     }
   }
 
   &__filters {
-    display: flex;
-    flex-wrap: wrap;
-    padding-right: 135px;
-    align-items: center;
-    column-gap: 15px;
-    row-gap: 15px;
-    margin-bottom: 24px;
-
-    @media screen and (max-width: 1023px) {
-      margin-bottom: 20px;
-    }
-
-    @media screen and (max-width: 767px) {
-      position: relative;
-      flex-wrap: nowrap;
-      overflow: auto;
-      white-space: nowrap;
-    }
   }
+}
+.event-item {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 </style>

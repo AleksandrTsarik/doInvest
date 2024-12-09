@@ -142,6 +142,10 @@ export default {
     display: flex;
     align-items: flex-end;
     gap: 35px;
+    @media (max-width: 767px) {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
     p {
     }
     a {

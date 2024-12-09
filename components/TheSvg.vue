@@ -380,4 +380,8 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+svg:not(.not-svg) path {
+  fill: rgb(var(--primary));
+}
+</style>

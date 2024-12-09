@@ -2,27 +2,23 @@
   <div>
     <div class="section-page__title events__title title">РЕКОМЕНДОВАННЫЙ МАТЕРИАЛ</div>
     <div class="events__subtitle t-24">
-      Русский аналог Lorem Ipsum. Прародителем текста-рыбы является . Сервисов по созданию случайного текста на 
+      Русский аналог Lorem Ipsum. Прародителем текста-рыбы является . Сервисов по созданию
+      случайного текста на
     </div>
 
     <div class="checklists__filters">
-      <TheFilterAccess 
+      <TheFilterAccess
         @filter-items-access="filterItemsAccess"
         :filterAccessTag="filterAccessTag"
       />
     </div>
 
     <div class="events__catalog">
-      <div 
-        v-for="(event, i) in events"
-        class="events__item">
+      <div v-for="(event, i) in events" class="events__item">
         <div class="event-item">
           <div class="event-item__photo">
             <a href="#"><img :src="event.pic" alt="" /></a>
-            <span 
-              v-if="event.frame"
-              class="video-icon" 
-              @click="modalVideoOpen(event.frame)">
+            <span v-if="event.frame" class="video-icon" @click="modalVideoOpen(event.frame)">
             </span>
           </div>
           <div class="event-item__info">
@@ -32,7 +28,12 @@
                 <a :href="event.placeUrl">{{ event.place }}</a>
               </div>
             </div>
-            <div class="event-item__test-tag" style="font-weight: 600;font-size: 14px;margin-top: 9px;">{{  event.access ? 'Типо доступен' : 'Типо недоступен' }}</div>
+            <div
+              class="event-item__test-tag"
+              style="font-weight: 600; font-size: 14px; margin-top: 9px"
+            >
+              {{ event.access ? 'Типо доступен' : 'Типо недоступен' }}
+            </div>
             <div class="event-item__name">
               {{ event.name }}
             </div>
@@ -75,75 +76,40 @@
 <script>
 export default {
   props: {
-    events: {type: Array, default: [], required: true},
-    filterAccessTag: {type: String, default: '', required: true}
-  },  
+    events: { type: Array, default: [], required: true },
+    filterAccessTag: { type: String, default: '', required: true },
+  },
   methods: {
     filterItemsAccess(value) {
-      this.$emit('filter-items-access', value)
+      this.$emit('filter-items-access', value);
     },
     modalVideoOpen(frameSrc) {
-      this.$emit('modal-video-open', {src: frameSrc})
-    }
-  }
-}
+      this.$emit('modal-video-open', { src: frameSrc });
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-.events {
-  &__title {
-    margin-bottom: 30px;
-  }
-  &__subtitle {
-    margin-bottom: 50px;
-    max-width: 800px
-  }
-  &__catalog {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 15px;
-    row-gap: 15px;
-    justify-content: space-between;  
-    
-    @media screen and (max-width: 767px) {
-      display: block;
-    }
-  }
+// .events {
+//   &__filters {
+//     display: flex;
+//     flex-wrap: wrap;
+//     padding-right: 135px;
+//     align-items: center;
+//     gap: 15px;
+//     margin-bottom: 24px;
 
-  &__item {
-    flex: 0 0 calc(100%/3 - 20px);
-    max-width: calc(100%/3 - 20px);
+//     @media screen and (max-width: 1023px) {
+//       margin-bottom: 20px;
+//     }
 
-    @media screen and (max-width: 991px) {
-      flex: 0 0 calc(100%/2 - 8px);
-      max-width: calc(100%/2 - 8px);
-    }
-
-    @media screen and (max-width: 767px) {
-      margin-bottom: 15px;
-      max-width: initial;
-    }
-  }
-
-  &__filters {
-    display: flex;
-    flex-wrap: wrap;
-    padding-right: 135px;
-    align-items: center;
-    column-gap: 15px;
-    row-gap: 15px;
-    margin-bottom: 24px;
-
-    @media screen and (max-width: 1023px) {
-      margin-bottom: 20px;
-    }
-
-    @media screen and (max-width: 767px) {
-      position: relative;
-      flex-wrap: nowrap;
-      overflow: auto;
-      white-space: nowrap;
-    }
-  }
-}
+//     @media screen and (max-width: 767px) {
+//       position: relative;
+//       flex-wrap: nowrap;
+//       overflow: auto;
+//       white-space: nowrap;
+//     }
+//   }
+// }
 </style>
