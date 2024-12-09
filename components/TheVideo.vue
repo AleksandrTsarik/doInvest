@@ -28,10 +28,7 @@
           </div>
 
           <ul class="video-lessons-themes__list">
-            <perfect-scrollbar
-              :options="{ suppressScrollX: true, wheelSpeed: 0.15 }"
-              @ps-scroll-y.stop="scrollOffBody"
-            >
+            <perfect-scrollbar :options="{ suppressScrollX: true, wheelSpeed: 0.15 }">
               <li
                 v-for="(theme, i) in videoThemes"
                 :key="i"
@@ -125,9 +122,7 @@ export default {
     modalVideoOpen(frameSrc) {
       this.$emit('modal-video-open', { src: frameSrc });
     },
-    scrollOffBody() {
-      console.log('Тест');
-    },
+    // scrollOffBody() {},
   },
 };
 </script>
@@ -168,6 +163,18 @@ export default {
   }
 
   &__item {
+    // flex: 0 0 calc(100% / 3 - 15px);
+    // max-width: calc(100% / 3 - 15px);
+
+    // @media screen and (max-width: 991px) {
+    //   flex: 0 0 calc(100% / 2 - 8px);
+    //   max-width: calc(100% / 2 - 8px);
+    // }
+
+    // @media screen and (max-width: 767px) {
+    //   flex: 0 0 100%;
+    //   max-width: initial;
+    // }
   }
 
   &__access {

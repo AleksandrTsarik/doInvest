@@ -3,7 +3,9 @@
     <div class="events-calendar__row">
       <div class="events-calendar__caption">Прошедшие события</div>
 
-      <div :class="['events-calendar__select', { show: isYearsShow }]">
+      <div
+        :class="['events-calendar__select events-calendar__select-month', { show: isYearsShow }]"
+      >
         <div class="events-calendar__select-caption" @click="isYearsShow = !isYearsShow">
           {{ selectedEventsYear }} <span></span>
         </div>
@@ -38,25 +40,29 @@
         </div>
       </div>
     </div>
-
-    <div class="events-calendar__days">
-      <div
-        v-for="(day, i) in daysLastEvents"
-        :key="i"
-        :class="['events-calendar__days-item', { active: day.full === selectedDate }]"
-        @click="setCurrentDay(day.number)"
-      >
-        <div class="events-calendar__days-item-daynumber">{{ day.number }}</div>
+    <perfect-scrollbar
+      :options="{ suppressScrollY: true, wheelSpeed: 0.15 }"
+      class="calendar-scroll"
+    >
+      <div class="events-calendar__days">
         <div
-          :class="[
-            'events-calendar__days-item-daylocal',
-            { 'weekend-day': day.local === 6 || day.local === 0 },
-          ]"
+          v-for="(day, i) in daysLastEvents"
+          :key="i"
+          :class="['events-calendar__days-item', { active: day.full === selectedDate }]"
+          @click="setCurrentDay(day.number)"
         >
-          {{ daysLocal[day.local] }}
+          <div class="events-calendar__days-item-daynumber">{{ day.number }}</div>
+          <div
+            :class="[
+              'events-calendar__days-item-daylocal',
+              { 'weekend-day': day.local === 6 || day.local === 0 },
+            ]"
+          >
+            {{ daysLocal[day.local] }}
+          </div>
         </div>
       </div>
-    </div>
+    </perfect-scrollbar>
   </div>
 </template>
 
@@ -190,12 +196,36 @@ export default {
 </script>
 
 <style lang="scss">
+.calendar-scroll {
+  padding-bottom: 20px;
+  max-width: 100%;
+  .ps {
+    &__rail-x {
+      background: transparent !important;
+      display: block !important;
+      opacity: 1 !important;
+      height: 10px !important;
+    }
+
+    &__thumb-x {
+      background-color: rgb(var(--primary)) !important;
+
+      &:hover {
+        background-color: rgb(var(--primary));
+      }
+    }
+  }
+}
 .events-calendar {
   margin-bottom: 40px;
   &__row {
     display: flex;
     align-items: center;
     column-gap: 15px;
+    @media (max-width: 767px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   &__caption {
@@ -208,6 +238,9 @@ export default {
     max-width: 120px;
     color: var(--text);
     z-index: 50;
+    @media (max-width: 767px) {
+      flex: 0 0 auto;
+    }
     &.show {
       .events-calendar__select-caption span {
         transform: rotate(0deg);
@@ -219,6 +252,9 @@ export default {
       }
     }
   }
+  &__select-month {
+    z-index: 100;
+  }
 
   &__select-caption {
     display: flex;
@@ -227,6 +263,7 @@ export default {
     padding: 10px 14px 8px;
     font-size: 18px;
     font-weight: 700;
+
     span {
       flex: 0 0 12px;
       height: 6px;
