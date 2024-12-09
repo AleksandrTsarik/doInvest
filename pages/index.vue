@@ -22,29 +22,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="preview__wrapper">
-            <div class="preview__item">
-              <h1 class="preview__title">Сервис аналитики Doinvest</h1>
-              <div class="preview__text-block">
-                <div class="preview__text t-18">
-                  Получайте новости только по интересующим вас акциям
-                </div>
-                <div class="preview__network">
-                  <TheNetwork :type="'vk'" class="link-border" />
-                  <TheNetwork :type="'telegram'" class="link-border" />
-                  <TheNetwork :type="'youtube'" class="link-border" />
-                </div>
-              </div>
-
-              <UITheButton :label="'Начать пользоваться'" class="btn-dark" />
-            </div>
-            <div class="preview__item">
-              <div class="preview__iframe iframe">
-                <iframe src="" frameborder="0"></iframe>
-                <span class="video-icon" @click="modalVideo = true"></span>
-              </div>
-            </div>
-          </div> -->
       </div>
     </div>
     <the-modal-video v-if="modalVideo" @close="closeModal" />

@@ -131,6 +131,7 @@ export default {
     align-items: center;
     gap: 15px;
     margin-bottom: 50px;
+    flex-wrap: wrap;
     // display: flex;
     // flex-wrap: wrap;
     // padding-right: 135px;

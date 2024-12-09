@@ -17,7 +17,7 @@
       <div v-for="(event, i) in events" class="events__item">
         <div class="event-item">
           <div class="event-item__photo">
-            <a href="#"><img :src="event.pic" alt="" /></a>
+            <img :src="event.pic" alt="" />
             <span v-if="event.frame" class="video-icon" @click="modalVideoOpen(event.frame)">
             </span>
           </div>
@@ -90,26 +90,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-// .events {
-//   &__filters {
-//     display: flex;
-//     flex-wrap: wrap;
-//     padding-right: 135px;
-//     align-items: center;
-//     gap: 15px;
-//     margin-bottom: 24px;
-
-//     @media screen and (max-width: 1023px) {
-//       margin-bottom: 20px;
-//     }
-
-//     @media screen and (max-width: 767px) {
-//       position: relative;
-//       flex-wrap: nowrap;
-//       overflow: auto;
-//       white-space: nowrap;
-//     }
-//   }
-// }
-</style>
+<style lang="scss"></style>

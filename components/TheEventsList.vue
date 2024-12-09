@@ -11,7 +11,7 @@
       <div v-for="(event, i) in events" class="events__item">
         <div class="event-item">
           <div class="event-item__photo">
-            <a href="#"><img :src="event.pic" alt="" /></a>
+            <img :src="event.pic" alt="..." />
             <span v-if="event.frame" class="video-icon" @click="modalVideoOpen(event.frame)">
             </span>
           </div>
@@ -115,18 +115,33 @@ export default {
     max-width: 800px;
   }
   &__catalog {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 15px;
-    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -8px;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr 1fr;
+    // gap: 15px;
+    // margin-top: 50px;
+    // @media (max-width: 1200px) {
+    //   grid-template-columns: 1fr 1fr;
+    // }
+    // @media (max-width: 767px) {
+    //   grid-template-columns: 1fr;
+    // }
+  }
+  &__item {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+    padding: 8px;
     @media (max-width: 1200px) {
-      grid-template-columns: 1fr 1fr;
+      flex: 0 0 50%;
+      max-width: 50%;
     }
     @media (max-width: 767px) {
-      grid-template-columns: 1fr;
+      flex: 0 0 100%;
+      max-width: 100%;
     }
   }
-
   &__filters {
   }
 }
@@ -134,5 +149,16 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
+  &__info {
+    flex-grow: 1;
+  }
+  &__photo {
+    height: 250px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 }
 </style>
