@@ -143,6 +143,8 @@ export default {
     }
   }
   &__filters {
+    display: flex;
+    gap: 15px;
   }
 }
 .event-item {

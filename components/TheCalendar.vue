@@ -40,29 +40,29 @@
         </div>
       </div>
     </div>
-    <perfect-scrollbar
+    <!-- <perfect-scrollbar
       :options="{ suppressScrollY: true, wheelSpeed: 0.15 }"
       class="calendar-scroll"
-    >
-      <div class="events-calendar__days">
+    > -->
+    <div class="events-calendar__days">
+      <div
+        v-for="(day, i) in daysLastEvents"
+        :key="i"
+        :class="['events-calendar__days-item', { active: day.full === selectedDate }]"
+        @click="setCurrentDay(day.number)"
+      >
+        <div class="events-calendar__days-item-daynumber">{{ day.number }}</div>
         <div
-          v-for="(day, i) in daysLastEvents"
-          :key="i"
-          :class="['events-calendar__days-item', { active: day.full === selectedDate }]"
-          @click="setCurrentDay(day.number)"
+          :class="[
+            'events-calendar__days-item-daylocal',
+            { 'weekend-day': day.local === 6 || day.local === 0 },
+          ]"
         >
-          <div class="events-calendar__days-item-daynumber">{{ day.number }}</div>
-          <div
-            :class="[
-              'events-calendar__days-item-daylocal',
-              { 'weekend-day': day.local === 6 || day.local === 0 },
-            ]"
-          >
-            {{ daysLocal[day.local] }}
-          </div>
+          {{ daysLocal[day.local] }}
         </div>
       </div>
-    </perfect-scrollbar>
+    </div>
+    <!-- </perfect-scrollbar> -->
   </div>
 </template>
 

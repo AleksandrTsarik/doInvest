@@ -21,7 +21,7 @@ export default {
     },
   },
   mounted() {
-    console.log(this.label, this.name);
+    // console.log(this.label, this.name);
   },
 };
 </script>

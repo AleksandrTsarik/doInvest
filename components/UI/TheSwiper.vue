@@ -96,20 +96,20 @@
               <span class="video-icon video-icon--small"></span>
             </div>
           </div>
-          <div class="feedback-slide__name t-32">{{ slide.name }}</div>
+          <div class="feedback-slide__name t-32" v-if="slide.name">{{ slide.name }}</div>
         </div>
       </div>
 
-      <div v-if="typeSlider === 'feedback-item'" class="feedback-item-slide">
+      <div v-else-if="typeSlider === 'feedback-item'" class="feedback-item-slide">
         <div class="feedback-item-slide__wrap">
           <div class="feedback-item-slide__head">
             <div class="feedback-item-slide__photo">
               <img :src="slide.photo" :alt="slide.alt" />
             </div>
-            <div class="feedback-item-slide__name t-18">{{ slide.name }}</div>
+            <div class="feedback-item-slide__name t-18" v-if="slide.name">{{ slide.name }}</div>
           </div>
           <div class="feedback-item-slide__body">
-            <div class="feedback-item-slide__text t-18">{{ slide.text }}</div>
+            <div class="feedback-item-slide__text t-18" v-if="slide.text">{{ slide.text }}</div>
           </div>
           <div class="feedback-item-slide__footer">
             <NuxtLink :to="slide.url">Читать полностью</NuxtLink>

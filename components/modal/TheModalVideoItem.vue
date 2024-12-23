@@ -42,11 +42,12 @@ export default {
   &__wrap {
     background-color: #fff;
     padding: 40px 20px;
+    max-width: 90vh;
   }
-  &__iframe {
-    iframe {
-      height: 20vw;
-    }
-  }
+  // &__iframe {
+  //   iframe {
+  //     height: 20vw;
+  //   }
+  // }
 }
 </style>

@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     css: [
         '~/assets/style/main.scss',
     ],
+    plugins: ['~/plugins/clickOutside.client.js'],
     resolve: {
         alias: {
             "@": resolve(".")

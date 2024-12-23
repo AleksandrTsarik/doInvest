@@ -13,6 +13,9 @@ body {
   background-color: var(--bg);
   font-family: 'Montserrat', Arial, sans-serif;
   transition: 1s;
+  &.menu-open {
+    overflow: hidden;
+  }
   // & .modal {
   //   transition: 1s;
   //   opacity: 1;
@@ -42,6 +45,14 @@ button {
   margin: 0 auto;
   @media (max-width: 1024px) {
     padding: 0 15px;
+  }
+}
+.checklists {
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 24px;
   }
 }
 

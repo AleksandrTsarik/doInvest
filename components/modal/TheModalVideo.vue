@@ -42,8 +42,15 @@ export default {
     padding: 40px 20px;
   }
   &__iframe {
+    position: relative;
+    padding-bottom: 60%;
     iframe {
-      height: 20vw;
+      //height: 50vh;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
     }
   }
 }

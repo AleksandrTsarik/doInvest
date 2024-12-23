@@ -1,29 +1,22 @@
 <template>
-
   <div class="section-page__title title">Полезные материалы</div>
   <div class="section-page__subtitle t-24">
-    Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный
-    текст-заполнитель, вставляемый в макет страницы).
+    Lorem ipsum — классический текст-«рыба» (условный, зачастую бессмысленный текст-заполнитель,
+    вставляемый в макет страницы).
   </div>
-  
-  <TheFilterTags 
+
+  <TheFilterTags
     :currentTag="currentTag"
     :tagsMaterials="tagsMaterials"
     @filter-materials="filterMaterials"
   />
 
   <div class="materials__catalog">
-    <div
-      v-for="(item, i) in materials.slice(0,3)" 
-      class="materials__item">
+    <div v-for="(item, i) in materials.slice(0, 3)" class="materials__item">
       <div class="event-item">
         <div class="event-item__photo">
-          <a href="#"><img :src="item.pic" alt="" /></a>       
-          <span 
-            v-if="item.frame"
-            class="video-icon" 
-            @click="modalVideoOpen(item.frame)">
-          </span>
+          <a href="#"><img :src="item.pic" alt="" /></a>
+          <span v-if="item.frame" class="video-icon" @click="modalVideoOpen(item.frame)"> </span>
         </div>
         <div class="event-item__info">
           <div v-if="item.date" class="event-item__date">
@@ -88,19 +81,18 @@ export default {
   },
   methods: {
     filterMaterials(tag) {
-      console.log(tag)
-      this.$emit('filter-materials', tag)
+      // console.log(tag)
+      this.$emit('filter-materials', tag);
     },
     modalVideoOpen(frameSrc) {
-      this.$emit('modal-video-open', {src: frameSrc})
-    }
-  }
-}
+      this.$emit('modal-video-open', { src: frameSrc });
+    },
+  },
+};
 </script>
 
 <style lang="scss">
 .materials {
-
   &__filters {
     display: flex;
     flex-wrap: wrap;
@@ -126,12 +118,12 @@ export default {
     column-gap: 15px;
     row-gap: 15px;
     flex-wrap: wrap;
-    justify-content: space-between
+    justify-content: space-between;
   }
 
   &__item {
-    flex: 0 0 calc(100%/3 - 20px);
-    max-width: calc(100%/3 - 20px);
+    flex: 0 0 calc(100% / 3 - 20px);
+    max-width: calc(100% / 3 - 20px);
 
     @media screen and (max-width: 1279px) {
       flex: 0 0 calc(50% - 8px);
@@ -140,7 +132,7 @@ export default {
 
     @media screen and (max-width: 767px) {
       flex: 0 0 100%;
-      max-width: initial
+      max-width: initial;
     }
 
     &--col-2 {

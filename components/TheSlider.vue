@@ -41,7 +41,11 @@
         </div>
       </div>
       <div v-else>
-        <u-i-the-swiper :slider="card" :options="optionsSlider" class="slider"></u-i-the-swiper>
+        <u-i-the-swiper
+          :slider="card"
+          :options="optionsSlider"
+          class="slider slider-swiper"
+        ></u-i-the-swiper>
       </div>
     </div>
   </div>
@@ -57,7 +61,7 @@ export default {
         loop: false,
         slidesPerGroup: 1,
         centeredSlides: false,
-        spaceBetween: 10,
+        spaceBetween: 20,
         pagination: false,
         navigation: true,
         modules: 'modules',
@@ -107,13 +111,22 @@ export default {
     };
     onWindowWidth();
     window.addEventListener('resize', onWindowWidth);
-    console.log(this.windowWidth);
+    // console.log(this.windowWidth);
   },
 };
 </script>
 
 <style lang="scss">
 .slider {
+  margin: 40px 0;
+  &__img {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
   .video-icon {
     left: 50%;
     top: 50%;

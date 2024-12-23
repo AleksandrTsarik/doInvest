@@ -5,13 +5,13 @@
         <div class="header__logo header__left">
           <TheNetwork :type="'logo'" />
         </div>
-        <div class="header__mid">
-          <div @click="openBurger" :class="['burger-menu', { 'is-open': isOpenMenu }]">
+        <div class="header__mid" v-click-outside="hideMainMenu">
+          <div @click.stop="openBurger" :class="['burger-menu', { 'is-open': isOpenMainMenu }]">
             <span></span>
             <span></span>
             <span></span>
           </div>
-          <nav :class="['header-menu', { 'is-open': isOpenMenu }]">
+          <nav :class="['header-menu', { 'is-open': isOpenMainMenu }]">
             <ul class="header-menu__list">
               <li v-for="(item, i) in menu" :key="i">
                 <NuxtLink :to="item.url">{{ item.name }}</NuxtLink>
@@ -36,13 +36,13 @@
               <img src="/public/image/user-ico.png" alt="user-ico" />
             </div>
           </div>
-          <div class="header-user__row header-burger">
-            <button class="burger" @click="openMenu">
+          <div class="header-user__row header-burger" v-click-outside="hideRightMenu">
+            <button class="burger" @click.stop="openMenu">
               <span></span>
               <span></span>
               <span></span>
             </button>
-            <div :class="['header-drop-menu', { 'is-open': isActive }]">
+            <div :class="['header-drop-menu', { 'is-open': isOpenRightMenu }]">
               <div class="header-drop-menu__close" @click="openMenu"></div>
               <!-- <TheNetwork
                 :type="'logo'"
@@ -107,8 +107,8 @@ export default {
   data() {
     return {
       modalQuestion: false,
-      isActive: false,
-      isOpenMenu: false,
+      isOpenRightMenu: false,
+      isOpenMainMenu: false,
       menu: [
         {
           name: 'Видеоуроки',
@@ -168,11 +168,32 @@ export default {
     closeModal() {
       this.modalQuestion = false;
     },
-    openMenu() {
-      this.isActive = !this.isActive;
-    },
+    // openMenu() {
+    //   this.isActive = !this.isActive;
+    // },
     openBurger() {
-      this.isOpenMenu = !this.isOpenMenu;
+      this.isOpenMainMenu = !this.isOpenMainMenu;
+      if (this.isOpenMainMenu) document.body.classList.add('menu-open');
+      else document.body.classList.remove('menu-open');
+    },
+    openMenu() {
+      this.isOpenRightMenu = !this.isOpenRightMenu;
+      if (this.isOpenRightMenu) document.body.classList.add('menu-open');
+      else document.body.classList.remove('menu-open');
+    },
+    hideRightMenu() {
+      this.isOpenRightMenu = false;
+      document.body.classList.remove('menu-open');
+    },
+    hideMainMenu() {
+      this.isOpenMainMenu = false;
+      document.body.classList.remove('menu-open');
+    },
+  },
+  watch: {
+    $route() {
+      this.hideRightMenu();
+      this.hideMainMenu();
     },
   },
 };

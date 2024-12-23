@@ -92,7 +92,7 @@ export default {
     // document.body.addEventListener('scroll', this.handleScroll);
     window.addEventListener('scroll', function () {
       //this.handleScroll();
-      console.log(this.scrollpx);
+      // console.log(this.scrollpx);
     });
   },
 };
